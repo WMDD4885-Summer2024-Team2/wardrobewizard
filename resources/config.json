@@ -1,0 +1,12 @@
+{
+    "firebase": {
+        "apiKey": "AIzaSyBxkMWakgmz97Ulk79whfqSQcA-Q2uXQDA",
+        "authDomain": "integrated-project1.firebaseapp.com",
+        "projectId": "integrated-project1",
+        "storageBucket": "integrated-project1.appspot.com",
+        "messagingSenderId": "168333709827",
+        "appId": "1:168333709827:web:eb9a1c473b1af653aeb436",
+        "measurementId": "G-MSNKDYWBK4"
+    },
+    "rmbgURL" : "http://localhost:3000/upload" 
+}

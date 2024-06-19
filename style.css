@@ -1,0 +1,63 @@
+#filename{
+    display: none;
+}
+
+#colorSchema{
+    display: none;
+}
+
+#colorSchema{
+    width: 10%;
+    height: 10%;
+}
+img{
+    width: 20rem;
+    height: 20rem;
+    display: block;
+}
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.color-picker {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#result {
+    margin-top: 20px;
+}
+
+#trendOutput {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.page{
+    display: none;
+}
