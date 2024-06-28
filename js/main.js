@@ -2,21 +2,26 @@
 
 import { Firebase } from "./firebase.js";
 import config from '../resources/config.json' with { type: 'json' };
-import { navigateToPage,base64ToBlob,hexToHsl } from "./commonutils.js";
+import { navigateToPage,base64ToBlob,hexToHsl,startCamera,stopCamera,fetchData } from "./common.js";
 import {onAuthStateChanged} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
+import { genreateOutfit } from "./outfitsearch.js";
 
 const colorThief = new ColorThief();
 const firebase =new Firebase(config);
+const context = canvas.getContext('2d');
 
 
-//SPA (Single Page Application)  - Start
-
-const allPages = document.querySelectorAll('div.page');
-allPages[0].style.display = 'block';
-navigateToPage(allPages);
 //init handler for hash navigation
-window.addEventListener('hashchange', navigateToPage(allPages));
+window.addEventListener('hashchange', (event)=>{
+  if(firebase.getUser() ){
+    navigateToPage();
+  }else{
+    event.preventDefault();
+    window.location.hash = ''; // Reset hash to prevent navigation
+    page1.style.display='block';
+  }
+  
+});
 
 //SPA (Single Page Application)  - End
 
@@ -27,31 +32,22 @@ onAuthStateChanged(firebase.getAuth(), (user) => {
   if (user) {
     firebase.setUser(user);
     firebase.loadData();
-    signOutButton.style.display = "block";
-    message.style.display = "block";
+    header.style.display = "block";
+    
     userName.innerHTML = user.displayName;
     userEmail.innerHTML = user.email;
-    page1.style.display = "none";
-    page2.style.display = "block";
+    window.location.href='#page2';
+    
     
   } else {
     firebase.setUser(null);
-    signOutButton.style.display = "none";
-    message.style.display = "none";
-    page1.style.display = "block";
-    page2.style.display = "none";
+    header.style.display = "none";
+    window.location.href='#page1';
+    
   }
 });
 
 
-const signInButton = document.getElementById("googleLogin");
-const signOutButton = document.getElementById("signOutButton");
-const message = document.getElementById("message");
-const userName = document.getElementById("userName");
-const userEmail = document.getElementById("userEmail");
-
-signOutButton.style.display = "none";
-message.style.display = "none";
 
 
 
@@ -60,8 +56,7 @@ message.style.display = "none";
 const userSignIn = async () =>{
   let status=firebase.userSignIn();
   if(status){
-    page1.display = "none";
-    page2.display = "block";
+    window.location.href='#page2';
   }
 };
 
@@ -71,15 +66,28 @@ const userSignOut = async () => {
 
   let status = firebase.userSignOut();
   if(status){
-    alert("You have signed out successfully!");
-    page1.style.display = "block";
-    page2.style.display = "none";
+    window.location.href='#page1';
   }
   
 };
 
 
-signInButton.addEventListener("click", userSignIn);
+const userSignInwithPassword = () =>{
+
+}
+
+
+const passwordRest = () =>{
+
+}
+
+const signup = () =>{
+
+}
+
+
+userLogin.addEventListener('click',userSignInwithPassword);
+googleSignIn.addEventListener("click", userSignIn);
 signOutButton.addEventListener("click", userSignOut);
 
 
@@ -91,10 +99,10 @@ let  rmbg = function() {
 
   if (file ) {
     const reader = new FileReader();
-    reader.onload = function (e) {
+    reader.onload = async function (e) {
       const base64String = e.target.result;
 
-      // Send the Base64 string to the server
+      /* // Send the Base64 string to the server
       fetch(config.rmbgURL, {
         method: "POST",
         headers: {
@@ -103,30 +111,31 @@ let  rmbg = function() {
         body: JSON.stringify({
           base64Image: base64String
         }),
-      })
-        .then((response) => response.text())
-        .then((result) => {
-          document.getElementById("imagePreview").style.display = "block";
-          document.getElementById("imagePreview").src = result;
+      }) */
+     const result= await fetchData(config.rmbgURL,"POST",{
+        base64Image: base64String
+      });
 
-          const img = document.getElementById("imagePreview");
+     
+      
+      document.getElementById("imagePreview").style.display = "block";
+      document.getElementById("imagePreview").src = result;
 
-          img.onload = function () {
-            let dominantColor = colorThief.getColor(img);
-            // Display the dominant color
-            const r = parseInt(dominantColor[0]).toString(16).padStart(2, '0');
-            const g = parseInt(dominantColor[1]).toString(16).padStart(2, '0');
-            const b = parseInt(dominantColor[2]).toString(16).padStart(2, '0');
-            const hexColor = `#${r}${g}${b}`;
+      const img = document.getElementById("imagePreview");
 
-            colorPicker.value = hexColor;
-            document.getElementById("colorSchema").style.display = "block";
+      img.onload = function () {
+        let dominantColor = colorThief.getColor(img);
+        // Display the dominant color
+        const r = parseInt(dominantColor[0]).toString(16).padStart(2, '0');
+        const g = parseInt(dominantColor[1]).toString(16).padStart(2, '0');
+        const b = parseInt(dominantColor[2]).toString(16).padStart(2, '0');
+        const hexColor = `#${r}${g}${b}`;
 
-          };
-        })
-        .catch((error) => {
-          console.error("Error uploading image:", error);
-        });
+        colorPicker.value = hexColor;
+        document.getElementById("colorSchema").style.display = "block";
+
+      };
+      
     };
     reader.readAsDataURL(file);
   } else {
@@ -144,19 +153,78 @@ let uploadOutfit = () =>{
 
   let outfit={
     'color' : hexToHsl(colorPicker.value),
-    'catgeory' : '',
+    'catgeory' : catgeory.value,
     'tags' : []
   }
 
-  firebase.uploadOutfitToStorage(base64ToBlob(imagePreview.src,'image.png'),outfit);
+  firebase.uploadOutfitToStorage(base64ToBlob(imagePreview.src,'image/png'),outfit);
 
 
 }
 
 addItem.addEventListener('click',uploadOutfit)
 
+// Request access to the camera
+/* navigator.mediaDevices.getUserMedia({ video: true })
+    .then(stream => {
+        video.srcObject = stream;
+        video.play();
+    })
+    .catch(error => {
+        console.error('Error accessing the camera: ', error);
+    }); */
 
 
+const initCamera = () =>{
+  videopath.style.display='block';
+  startCamera(videopath);
+}
 
+const takeSnap = () => {
+  videopath.style.display='none';
+  //to scale properly we pass canvas width & height too
+  context.drawImage(videopath, 0, 0, canvas.width, canvas.height);
 
+  const canvasDataURL = canvas.toDataURL();
+  //you can upload this to store image in an Storage
+  console.log(canvasDataURL);
+  stopCamera(videopath)
+}
 
+startCameraBtn.addEventListener('click',initCamera);
+
+snapImage.addEventListener('click',takeSnap);
+
+const showOutfit=()=>{
+  displayOutfit.innerHTML='';
+
+  firebase.getCategories().forEach(catgeory => {
+    firebase.getOutfitByCategory(catgeory).forEach((outfit) => {
+      displayOutfit.innerHTML+=`<img src='${outfit.downloadURL}' alt=''>`
+    });
+  });
+  
+}
+
+const  showMatchingOutfit = async () =>{
+  const searchResult= await genreateOutfit(firebase.getOutfitByCategory('top'),firebase.getOutfitByCategory('bottom'),'Auto');
+  matchingoutfit.innerHTML='';
+
+  const outfit=searchResult[Math.floor(Math.random() * searchResult.length)];
+  if(outfit){
+    matchingoutfit.innerHTML+=`<img src='${outfit[0].downloadURL}' alt=''>`
+    matchingoutfit.innerHTML+=`<img src='${outfit[1].downloadURL}' alt=''>`
+  }
+  
+};
+
+viewwardrobe.addEventListener('click',showOutfit);
+
+//setTimeout(showMatchingOutfit,10000);
+
+genrateOutfit.addEventListener('click', showMatchingOutfit);
+
+userSignUp.addEventListener('click', (e)=>{
+  e.preventDefault();
+  firebase.createUser(username.value,password.value);
+});

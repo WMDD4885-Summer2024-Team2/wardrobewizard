@@ -8,5 +8,6 @@
         "appId": "1:168333709827:web:eb9a1c473b1af653aeb436",
         "measurementId": "G-MSNKDYWBK4"
     },
-    "rmbgURL" : "http://localhost:3000/upload" 
+    "rmbgURL" : "https://us-central1-integrated-project1.cloudfunctions.net/rmbg/upload",
+    "colormatchURL" : "https://colormatch-62ct2fngha-uc.a.run.app/colorMatch"
 }
