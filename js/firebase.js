@@ -22,6 +22,7 @@ import {
   onSnapshot,
   query,
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import config from '../../resources/config.json' with { type: 'json' };
 
 // Firebase class to encapsulate Firebase functionalities
 export class Firebase {
@@ -66,19 +67,7 @@ export class Firebase {
   // Method to get Firebase Storage service
   getStorage = () => this.storage;
 
-  // Method to load data from Firestore
-  loadData = () => {
-    const q = query(
-      collection(this.db, "outfit-info", this.user.email, "outfit")
-    );
-
-    onSnapshot(q, (querySnapshot) => {
-      this.outfit = querySnapshot.docs.map(doc => doc.data());
-    });
-  }
-
-  // Method to get outfits by catgeory
-  getOutfitByCategory = (catgeory) => this.outfit.filter(outfit => outfit.catgeory === catgeory);
+  getDB=()=> this.db;
 
   // Method for user sign-in using Google Auth
   userSignIn = async () => {
@@ -89,12 +78,6 @@ export class Firebase {
     } catch (error) {
       return false;
     }
-  }
-
-  getCategories = () =>{
-    const catgeories=new Set();
-    this.outfit.forEach(outfit => catgeories.add(outfit.catgeory) );
-    return catgeories;
   }
 
   // Method for user sign-out
@@ -142,9 +125,16 @@ export class Firebase {
     }
   }
 
-  // Method to upload outfit image to Firebase Storage
-  uploadOutfitToStorage = async (imageData, outfit) => {
-    const storageRef = ref(this.storage, `${this.user.email}/${Date.now()}.png`);
+  
+
+  uploadToStorage = (imageData,folder) => {
+    let storageRef ; 
+    if(folder){
+      ref(this.storage, `${this.user.email}/${folder}/${Date.now()}.png`);
+    }else{
+      ref(this.storage, `${this.user.email}/${Date.now()}.png`);
+    }
+    
     const uploadTask = uploadBytesResumable(storageRef, imageData);
 
     uploadTask.on(
@@ -167,8 +157,8 @@ export class Firebase {
       async () => {
         try {
           const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-          outfit.downloadURL = downloadURL;
-          this.pushOutfitToDb(outfit);
+          return downloadURL;
+         
         } catch (error) {
           console.log(error);
         }
@@ -176,16 +166,25 @@ export class Firebase {
     );
   }
 
-  // Method to add outfit data to Firestore
-  pushOutfitToDb = async (outfit) => {
+ 
+
+  dbSave = async(data,collection, subcollection) =>{
     try {
-      const docRef = await addDoc(
-        collection(this.db, "outfit-info", this.user.email, "outfit"),
-        outfit
-      );
-      console.log(docRef);
+      if(collection && subcollection){
+        const docRef = await addDoc(
+          collection(this.db, collection, this.user.email, subcollection),
+          data
+        );
+        console.log(docRef);
+      }else{
+        const docRef = await addDoc(collection(this.db, collection),data);
+        console.log(docRef);
+      }
+     
     } catch (error) {
       console.error("Error adding document: ", error);
     }
   }
 }
+
+export const firebase=new Firebase(config);

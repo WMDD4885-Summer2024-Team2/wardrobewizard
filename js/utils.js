@@ -31,15 +31,17 @@ export const hexToHsl = function(hex) {
     s = Math.round(s * 100);
     l = Math.round(l * 100);
 
-    return `hsl(${h}, ${s}%, ${l}%)`;
+    return [h,s,l];
 }
 
+const allPages = document.querySelectorAll('div.page');
+
 //SPA (Single Page Application)
-export const navigateToPage = function(allPages) {
+export const navigateToPage = function() {
   const pageId = location.hash ? location.hash : '#page1';
   for (let page of allPages) {
     if (pageId === '#' + page.id) {
-      page.style.display = 'block';
+      page.style.display = 'grid';
     } else {
       page.style.display = 'none';
     }
@@ -65,3 +67,50 @@ export const base64ToBlob = function(base64, mimeType) {
 
   return blob;
 }
+
+
+export const startCamera = (video)=>{
+  if(video && navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
+
+    const mediaPromise=navigator.mediaDevices.getUserMedia({video:true});
+    mediaPromise.then((stream)=>{
+      video.srcObject = stream;
+    }).catch((error) =>{
+      console.error(error);
+    });
+  }
+}
+
+export const stopCamera = (video) =>{
+  if(video && video.srcObject){
+    const tracks=video.srcObject.getTracks();
+    tracks.forEach((track) => track.stop());
+  }
+ 
+}
+ 
+
+// Reusable fetch utility function
+export const fetchData = async (url, method, data = null) => {
+  const options = {
+    method: method,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: data ? JSON.stringify(data) : null,
+  };
+
+  try {
+    const response = await fetch(url, options);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return await response.text();
+  } catch (error) {
+    console.error("Error during fetch:", error);
+    throw error;
+  }
+};
+
+
+

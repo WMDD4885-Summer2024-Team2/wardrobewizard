@@ -1,5 +1,5 @@
-import { fetchData } from "./common.js";
-import config from '../resources/config.json' with { type: 'json' };
+import { fetchData } from "./utils.js";
+import config from '../../resources/config.json' with { type: 'json' };
 
 export const genreateOutfit = async (topOutfit = [], bottomOutfit = [], searchParams) => {
 
