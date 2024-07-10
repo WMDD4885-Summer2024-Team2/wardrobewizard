@@ -1,156 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload Base64 Image</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.4.0/color-thief.min.js" integrity="sha512-r2yd2GP87iHAsf2K+ARvu01VtR7Bs04la0geDLbFlB/38AruUbA5qfmtXwXx6FZBQGJRogiPtEqtfk/fnQfaYA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <!-- <script src="./js/commonutils.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.4.0/color-thief.min.js" integrity="sha512-r2yd2GP87iHAsf2K+ARvu01VtR7Bs04la0geDLbFlB/38AruUbA5qfmtXwXx6FZBQGJRogiPtEqtfk/fnQfaYA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-   <script type="module" src="./js/firebase.js"  defer></script> -->
-   <script type="module" src="./js/main.js" defer></script>
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
-    <header id="header">
-        <nav>
-            <ul>
-                <li><a href="#page2">Home</a></li>
-                <li><a href="#page3">Add Outfit</a></li>
-                <li><a href="#page4" id="viewwardrobe">View Wardrobe</a></li>
-                <li><a href="#page5">History</a></li>
-                <li><a href="#page6">Favourites</a></li>
-               
-            </ul>
-            <button id="signOutButton">Sign Out</button>
-        </nav>
+    <header>
+        <h1>H1 tag</h1>
+        <p>p tag</p>
+       
+            <button class="wardrowiz-button">
+                <span class="wardrowiz-button-button-content">Download </span>
+            </button>
+
+
+            <h1>
+File upload            </h1>
+<label for="file" class="custum-file-upload">
+    <div class="icon">
+    <svg viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M10 1C9.73478 1 9.48043 1.10536 9.29289 1.29289L3.29289 7.29289C3.10536 7.48043 3 7.73478 3 8V20C3 21.6569 4.34315 23 6 23H7C7.55228 23 8 22.5523 8 22C8 21.4477 7.55228 21 7 21H6C5.44772 21 5 20.5523 5 20V9H10C10.5523 9 11 8.55228 11 8V3H18C18.5523 3 19 3.44772 19 4V9C19 9.55228 19.4477 10 20 10C20.5523 10 21 9.55228 21 9V4C21 2.34315 19.6569 1 18 1H10ZM9 7H6.41421L9 4.41421V7ZM14 15.5C14 14.1193 15.1193 13 16.5 13C17.8807 13 19 14.1193 19 15.5V16V17H20C21.1046 17 22 17.8954 22 19C22 20.1046 21.1046 21 20 21H13C11.8954 21 11 20.1046 11 19C11 17.8954 11.8954 17 13 17H14V16V15.5ZM16.5 11C14.142 11 12.2076 12.8136 12.0156 15.122C10.2825 15.5606 9 17.1305 9 19C9 21.2091 10.7909 23 13 23H20C22.2091 23 24 21.2091 24 19C24 17.1305 22.7175 15.5606 20.9844 15.122C20.7924 12.8136 18.858 11 16.5 11Z" fill=""></path> </g></svg>
+    </div>
+    <div class="text">
+       <span>Click to upload image</span>
+       </div>
+       <input id="file" type="file">
+    </label>
+    
     </header>
-    <main>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <section>
+        <div class="wardrowiz-card">
+            <div class="wardrowiz-image">
+                <img src="https://picsum.photos/200/300" alt="image">
+            </div>
+            <div class="wardrowiz-details">
+              <label>Title</label>
+              <div class="tags">
+               <p>Shirt</p>
+               <p>top</p>
+               <p>color</p>
+               <p>text</p>
+               <p>lorem</p>
+               <p>ipsum</p>
 
-        <!-- ==================================== Page 1 Login ==========================================-->
-        <div class="login page" id="page1">
-            <div class="login-container">
-                <h1>Login</h1>
-                <form id="loginForm">
-        
-                  <div class="input-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" required>
-                  </div>
-        
-                  <div class="input-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
-                  </div>
-        
-                  <button id="userLogin">Log In</button>
-        
-                  <button id="userSignUp">Sign up</button>
-        
-                  <button id="googleSignIn">Google Sign In</button>
-        
-                  <button id="passwordreset">password reset</button>
-        
-                </form>
-              </div>
-            
-        </div>
-        <!-- ==================================== Page 1 Login End ==========================================-->
 
-         <!-- ==================================== Page 2 Home Start ==========================================-->
-        <div class="page page2" id="page2">
-            <button id="genrateOutfit">Genrate Outfit</button>
-            <div id="matchingoutfit">
                
+              </div>
             </div>
-            
-        </div>
-         <!-- ==================================== Page 2 Home End  ==========================================-->
-
-         <!-- ==================================== Page 3 Add OutFit Start  ==========================================-->
-         <div class="page page3" id="page3">
-            <div id="message">
-                <p>You have signed in as <span id="userName"></span> with the email <span id="userEmail"></span> </p>
-            </div>
-            <div>
-                <h2>Upload outfit</h2>
-                <div>
-                    <!-- <div>
-                        <h1>Take a picture</h1>
-                        <video id="video" width="640" height="480"></video>
-                        <canvas id="canvas" width="640" height="480"></canvas>
-                        <button onclick="takePicture()">Take Picture</button>
-                        <div id="image-container"></div>
-                    </div> -->
-                    <input type="file" id="imageInput" accept="image/*">
-                </div>
-            </div>
+          </div>
+        
+        <h2>h2 tag</h2>
+        <p>This is a main section of the webpage that groups related content together.</p>
+        <article>
+            <h3>Article 1</h3>
+            <p>This is an article containing self-contained content.</p>
+        </article>
+        <article>
+            <h3>Article 2</h3>
+            <p>This is another article with independent content.</p>
+        </article>
+    </section>
     
-            <div>
-                <div class="fileUpload">
-                    <div>
-                        <img id="imagePreview" alt="Image preview" style="display: none;">
-                    </div>
-                    <div>
-                        <button id="startCameraBtn">Start Camera</button>
-                        <button id="snapImage">Capture Image</button>
-                        <video id="videopath" width="320" height="240" autoplay></video>
-                        
-                        <canvas id="canvas" width="320" height="240" ></canvas>
-                    </div>
-                </div>
-                <div id="colorSchema">
-                    <div>
-                        <label type="color">Color</label>
-                        <input type="color" id="colorPicker" name="colorPicker" value="#ff0000">
-                    </div>
-                    <div>
-                        <label for="catgeory">Cetgaory: </label>
-                        <select name="catgeory" id="catgeory">
-                            <option value="top">Top</option>
-                            <option value="bottom">bottom</option>
-                          </select>
-                    </div>
-                    <div>
-                        <label>Tags: </label>
-                    </div>
-                </div>
-                <button id="addItem">Add Outfit</button>
-                
-            </div>
-         </div>
-         <!-- ==================================== Page 3 Add OutFit End  ==========================================-->
-
-         <!-- ==================================== Page 4 View Wardrobe Start  ==========================================-->
-         <div class="page page4" id="page4">
-            <div class="page-wrapper">
-                <div class="display-outfit" id="displayOutfit">
-
-                </div>
-            </div>
-         </div>
-         <!-- ==================================== Page 4 View Wardrobe End  ==========================================-->
-
-         <!-- ==================================== Page 5 History Start  ==========================================-->
-         <div class="page page5" id="page5">
-        </div>
-         <!-- ==================================== Page 5 History End  ==========================================-->
-
-         <!-- ==================================== Page 6 Favourites Start  ==========================================-->
-         <div class="page page6" id="page6">
-        </div>
-         <!-- ==================================== Page 6 Favourites End  ==========================================-->
-    </main>
-
-    
-
-   
-    
-  
-
-   
-    
-    
-    
+    <aside>
+        <h2>Related Links</h2>
+        <p>This is an aside section containing related links and additional information.</p>
+    </aside>
+    <footer>
+        <p>&copy; 2024 My Website. All rights reserved.</p>
+        <address>
+            Contact us at <a href="mailto:info@mywebsite.com">info@mywebsite.com</a>
+        </address>
+    </footer>
 </body>
+
 </html>
