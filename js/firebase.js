@@ -22,7 +22,7 @@ import {
   onSnapshot,
   query,
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-import config from '../../resources/config.json' with { type: 'json' };
+import config from '../resources/config.json' with { type: 'json' };
 
 // Firebase class to encapsulate Firebase functionalities
 export class Firebase {

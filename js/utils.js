@@ -1,4 +1,4 @@
-import config from '../../resources/config.json' with { type: 'json' };
+import config from '../resources/config.json' with { type: 'json' };
 //Function to convert hex color to hsl color
 export const hexToHsl = function(hex) {
     // Remove the hash at the start if it's there
