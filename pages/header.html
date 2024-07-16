@@ -1,13 +1,36 @@
-<header id="header">
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#addoutfit">Add Outfit</a></li>
-            <li><a href="#viewwardrobe" id="viewwardrobe">View Wardrobe</a></li>
-            <li><a href="#history">History</a></li>
-            <li><a href="#favourites">Favourites</a></li>
+<div class="header">
+    <div class="header-logo">
+        <a href="#home"><img src="/resources/images/logo.svg"></a>
+    </div>
+    <nav class="menu">
+        <ul class="menu-list">
+            <li class="menu-item"><a href="#home"><img src="/resources/images/home-icon.svg">Home</a></li>
+            <li class="menu-item"><a href="#addoutfit"><img src="/resources/images/mycloset-icon.svg">My Closet</a></li>
+            <li class="menu-item"><a href="#viewwardrobe" id="viewwardrobe"><img src="/resources/images/lookbook-icon.svg">Look Book</a></li>
+            <li class="menu-item"><a href="#history"><img src="/resources/images/profile-icon.svg">Profile</a></li>
+            <li class="menu-item"><a id="signOutButton">Sign Out</a></li>
            
         </ul>
-        <button id="signOutButton">Sign Out</button>
+        
     </nav>
-</header>
+    
+</div>
+
+<dialog class="modal" id="uploadDialog">
+    <div class="modal-content">
+        <span class="close" id="closeBtn">&times;</span>
+        <div class="flex flex-column-wrap gap-1 justify-content-center align-items-center">
+            <div>
+                <label for="fileupload" class="custom-file-upload">Photo from Gallery
+                </label>
+                <input id="fileupload" type="file" accept="image/*"/>
+            </div>
+            <div>
+                
+                <a class="custom-file-upload" id="startCameraBtn">Photo from Camera</a>
+            </div>
+        </div>
+       
+
+    </div>
+</dialog>

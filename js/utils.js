@@ -1,4 +1,4 @@
-
+import config from '../../resources/config.json' with { type: 'json' };
 //Function to convert hex color to hsl color
 export const hexToHsl = function(hex) {
     // Remove the hash at the start if it's there
@@ -102,6 +102,30 @@ export const fetchData = async (url, method, data = null) => {
 
   try {
     const response = await fetch(url, options);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return await response.text();
+  } catch (error) {
+    console.error("Error during fetch:", error);
+    throw error;
+  }
+};
+
+// Reusable fetch utility function
+export const fetchDepTagData = async ( data = null) => {
+  var formdata = new FormData();
+  formdata.append("image", data);
+  const options = {
+    method: 'POST',
+    headers: {
+      "x-api-key": config.deepTagAPIKey
+    },
+    body: formdata 
+  };
+
+  try {
+    const response = await fetch(config.deepTagingURL, options);
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }

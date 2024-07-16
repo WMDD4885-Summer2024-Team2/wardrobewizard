@@ -1,4 +1,4 @@
-import { OutfitByCategory, OutfitCategories } from "./common.js";
+import { getOutfitsByCategory, getOutfitCategories } from "./common.js";
 
 export const init = () => {  
     showOutfit();
@@ -8,8 +8,8 @@ export const init = () => {
 const showOutfit=()=>{
     displayOutfit.innerHTML='';
   
-    OutfitCategories().forEach(catgeory => {
-        OutfitByCategory(catgeory).forEach((outfit) => {
+    getOutfitCategories().forEach(catgeory => {
+      getOutfitsByCategory(catgeory).forEach((outfit) => {
         displayOutfit.innerHTML+=`<img src='${outfit.downloadURL}' alt=''>`
       });
     });

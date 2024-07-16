@@ -12,8 +12,8 @@ import {
 import {
   getStorage,
   ref,
-  uploadBytesResumable,
   getDownloadURL,
+  uploadString
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
 import {
   collection,
@@ -127,15 +127,22 @@ export class Firebase {
 
   
 
-  uploadToStorage = (imageData,folder) => {
+  uploadToStorage = async (imageData,folder) => {
     let storageRef ; 
     if(folder){
-      ref(this.storage, `${this.user.email}/${folder}/${Date.now()}.png`);
+      storageRef=ref(this.storage, `${this.user.email}/${folder}/${Date.now()}.png`);
     }else{
-      ref(this.storage, `${this.user.email}/${Date.now()}.png`);
+      storageRef= ref(this.storage, `${this.user.email}/${Date.now()}.png`);
     }
-    
-    const uploadTask = uploadBytesResumable(storageRef, imageData);
+
+    const uploadTask= await uploadString(storageRef,imageData,'data_url');
+
+    const downloadURL = await getDownloadURL(uploadTask.ref);
+    return downloadURL;
+
+  
+
+    /* const uploadTask = uploadBytesResumable(storageRef, imageData);
 
     uploadTask.on(
       "state_changed",
@@ -163,21 +170,21 @@ export class Firebase {
           console.log(error);
         }
       }
-    );
+    ); */
   }
 
  
 
-  dbSave = async(data,collection, subcollection) =>{
+  dbSave = async(data,collectionStr, subcollection) =>{
     try {
-      if(collection && subcollection){
+      if(collectionStr && subcollection){
         const docRef = await addDoc(
-          collection(this.db, collection, this.user.email, subcollection),
+          collection(this.db, collectionStr, this.user.email, subcollection),
           data
         );
         console.log(docRef);
       }else{
-        const docRef = await addDoc(collection(this.db, collection),data);
+        const docRef = await addDoc(collection(this.db, collectionStr),data);
         console.log(docRef);
       }
      

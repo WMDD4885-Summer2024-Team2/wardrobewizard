@@ -1,19 +1,25 @@
-import { OutfitByCategory } from "./common.js";
-import { genreateOutfit } from "./outfitsearch.js";
+import { getOutfitCount } from "./common.js";
 
-export const init = () => {  
-    genrateOutfitbtn.addEventListener('click', showMatchingOutfit);
-}
+export const init = async () => {
+  try {
+    const outfitArray = await getOutfitCount();
+    console.log(outfitArray);
 
+   /*  const count = Array.isArray(outfitArray) ? outfitArray.length : 0;
+ */
+    const uploadOutfitSection = document.getElementById('uploadoutfitsection');
+    const outfitUpload = document.getElementById('outfitupload');
 
-const  showMatchingOutfit = async () =>{
-    const searchResult= await genreateOutfit(OutfitByCategory('top'),OutfitByCategory('bottom'),'Auto');
-    matchingoutfit.innerHTML='';
-  
-    const outfit=searchResult[Math.floor(Math.random() * searchResult.length)];
-    if(outfit){
-      matchingoutfit.innerHTML+=`<img src='${outfit[0].downloadURL}' alt=''>`
-      matchingoutfit.innerHTML+=`<img src='${outfit[1].downloadURL}' alt=''>`
+    if (uploadOutfitSection) {
+      uploadOutfitSection.style.display = outfitArray < 5 ? 'grid' : 'none';
     }
-    
-  };
+
+    if (outfitUpload) {
+      outfitUpload.addEventListener('click', () => {
+        window.location.href = '#uploadoutfithome';
+      });
+    }
+  } catch (error) {
+    console.error('Error initializing the app:', error);
+  }
+};
