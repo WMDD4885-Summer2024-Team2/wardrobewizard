@@ -161,3 +161,22 @@ export const genreateOutfits = () => {
 
 
 export const colorThief = new ColorThief();
+
+
+export const  getFileAsBase64 =  async(url) => {
+  // Fetch the file from the URL
+  const response = await fetch(url);
+  const blob = await response.blob();
+
+  // Use FileReader to read the file and convert it to Base64
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      resolve(reader.result.split(',')[1]); // Base64 string without the "data:" prefix
+    };
+    reader.onerror = (error) => {
+      reject(error);
+    };
+    reader.readAsDataURL(blob);
+  });
+}

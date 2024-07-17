@@ -1,4 +1,7 @@
-import { getOutfitCount,genreateOutfits } from "./common.js";
+import { getOutfitCount,genreateOutfits,getFileAsBase64 } from "./common.js";
+import config from '../resources/config.json' with { type: 'json' };
+import {fetchData} from "./utils.js";
+
 
 export const init = async () => {
   loader.style.display='flex';
@@ -10,7 +13,7 @@ export const init = async () => {
  */
     const uploadOutfitSection = document.getElementById('uploadoutfitsection');
     const outfitUpload = document.getElementById('outfitupload');
-
+    
     if (uploadOutfitSection) {
       uploadOutfitSection.style.display = outfitArray < 5 ? 'grid' : 'none';
     }
@@ -19,8 +22,17 @@ export const init = async () => {
     if(uploadOutfitSection.style.display === 'none'){
       
        todaysSuggestionSection.style.display='grid';
-      await outfitGenreator();
-       
+      
+        await outfitGenreator();
+        const virtytryon = document.querySelectorAll('.virtual-try');
+        if(virtytryon){
+          virtytryon.forEach( (ele) =>{
+            ele.addEventListener('click',dovirtytryon);
+          })
+        }
+        modelCloseBtn.addEventListener('click',()=>{
+          mySizeChartModal.close();
+        });
        
     }
 
@@ -39,7 +51,7 @@ export const init = async () => {
 const outfitGenreator = async() =>{
   let outfits;
   outfits= await genreateOutfits();
-
+  todayssuggestions.innerHTML='';
   for(let count =1;count<=3;count++){
     const outfit=outfits[Math.floor(Math.random() * outfits.length)];
 
@@ -57,15 +69,53 @@ const outfitGenreator = async() =>{
 
 
 
-
+    
     todayssuggestions.innerHTML+=`<div class='card flex-grow'>
+      <div class="flex  flex-row-nowrap justify-space-between align-items-center card-header"> 
+       <i class="fa-regular fa-heart icon-solid"></i>
+       
+        <span class="virtual-try">Virtual Try On</span>
+      
+      </div>
+      
       <div class='card-body'>
-        <img src='${outfit[0].downloadURL}'>
-        <img src='${outfit[0].downloadURL}'>
+        <img src='${outfit[0].downloadURL}' alt='${outfit[0].category}'>
+        <img src='${outfit[0].downloadURL}'  alt='${outfit[0].category}'>
       </div>
       <div class='card-footer'>
         ${tags}
       </div>
+      
+     
     </div>`;
    }
 }
+
+
+const dovirtytryon = async (e) =>{
+
+  const card=e.target.closest('.card');
+  const imgs= card.getElementsByTagName('img');
+  console.log(imgs[0].alt);
+  mySizeChartModal.show();
+  loader1.style.display='flex';
+
+  
+
+ const modelImag = await getFileAsBase64(image1.src);
+ const outfitImage = imgs[0].src;
+ const request = {
+  "model": modelImag,
+  "garment_top": outfitImage,
+  "garment_type": imgs[0].alt==='dress' ? 'dress' : imgs[0].alt==='top' ? 'upper_body' : 'lower_body',
+  "desc": imgs[0].alt==='dress' ? 'dress' : imgs[0].alt==='top' ? 'shirt' : 'jeans'
+};
+
+ 
+
+const result= await fetchData(config.virtualTryOnAPI,"POST",request);
+
+image1.src=response.image.url;
+
+}
+
