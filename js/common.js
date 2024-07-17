@@ -6,8 +6,10 @@ import {
   onSnapshot,
   query,
   getDocs,
-  getCountFromServer
+  getCountFromServer,
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+import { genreateOutfit } from "./outfitsearch.js";
 
 // Method to upload outfit image to Firebase Storage
 export const uploadImageToStorage = (imageData, folderName) => {
@@ -39,18 +41,28 @@ let outfitArray = [];
 // Method to load outfit data from Firestore
 export const loadOutfitData = () => {
   const q = query(
-    collection(firebase.getDB(), "outfit-info", firebase.getUser().email, "outfit")
+    collection(
+      firebase.getDB(),
+      "outfit-info",
+      firebase.getUser().email,
+      "outfit"
+    )
   );
 
   onSnapshot(q, (querySnapshot) => {
-    outfitArray = querySnapshot.docs.map(doc => doc.data());
+    outfitArray = querySnapshot.docs.map((doc) => doc.data());
   });
 };
 
 // Method to load user profile data from Firestore
 export const loadUserProfile = async () => {
   const q = query(
-    collection(firebase.getDB(), "user-profile", firebase.getUser().email, "profile")
+    collection(
+      firebase.getDB(),
+      "user-profile",
+      firebase.getUser().email,
+      "profile"
+    )
   );
 
   try {
@@ -63,7 +75,7 @@ export const loadUserProfile = async () => {
 
 // Method to get outfits by category
 export const getOutfitsByCategory = (category) => {
-  return outfitArray.filter(outfit => outfit.category === category);
+  return outfitArray.filter((outfit) => outfit.category === category);
 };
 
 // Method to get outfit count
@@ -74,7 +86,7 @@ export const getOutfitCount = async () => {
 // Method to get unique outfit categories
 export const getOutfitCategories = () => {
   const categories = new Set();
-  outfitArray.forEach(outfit => categories.add(outfit.category));
+  outfitArray.forEach((outfit) => categories.add(outfit.category));
   return Array.from(categories);
 };
 
@@ -83,7 +95,7 @@ export const userSignOut = async () => {
   try {
     const status = await firebase.userSignOut();
     if (status) {
-      window.location.href = '#login';
+      window.location.href = "#login";
     }
   } catch (error) {
     console.error("Error signing out:", error);
@@ -94,7 +106,7 @@ export const userSignOut = async () => {
 export const userSignIn = async () => {
   try {
     const status = await firebase.userSignIn();
-   /*  if (status) {
+    /*  if (status) {
       window.location.href = '#home';
     } */
   } catch (error) {
@@ -105,7 +117,8 @@ export const userSignIn = async () => {
 // Method to start the camera
 export const startCamera = (video) => {
   if (video && navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-    navigator.mediaDevices.getUserMedia({ video: true })
+    navigator.mediaDevices
+      .getUserMedia({ video: true })
       .then((stream) => {
         video.srcObject = stream;
       })
@@ -122,5 +135,29 @@ export const stopCamera = (video) => {
     tracks.forEach((track) => track.stop());
   }
 };
+
+//Genreate Outfit
+
+export const genreateOutfits = () => {
+  return genreateOutfit(
+    getOutfitsByCategory("top"),
+    getOutfitsByCategory("bottom"),
+    "Auto"
+  );
+};
+
+
+/* 
+// Usage
+(async () => {
+  try {
+    const position = await getLocation();
+    console.log("Geolocation obtained successfully:", position);
+  } catch (error) {
+    console.error("Error obtaining geolocation:", error);
+  }
+})(); */
+
+
 
 export const colorThief = new ColorThief();

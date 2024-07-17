@@ -32,7 +32,7 @@ onAuthStateChanged(firebase.getAuth(), async (user) => {
 const loadRouter = () =>{
   Router.init('mainArea','headerArea','footerArea', [
     new Page('#login', 'pages/login.html'),
-    new Page('#home', 'pages/home.html','pages/header.html'), 
+    new Page('#home', 'pages/userhome.html','pages/header.html'), 
     new Page('#addoutfit', 'pages/addoutfit.html','pages/header.html'),
     new Page('#viewwardrobe', 'pages/viewwardrobe.html','pages/header.html'),
     new Page('#history', 'pages/history.html','pages/header.html'),

@@ -137,4 +137,37 @@ export const fetchDepTagData = async ( data = null) => {
 };
 
 
+export const getLocation = () => {
+  if (!navigator.geolocation) {
+    throw new Error("Geolocation is not supported by this browser.");
+  }
 
+  console.log("Geolocation is supported. Requesting location...");
+
+  const options = {
+    enableHighAccuracy: false,
+    timeout: 5000,
+    maximumAge: 0,
+  };
+
+  return new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude, accuracy } = position.coords;
+        console.log(`Latitude: ${latitude}`);
+        console.log(`Longitude: ${longitude}`);
+        sessionStorage.setItem('latitude', latitude);
+        sessionStorage.setItem('longitude', longitude);
+        console.log(`More or less ${accuracy} meters.`);
+        resolve(position);
+      },
+      (err) => {
+        console.warn(`ERROR(${err.code}): ${err.message}`);
+        sessionStorage.setItem('latitude', null);
+        sessionStorage.setItem('longitude', null);
+        reject(err);
+      },
+      options
+    );
+  });
+}

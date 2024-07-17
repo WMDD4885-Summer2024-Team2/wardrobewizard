@@ -97,7 +97,7 @@ const saveoutfit = async() =>{
     
       
     let outfit = {
-        "catgeory": category.value,
+        "category": category.value,
         "color": hexToHsl(colorPicker.value),
         "downloadURL": downloadURL,
         "tags" :tagsArray,

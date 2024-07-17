@@ -52,7 +52,7 @@
 
 .body{
     font-family: 'Noto Sans',system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 16px;
+    font-size: 14px;
     margin: auto;
     background-color: var(--color6);
     color: var(--color2);
@@ -70,7 +70,7 @@ img {
 
 
 main{
-    padding: 1rem;
+    padding: 0rem;
     position: relative;
     top: 6rem;
     left:0;
@@ -521,11 +521,71 @@ input[type="checkbox"] {
     }
   }
 
+
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    
+    background-color: var(--color1);
+    /* padding: 1rem; */
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+  }
+
+
+  
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+
+  .card-body img{
+    max-height: 20vh;
+  }
+
+.card-footer{
+    padding: 1rem;
+    display: flex;
+    flex-flow: row wrap;
+    gap:1rem;
+    text-transform: capitalize;
+    background-color: var(--color6);
+   
+}
+
+.tag-info{
+    background-color: var(--color5);
+    color: var(--color1);
+    padding: .5rem;
+    border-radius: 1rem;
+}
 @media screen and (min-width:700px) {
 
     .body{
         background-color: white;
         
+    }
+
+    .banner-heading{
+        color: var(--color4);
+    }
+
+    .mycloset{
+        grid-template-columns: .1fr 1fr;
+    }
+
+    .mycloset .banner-heading{
+        grid-column: span 1 /-1;
+        display: none;
+    }
+
+    .mycloset .sub-header{
+        background-color: var(--color6);
+    }
+
+    .todays-suggestion{
+        grid-template-columns: repeat(2,1fr);
     }
 }
 
@@ -548,6 +608,51 @@ input[type="checkbox"] {
     .sample-images-container{
         display: block;
     }
+
+    .todays-suggestion{
+        grid-template-columns: repeat(3,1fr);
+    }
 }
 
+.sub-menu-list{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-flow: row wrap;
+    gap:1rem;
+    justify-content: space-around;
+    align-items: center;
+}
 
+.sub-menu-item a{
+    text-decoration: none;
+    display: block;
+
+    color: var(--color7);
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.sub-menu-item a:hover{
+    color: var(--color4);
+    border-bottom: 2px solid var(--color5) ;
+    
+}
+
+.sub-menu{
+   /*  background-color: var(--color6); */
+    flex-grow: 1;
+    padding: 1rem;
+
+    position: sticky;
+   
+}
+
+.virtual-try-on{
+    position: absolute;
+    top:0;
+    right:0;
+    background-color: var(--color6);
+    padding: 1rem;
+}
