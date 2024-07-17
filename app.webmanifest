@@ -2,7 +2,7 @@
   "short_name": "Wardrobe Wizard",
   "name": "Wardrobe Wizard",
   "description": "Awesome application that will help you manage your outfit.",
-  "start_url": "index.html",
+  "start_url": "./index.html",
   "display": "fullscreen",
   "background_color": "#6A6AAA",
   "theme_color": "#6A6AAA",

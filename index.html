@@ -24,7 +24,7 @@
               if ('serviceWorker' in navigator) {
                   // then register our service worker
                 try {
-                  const reg = await  navigator.serviceWorker.register('./sw.js', { scope: '/' });
+                  const reg = await  navigator.serviceWorker.register('./sw.js', { scope: './' });
                   // display a success message
                   console.log(`Service Worker is Registered:`, reg);
                 } catch(error) {
