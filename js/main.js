@@ -35,7 +35,6 @@ const loadRouter = () =>{
     new Page('#userhome', 'pages/userhome.html','pages/header.html'),
     new Page('#home', 'pages/home.html','pages/home-header.html'),
     new Page('#signup', 'pages/signup.html','pages/home-header.html'),     
-    new Page('#addoutfit', 'pages/addoutfit.html','pages/header.html'),
     new Page('#mycloset', 'pages/viewwardrobe.html','pages/header.html'),
     new Page('#profile', 'pages/profile.html','pages/header.html'),
     new Page('#lookbook', 'pages/lookbook.html','pages/header.html'),
