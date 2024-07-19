@@ -1,5 +1,5 @@
 import {startCamera,stopCamera,colorThief,uploadImageToStorage,saveOutfitToDb} from "./common.js";
-import {fetchData,fetchDepTagData,hexToHsl, navigateToPage} from "./utils.js";
+import {fetchData,fetchDepTagData,hexToHsl} from "./utils.js";
 import config from '../resources/config.json' with { type: 'json' };
 
 const ctx = canvas.getContext("2d");
