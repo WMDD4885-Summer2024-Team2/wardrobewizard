@@ -5,7 +5,7 @@ export const init = () => {
   viewwardrobe.addEventListener("click", showOutfit);
 
   outfitupload.addEventListener('click', ()=>{
-    window.location.href = '#uploadoutfithome';
+    window.location.href = '#uploadoutfitmycloset';
   });
 };
 
