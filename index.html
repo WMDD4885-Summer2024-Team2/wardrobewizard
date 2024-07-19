@@ -3,154 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload Base64 Image</title>
+    <title>WardroWiz</title>
+    <link rel="icon" type="image/png" href="./resources/images/icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/home.css">
+    <link rel="stylesheet" href="./css/profilecreation.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.4.0/color-thief.min.js" integrity="sha512-r2yd2GP87iHAsf2K+ARvu01VtR7Bs04la0geDLbFlB/38AruUbA5qfmtXwXx6FZBQGJRogiPtEqtfk/fnQfaYA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
     <!-- <script src="./js/commonutils.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.4.0/color-thief.min.js" integrity="sha512-r2yd2GP87iHAsf2K+ARvu01VtR7Bs04la0geDLbFlB/38AruUbA5qfmtXwXx6FZBQGJRogiPtEqtfk/fnQfaYA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
    <script type="module" src="./js/firebase.js"  defer></script> -->
    <script type="module" src="./js/main.js" defer></script>
+   <link rel="manifest" href="./app.webmanifest">
 </head>
-<body>
-    <header id="header">
-        <nav>
-            <ul>
-                <li><a href="#page2">Home</a></li>
-                <li><a href="#page3">Add Outfit</a></li>
-                <li><a href="#page4" id="viewwardrobe">View Wardrobe</a></li>
-                <li><a href="#page5">History</a></li>
-                <li><a href="#page6">Favourites</a></li>
-               
-            </ul>
-            <button id="signOutButton">Sign Out</button>
-        </nav>
+<body class="body">
+    <script>
+        ;(async () => {
+              // does the browser support service workers?
+              if ('serviceWorker' in navigator) {
+                  // then register our service worker
+                try {
+                  const reg = await  navigator.serviceWorker.register('./sw.js', { scope: './' });
+                  // display a success message
+                  console.log(`Service Worker is Registered:`, reg);
+                } catch(error) {
+                  // display an error message
+                  console.log(`Service Worker Error (${error})`);
+                };
+  
+                // ready is a Promise that never rejects and resolved when the service worker is active. 
+                const active = await navigator.serviceWorker.ready;
+                // we have an active service worker working for us
+                console.log(`Service Worker is Active:`, active);
+                // At this point, you can call methods that require an active service worker,
+                // like registration.pushManager.subscribe() for push notification
+              } else {
+                // happens when the app isn't served over a TLS connection (HTTPS)
+                console.warn('Service Worker not available');
+              }
+          })();//async IIFE
+    
+  </script>
+    <header>
+        <div id="headerArea">
+
+        </div>
     </header>
     <main>
-
-        <!-- ==================================== Page 1 Login ==========================================-->
-        <div class="login page" id="page1">
-            <div class="login-container">
-                <h1>Login</h1>
-                <form id="loginForm">
-        
-                  <div class="input-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" required>
-                  </div>
-        
-                  <div class="input-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
-                  </div>
-        
-                  <button id="userLogin">Log In</button>
-        
-                  <button id="userSignUp">Sign up</button>
-        
-                  <button id="googleSignIn">Google Sign In</button>
-        
-                  <button id="passwordreset">password reset</button>
-        
-                </form>
-              </div>
-            
-        </div>
-        <!-- ==================================== Page 1 Login End ==========================================-->
-
-         <!-- ==================================== Page 2 Home Start ==========================================-->
-        <div class="page page2" id="page2">
-            <button id="genrateOutfit">Genrate Outfit</button>
-            <div id="matchingoutfit">
-               
-            </div>
-            
-        </div>
-         <!-- ==================================== Page 2 Home End  ==========================================-->
-
-         <!-- ==================================== Page 3 Add OutFit Start  ==========================================-->
-         <div class="page page3" id="page3">
-            <div id="message">
-                <p>You have signed in as <span id="userName"></span> with the email <span id="userEmail"></span> </p>
-            </div>
-            <div>
-                <h2>Upload outfit</h2>
-                <div>
-                    <!-- <div>
-                        <h1>Take a picture</h1>
-                        <video id="video" width="640" height="480"></video>
-                        <canvas id="canvas" width="640" height="480"></canvas>
-                        <button onclick="takePicture()">Take Picture</button>
-                        <div id="image-container"></div>
-                    </div> -->
-                    <input type="file" id="imageInput" accept="image/*">
-                </div>
-            </div>
-    
-            <div>
-                <div class="fileUpload">
-                    <div>
-                        <img id="imagePreview" alt="Image preview" style="display: none;">
-                    </div>
-                    <div>
-                        <button id="startCameraBtn">Start Camera</button>
-                        <button id="snapImage">Capture Image</button>
-                        <video id="videopath" width="320" height="240" autoplay></video>
-                        
-                        <canvas id="canvas" width="320" height="240" ></canvas>
-                    </div>
-                </div>
-                <div id="colorSchema">
-                    <div>
-                        <label type="color">Color</label>
-                        <input type="color" id="colorPicker" name="colorPicker" value="#ff0000">
-                    </div>
-                    <div>
-                        <label for="catgeory">Cetgaory: </label>
-                        <select name="catgeory" id="catgeory">
-                            <option value="top">Top</option>
-                            <option value="bottom">bottom</option>
-                          </select>
-                    </div>
-                    <div>
-                        <label>Tags: </label>
-                    </div>
-                </div>
-                <button id="addItem">Add Outfit</button>
-                
-            </div>
-         </div>
-         <!-- ==================================== Page 3 Add OutFit End  ==========================================-->
-
-         <!-- ==================================== Page 4 View Wardrobe Start  ==========================================-->
-         <div class="page page4" id="page4">
-            <div class="page-wrapper">
-                <div class="display-outfit" id="displayOutfit">
-
-                </div>
-            </div>
-         </div>
-         <!-- ==================================== Page 4 View Wardrobe End  ==========================================-->
-
-         <!-- ==================================== Page 5 History Start  ==========================================-->
-         <div class="page page5" id="page5">
-        </div>
-         <!-- ==================================== Page 5 History End  ==========================================-->
-
-         <!-- ==================================== Page 6 Favourites Start  ==========================================-->
-         <div class="page page6" id="page6">
-        </div>
-         <!-- ==================================== Page 6 Favourites End  ==========================================-->
+        <div id="mainArea">
+            <!-- the main part will be dynamically updated as each page loads -->
+          </div>
     </main>
+    <footer>
+        <div id="footerArea">
 
-    
-
-   
-    
-  
-
-   
-    
-    
-    
+        </div>
+    </footer>
 </body>
 </html>

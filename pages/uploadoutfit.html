@@ -1,0 +1,103 @@
+<div class="grid gap-1 " id="uploadoutfitcontainer">
+    <div class="banner">
+        <h2 class="banner-heading">Make your clost uniquely yours! Get ready to shine!</h2>
+        <p class="banner-tagline">Upload photos of your clothes for personalized and stylish outfit suggestions!</p>
+    </div>
+    <div class="outfit-info grid gap-1">
+        <div class="profile-image-preview">
+            <div class="loader" id="loader">
+                <div class="bar" id="bar">
+                    <div class="ball"></div>
+                </div>
+            </div>
+            <canvas id="canvas" ></canvas>
+            
+            <div><i class="fa-solid fa-rotate-right" id="retry"></i></div>
+        </div>
+        <div class="camera-view">
+            
+            <video id="videopath" autoplay></video>
+            <div><i class="fa-solid fa-camera" id="snapImage"></i></div>
+           
+            
+        </div> 
+        <div class="outfit-container text-align-center">
+            <div class="upload box">
+                <div>
+                    <div class="icon-center"><img class="icon" src="./resources/images/upload-icon.svg" alt="" id="outfitupload" title="Upload your Outfits"></div>
+                    <div class="title">Click to upload Outfit</div>
+                    
+                </div>
+               
+            </div>
+            
+        </div>  
+        <div>
+            <form class="flex flex-column-wrap gap-1">
+
+                <div class="flex flex-column-wrap gap-05">
+                    <label for="category">Category <span class="mandetory">*</span></label>
+                    <select name="category" id="category" required>
+                        <option value="">Select</option>
+                        <option value="top">Top</option>
+                        <option value="bottom">Bottom</option>
+                        <option value="dress">Dress</option>
+                      </select>
+                </div>
+                
+                <div class="flex flex-column-wrap gap-05">
+                    <label for="occasion">Occasion <span class="mandetory">*</span></label>
+                    <select name="occasion" id="occasion" required>
+                        <option value="">Select</option>
+                        <option value="formals">Formals</option>
+                        <option value="casuals">Casuals</option>
+                        <option value="datenight">Date Night</option>
+                        <option value="ethnic">Ethnic</option>
+                        <option value="party">Party</option>
+                        <option value="sports">Sports</option>
+                        <option value="swims">Swims</option>
+                        <option value="fitness">Fitness</option>
+                      </select>
+                </div>
+                <div class="flex flex-column-wrap gap-05">
+                    <label for="colorPicker">Color</label>
+                    <input type="color" id="colorPicker" name="color" value="#ffffff">
+                </div>
+                <div class="flex flex-column-wrap gap-05">
+                    <div>Tags<span class="mandetory">*</span></div>
+                    <div class="flex flex-row-wrap gap-05 flex-grow" id="tags">
+                        <!-- <div class="flex flex-row-wrap gap-05 justify-content-center align-items-center">
+                            <input type="checkbox" id="tShirts"  >
+                            <label for="tShirts">tShirts</label>
+                        </div>
+                        <div class="flex flex-row-wrap gap-05 justify-content-center align-items-center">
+                            <input type="checkbox" id="Swaetshirts"  >
+                            <label for="Swaetshirts">Swaetshirts</label>
+                        </div>
+                        <div class="flex flex-row-wrap gap-05 justify-content-center align-items-center">
+                            <input type="checkbox" id="shorts" >
+                            <label for="shorts">shorts</label>
+                        </div>
+                        <div class="flex flex-row-wrap gap-05 justify-content-center align-items-center">
+                            <input type="checkbox" id="top"  >
+                            <label for="top">top</label>
+                        </div> -->
+
+                     
+                        
+
+                    </div>
+                </div>
+                <div class=" flex gap-05">
+                    <button type="button" class="secondary-button flex-grow " id="uploadoutfitBackBtn" >Back</button>
+                    <!-- <button type="submit" class="button flex-grow" id="uploadoutfitSubBtn" disabled>Submit</button> -->
+                    <input type="submit" class="button flex-grow" id="uploadoutfitSubBtn" disabled>
+                </div>
+            </form>
+        </div>
+           
+    </div>
+   
+    
+   
+</div>

@@ -1,0 +1,44 @@
+
+
+.move-to-profile-sec2 .profile-section-1{
+    display: none;
+}
+
+
+.profile-section-2{
+    display: none;
+}
+
+.move-to-profile-sec2 .profile-section-2{
+    
+   
+    display: grid;
+    gap: 1rem;
+}
+
+.profile-image-preview{
+    display: none;
+    position: relative;
+}
+
+.show .profile-image-preview{
+    display: block;
+    text-align: center;
+}
+
+.hide .profile-content{
+    display: none;
+}
+
+.camera-view{
+    display: none;
+}
+
+.show-camera .camera-view{
+    display: block;
+    text-align: center;
+}
+
+.hide .outfit-container{
+    display: none;
+}

@@ -9,5 +9,8 @@
         "measurementId": "G-MSNKDYWBK4"
     },
     "rmbgURL" : "https://us-central1-integrated-project1.cloudfunctions.net/rmbg/upload",
-    "colormatchURL" : "https://colormatch-62ct2fngha-uc.a.run.app/colorMatch"
+    "colormatchURL" : "https://colormatch-62ct2fngha-uc.a.run.app/colorMatch",
+    "deepTagingURL" : "https://cloudapi.lykdat.com/v1/detection/tags",
+    "deepTagAPIKey" : "e593a94da6ebc1836ee59b695cb5402f8997681fd3c90dd62d7c5bf4c99985bd",
+    "virtualTryOnAPI" : "https://us-central1-integrated-project1.cloudfunctions.net/virtualtryon/virtualOutfit"
 }
