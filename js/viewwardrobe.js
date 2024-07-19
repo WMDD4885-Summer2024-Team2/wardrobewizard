@@ -1,8 +1,12 @@
-import { getOutfitsByCategory, getOutfitCategories } from "./common.js";
+import { getOutfitsByCategory } from "./common.js";
 
 export const init = () => {
   showOutfit();
   viewwardrobe.addEventListener("click", showOutfit);
+
+  outfitupload.addEventListener('click', ()=>{
+    window.location.href = '#mycloset';
+  });
 };
 
 const showOutfit = () => {

@@ -43,7 +43,7 @@ const createProfile = async () => {
   };
 
   saveProfileToDb(profile);
-  window.location.href = "#home";
+  window.location.href = "#userhome";
 };
 
 const saveUserProfileDetails = () => {

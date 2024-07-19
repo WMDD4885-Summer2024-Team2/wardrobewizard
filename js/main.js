@@ -19,24 +19,26 @@ onAuthStateChanged(firebase.getAuth(), async (user) => {
     if (userProfile && userProfile.size == 0) {
       window.location.href = "#profilecreation";
     } else {
-      window.location.href = "#home";
+      window.location.href = "#userhome";
     }
   } else {
     firebase.setUser(null);
 
-    window.location.href = "#login";
+    window.location.href = "#home";
   }
 });
 
 
 const loadRouter = () =>{
   Router.init('mainArea','headerArea','footerArea', [
-    new Page('#login', 'pages/login.html'),
-    new Page('#home', 'pages/userhome.html','pages/header.html'), 
+    new Page('#login', 'pages/login.html','pages/home-header.html'),
+    new Page('#userhome', 'pages/userhome.html','pages/header.html'),
+    new Page('#home', 'pages/home.html','pages/home-header.html'),
+    new Page('#signup', 'pages/signup.html','pages/home-header.html'),     
     new Page('#addoutfit', 'pages/addoutfit.html','pages/header.html'),
-    new Page('#viewwardrobe', 'pages/viewwardrobe.html','pages/header.html'),
-    new Page('#history', 'pages/history.html','pages/header.html'),
-    new Page('#favourites', 'pages/favourites.html','pages/header.html'),
+    new Page('#mycloset', 'pages/viewwardrobe.html','pages/header.html'),
+    new Page('#profile', 'pages/profile.html','pages/header.html'),
+    new Page('#lookbook', 'pages/lookbook.html','pages/header.html'),
     new Page('#profilecreation', 'pages/profilecreation.html','pages/header.html'),
     new Page('#uploadoutfithome', 'pages/uploadoutfit.html','pages/header.html')
   ])

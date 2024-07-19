@@ -37,6 +37,8 @@ export const saveProfileToDb = (data) => {
 };
 
 let outfitArray = [];
+let favoriteArray = [];
+let historyArray = [];
 
 // Method to load outfit data from Firestore
 export const loadOutfitData = () => {
@@ -51,6 +53,36 @@ export const loadOutfitData = () => {
 
   onSnapshot(q, (querySnapshot) => {
     outfitArray = querySnapshot.docs.map((doc) => doc.data());
+  });
+};
+
+export const loadFavouritesData = () => {
+  const q = query(
+    collection(
+      firebase.getDB(),
+      "favorites",
+      firebase.getUser().email,
+      "outfit"
+    )
+  );
+
+  onSnapshot(q, (querySnapshot) => {
+    favoriteArray = querySnapshot.docs.map((doc) => doc.data());
+  });
+};
+
+export const loadHistoryData = () => {
+  const q = query(
+    collection(
+      firebase.getDB(),
+      "history",
+      firebase.getUser().email,
+      "outfit"
+    )
+  );
+
+  onSnapshot(q, (querySnapshot) => {
+    historyArray = querySnapshot.docs.map((doc) => doc.data());
   });
 };
 
@@ -73,10 +105,23 @@ export const loadUserProfile = async () => {
   }
 };
 
+
+// Method to get Favourites
+export const getFavourites = () => {
+  return favoriteArray;
+};
+
+// Method to get History
+export const getHistory = () => {
+  return historyArray;
+};
+
+
 // Method to get outfits by category
 export const getOutfitsByCategory = (category) => {
   return outfitArray.filter((outfit) => outfit.category === category);
 };
+
 
 // Method to get outfit count
 export const getOutfitCount = async () => {
@@ -95,7 +140,7 @@ export const userSignOut = async () => {
   try {
     const status = await firebase.userSignOut();
     if (status) {
-      window.location.href = "#login";
+      window.location.href = "#home";
     }
   } catch (error) {
     console.error("Error signing out:", error);
@@ -106,9 +151,7 @@ export const userSignOut = async () => {
 export const userSignIn = async () => {
   try {
     const status = await firebase.userSignIn();
-    /*  if (status) {
-      window.location.href = '#home';
-    } */
+    
   } catch (error) {
     console.error("Error signing in:", error);
   }

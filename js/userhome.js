@@ -1,4 +1,4 @@
-import { getOutfitCount,genreateOutfits,getFileAsBase64 } from "./common.js";
+import { getOutfitCount,genreateOutfits,getFileAsBase64,saveHistoryToDb } from "./common.js";
 import config from '../resources/config.json' with { type: 'json' };
 import {fetchData} from "./utils.js";
 
@@ -15,7 +15,7 @@ export const init = async () => {
     const outfitUpload = document.getElementById('outfitupload');
     
     if (uploadOutfitSection) {
-      uploadOutfitSection.style.display = outfitArray < 5 ? 'grid' : 'none';
+      uploadOutfitSection.style.display = outfitArray < 2 ? 'grid' : 'none';
     }
 
    
@@ -52,23 +52,21 @@ const outfitGenreator = async() =>{
   let outfits;
   outfits= await genreateOutfits();
   todayssuggestions.innerHTML='';
-  for(let count =1;count<=3;count++){
-    const outfit=outfits[Math.floor(Math.random() * outfits.length)];
+  
+  const outfit=outfits[Math.floor(Math.random() * outfits.length)];
+
+  if(outfit){
 
     let tags='';
 
     outfit[0].tags.forEach((tag) => 
           {tags+=`<span class='tag-info'>${tag}</span>`
     });
-
-
+  
+  
     outfit[1].tags.forEach((tag) => 
           {tags+=`<span class='tag-info'>${tag}</span>`
     });
-
-
-
-
     
     todayssuggestions.innerHTML+=`<div class='card flex-grow'>
       <div class="flex  flex-row-nowrap justify-space-between align-items-center card-header"> 
@@ -88,7 +86,11 @@ const outfitGenreator = async() =>{
       
      
     </div>`;
-   }
+
+   // saveHistoryToDb(`{"data" : ${outfit}`);
+
+  }
+ 
 }
 
 

@@ -26,31 +26,43 @@ export class Router {
   static handleHashChange() {
     const urlHash = window.location.hash;
     if (firebase.getUser()) {
-      if (urlHash && urlHash !== '#login') {
+      if (urlHash && urlHash !== '#login'&& urlHash !== '#home' &&  urlHash !== '#signup') {
         const page = Router.pages.find(p => p.name === urlHash);
         if (page) Router.goToPage(page);
       } else {
         Router.goToPage(Router.pages[1]);
       }
     } else {
-      Router.goToPage(Router.pages[0]);
+
+      if (urlHash && urlHash !== '#login'&& urlHash !== '#home' &&  urlHash !== '#signup')
+          return;
+        
+      const page = Router.pages.find(p => p.name === urlHash);
+        if (page) 
+          Router.goToPage(page);
+        
+      
     }
   }
 
   static async goToPage(page) {
     try {
       await Router.loadContent(page.htmlName, Router.rootElem);
-      if (page.name !== '#login') {
+      /* if (page.name !== '#login' && urlHash !== '#home' &&  urlHash !== '#signup') {
         await Router.loadContent(page.headerName, Router.headerElem);
         await Router.loadContent(page.footerName, Router.footerElem);
       } else {
         Router.headerElem.innerHTML = '';
         Router.footerElem.innerHTML = '';
-      }
+      } */
+
+      await Router.loadContent(page.headerName, Router.headerElem);
+      await Router.loadContent(page.footerName, Router.footerElem);
       await Router.loadScript(page.jsName);
-      if (page.name !== '#login') {
+      await Router.loadScript(page.jsheaderName);
+     /*  if (page.name !== '#login') {
         await Router.loadScript(page.jsheaderName);
-      }
+      } */
     } catch (error) {
       console.error("Error loading page:", error);
     }

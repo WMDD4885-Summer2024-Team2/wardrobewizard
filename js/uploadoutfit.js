@@ -111,7 +111,7 @@ const saveoutfit = async() =>{
 
 const pageNavigation = () =>{
     if( window.location.href.includes( "#uploadoutfithome")){
-        window.location.href = "#home";
+        window.location.href = "#userhome";
     }
 }
 const handleImage = (e) => {
