@@ -1,0 +1,78 @@
+
+<div class="grid gap-1" id="profile">
+    <div class="banner">
+        <h2 class="banner-heading">Welcome to Your Digital Closet!</h2>
+        <p class="banner-tagline">Let's start by personalizing your experience</p>
+    </div>
+
+    <div class="profile-section-1">
+        <form class="flex flex-column-wrap gap-1">
+
+            <div class="flex flex-column-wrap gap-05">
+                <label for="userName">Name (Required)</label>
+                <input type="text" id="userName">
+            </div>
+            <div class="flex flex-column-wrap gap-05">
+                <label for="gender">Gender (Opitional)</label>
+                <select name="gender" id="gender">
+                    <option value="">Select</option>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                    <option value="O">Others</option>
+                   
+                  </select>
+            </div>
+            <div class=" flex ">
+                <button type="button" class="button flex-basis" id="profileNextBtn">Next</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="profile-section-2 ">
+
+        <div class="profile-image-preview">
+            <canvas id="canvas" ></canvas>
+            
+            <div><i class="fa-solid fa-rotate-right" id="retry"></i></div>
+        </div>
+        <div class="camera-view">
+            
+            <video id="videopath" autoplay></video>
+            <div><i class="fa-solid fa-camera" id="snapImage"></i></div>
+           <!--  <button type="button" id="snapImage"><i class="fa-solid fa-camera"></i></button> -->
+            
+        </div>
+        <div class="profile-content box">
+            <div class="text-align-center ">
+            
+                <div >
+                    <img class="icon" src="./resources/images/upload-icon.svg" id="uploadBtn" alt="" title="Upload Your Profile Pic">
+            
+                </div>
+                <div class="title">Your Photo (Optional)</div>
+                <p>Upload a photo of yourself to see outfits on your own image</p>
+            </div>
+            <div class="sample-images-container text-align-center">
+                <p>Example Images</p>
+                <div class="flex justify-content-center">
+                    <div><img class="smaple-image" src="./resources/images/model-sample-1.svg" alt=""></div>
+                    <div><img class="smaple-image" src="./resources/images/model-sample-2.svg" alt=""></div>
+            
+                </div>
+            </div>
+        </div>
+
+        <div class="info box">
+            <div>
+                <img class="info-icon" src="/resources/images/icon-info.svg">
+            </div>
+            <div>
+                <p class="heading-tagline">Why Upload my Photo?</p>
+                <p>Your photo help us tailor outfits just for you. It's okay if you choose not to upload a personal photo; we'll use models instead</p>
+            </div>
+        </div>
+        <div class="flex">
+            <button type="button" class="button flex-basis" id="finishProfileBtn">Finish Profile</button>
+        </div>
+    </div>
+</div>

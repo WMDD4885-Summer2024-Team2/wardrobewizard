@@ -1,116 +1,225 @@
+import { firebase } from "./firebase.js";
+import {
+  collection,
+  getFirestore,
+  addDoc,
+  onSnapshot,
+  query,
+  getDocs,
+  getCountFromServer,
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-//Function to convert hex color to hsl color
-export const hexToHsl = function(hex) {
-    // Remove the hash at the start if it's there
-    hex = hex.replace(/^#/, '');
+import { genreateOutfit } from "./outfitsearch.js";
 
-    // Parse the r, g, b values
-    let r = parseInt(hex.substring(0, 2), 16) / 255;
-    let g = parseInt(hex.substring(2, 4), 16) / 255;
-    let b = parseInt(hex.substring(4, 6), 16) / 255;
+// Method to upload outfit image to Firebase Storage
+export const uploadImageToStorage = (imageData, folderName) => {
+  return firebase.uploadToStorage(imageData, folderName);
+};
 
-    // Find the max and min values to get the lightness
-    let max = Math.max(r, g, b);
-    let min = Math.min(r, g, b);
-    let h, s, l = (max + min) / 2;
+// Method to add outfit data to Firestore
+export const saveOutfitToDb = (data) => {
+  return firebase.dbSave(data, "outfit-info", "outfit");
+};
 
-    if (max === min) {
-        h = s = 0; // Achromatic
-    } else {
-        let d = max - min;
-        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-        switch (max) {
-            case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-            case g: h = (b - r) / d + 2; break;
-            case b: h = (r - g) / d + 4; break;
-        }
-        h /= 6;
-    }
+// Method to add history data to Firestore
+export const saveHistoryToDb = (data) => {
+  return firebase.dbSave(data, "history", "outfit");
+};
 
-    h = Math.round(h * 360);
-    s = Math.round(s * 100);
-    l = Math.round(l * 100);
+// Method to add favorite data to Firestore
+export const saveFavoriteToDb = (data) => {
+  return firebase.dbSave(data, "favorite", "outfit");
+};
 
-    return [h,s,l];
-}
+// Method to add user profile data to Firestore
+export const saveProfileToDb = (data) => {
+  return firebase.dbSave(data, "user-profile", "profile");
+};
 
-const allPages = document.querySelectorAll('div.page');
+let outfitArray = [];
+let favoriteArray = [];
+let historyArray = [];
 
-//SPA (Single Page Application)
-export const navigateToPage = function() {
-  const pageId = location.hash ? location.hash : '#page1';
-  for (let page of allPages) {
-    if (pageId === '#' + page.id) {
-      page.style.display = 'grid';
-    } else {
-      page.style.display = 'none';
-    }
-  }
-  return;
-}
+// Method to load outfit data from Firestore
+export const loadOutfitData = () => {
+  const q = query(
+    collection(
+      firebase.getDB(),
+      "outfit-info",
+      firebase.getUser().email,
+      "outfit"
+    )
+  );
 
+  onSnapshot(q, (querySnapshot) => {
+    outfitArray = querySnapshot.docs.map((doc) => doc.data());
+  });
+};
 
-export const base64ToBlob = function(base64, mimeType) {
-  // Decode the base64 string to a binary string
-  let binaryString = atob(base64.split(',')[1]);
+export const loadFavouritesData = () => {
+  const q = query(
+    collection(
+      firebase.getDB(),
+      "favorites",
+      firebase.getUser().email,
+      "outfit"
+    )
+  );
 
-  // Create a byte array with the same length as the binary string
-  let byteArray = new Uint8Array(binaryString.length);
+  onSnapshot(q, (querySnapshot) => {
+    favoriteArray = querySnapshot.docs.map((doc) => doc.data());
+  });
+};
 
-  // Fill the byte array with the binary string's character codes
-  for (let i = 0; i < binaryString.length; i++) {
-      byteArray[i] = binaryString.charCodeAt(i);
-  }
+export const loadHistoryData = () => {
+  const q = query(
+    collection(
+      firebase.getDB(),
+      "history",
+      firebase.getUser().email,
+      "outfit"
+    )
+  );
 
-  // Create a Blob from the byte array
-  let blob = new Blob([byteArray], { type: mimeType });
+  onSnapshot(q, (querySnapshot) => {
+    historyArray = querySnapshot.docs.map((doc) => doc.data());
+  });
+};
 
-  return blob;
-}
-
-
-export const startCamera = (video)=>{
-  if(video && navigator.mediaDevices && navigator.mediaDevices.getUserMedia){
-
-    const mediaPromise=navigator.mediaDevices.getUserMedia({video:true});
-    mediaPromise.then((stream)=>{
-      video.srcObject = stream;
-    }).catch((error) =>{
-      console.error(error);
-    });
-  }
-}
-
-export const stopCamera = (video) =>{
-  if(video && video.srcObject){
-    const tracks=video.srcObject.getTracks();
-    tracks.forEach((track) => track.stop());
-  }
- 
-}
- 
-
-// Reusable fetch utility function
-export const fetchData = async (url, method, data = null) => {
-  const options = {
-    method: method,
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: data ? JSON.stringify(data) : null,
-  };
+// Method to load user profile data from Firestore
+export const loadUserProfile = async () => {
+  const q = query(
+    collection(
+      firebase.getDB(),
+      "user-profile",
+      firebase.getUser().email,
+      "profile"
+    )
+  );
 
   try {
-    const response = await fetch(url, options);
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-    return await response.text();
+    const docs = await getDocs(q);
+    return docs;
   } catch (error) {
-    console.error("Error during fetch:", error);
-    throw error;
+    console.error("Error loading user profile:", error);
   }
 };
 
 
+// Method to get Favourites
+export const getFavourites = () => {
+  return favoriteArray;
+};
 
+// Method to get History
+export const getHistory = () => {
+  return historyArray;
+};
+
+
+// Method to get outfits by category
+export const getOutfitsByCategory = (category) => {
+  return outfitArray.filter((outfit) => outfit.category === category);
+};
+
+
+// Method to get outfit count
+export const getOutfitCount = async () => {
+  return outfitArray.length;
+};
+
+// Method to get unique outfit categories
+export const getOutfitCategories = () => {
+  const categories = new Set();
+  outfitArray.forEach((outfit) => categories.add(outfit.category));
+  return Array.from(categories);
+};
+
+// Method to sign out the user
+export const userSignOut = async () => {
+  try {
+    const status = await firebase.userSignOut();
+    if (status) {
+      window.location.href = "#home";
+    }
+  } catch (error) {
+    console.error("Error signing out:", error);
+  }
+};
+
+// Method to sign in the user
+export const userSignIn = async () => {
+  try {
+    const status = await firebase.userSignIn();
+    
+  } catch (error) {
+    console.error("Error signing in:", error);
+  }
+};
+
+// Method to start the camera
+export const startCamera = (video) => {
+  if (video && navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    navigator.mediaDevices
+      .getUserMedia({ video: true })
+      .then((stream) => {
+        video.srcObject = stream;
+      })
+      .catch((error) => {
+        console.error("Error starting camera:", error);
+      });
+  }
+};
+
+// Method to stop the camera
+export const stopCamera = (video) => {
+  if (video && video.srcObject) {
+    const tracks = video.srcObject.getTracks();
+    tracks.forEach((track) => track.stop());
+  }
+};
+
+//Genreate Outfit
+
+export const genreateOutfits = () => {
+  return genreateOutfit(
+    getOutfitsByCategory("top"),
+    getOutfitsByCategory("bottom"),
+    "Auto"
+  );
+};
+
+
+/* 
+// Usage
+(async () => {
+  try {
+    const position = await getLocation();
+    console.log("Geolocation obtained successfully:", position);
+  } catch (error) {
+    console.error("Error obtaining geolocation:", error);
+  }
+})(); */
+
+
+
+export const colorThief = new ColorThief();
+
+
+export const  getFileAsBase64 =  async(url) => {
+  // Fetch the file from the URL
+  const response = await fetch(url);
+  const blob = await response.blob();
+
+  // Use FileReader to read the file and convert it to Base64
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      resolve(reader.result.split(',')[1]); // Base64 string without the "data:" prefix
+    };
+    reader.onerror = (error) => {
+      reject(error);
+    };
+    reader.readAsDataURL(blob);
+  });
+}
