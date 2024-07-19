@@ -34,7 +34,7 @@ export const hexToHsl = function(hex) {
     return [h,s,l];
 }
 
-const allPages = document.querySelectorAll('div.page');
+/* const allPages = document.querySelectorAll('div.page');
 
 //SPA (Single Page Application)
 export const navigateToPage = function() {
@@ -47,7 +47,7 @@ export const navigateToPage = function() {
     }
   }
   return;
-}
+} */
 
 
 export const base64ToBlob = function(base64, mimeType) {
