@@ -416,7 +416,7 @@ input[type="file"] {
 } */
 
 
-input[type="checkbox"] {
+/* input[type="checkbox"] {
     display: none;
   }
 
@@ -432,14 +432,14 @@ input[type="checkbox"] {
     display: inline-block;
     user-select: none;
     text-transform: capitalize;
-  }
+  } */
   
   
-  input[type="checkbox"]:checked + label {
+  /* input[type="checkbox"]:checked + label {
    
     transition: all 500ms ease;
     background-color: #fc6c27; color: white; border-color:#fc6c27;
-  }
+  } */
 
   .mandetory{
     color: red;
@@ -693,3 +693,48 @@ input[type="checkbox"] {
    
 }
 
+/* popup */
+.popup {
+    z-index: 999999999999;
+    position: fixed;
+    top: 2rem;
+    left: 0;
+    width: 100%;
+    height: auto;
+    /* background-color: rgba(0, 0, 0, 0.5); */
+    display: none;
+    justify-content: center;
+    /* align-items: center; */
+  
+  }
+  /* popup */
+  .popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .popup.show {
+    display: flex;
+    animation: fadeOut 5s forwards;
+    opacity: 1;
+  }
+  
+  @keyframes fadeOut {
+    0% {
+      opacity: 0.5;
+    }
+  
+    50% {
+      opacity: 1;
+    }
+  
+    100% {
+      opacity: 0;
+      display: none;
+    }
+  }
+  
+ 
+  /* popup */

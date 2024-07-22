@@ -1,4 +1,5 @@
 import { firebase } from "./firebase.js";
+
 import {
   collection,
   getFirestore,
@@ -222,4 +223,31 @@ export const  getFileAsBase64 =  async(url) => {
     };
     reader.readAsDataURL(blob);
   });
+}
+
+
+
+
+ export function wardrowizAlert(message){
+      const asideElement = document.createElement('aside');
+
+asideElement.innerHTML = `
+  <section>
+    <div class="popup">
+      <div class="popup-content" id="popupContent">
+        <p></p>
+      </div>
+    </div>
+  </section>
+`;
+
+document.body.appendChild(asideElement);
+
+const popuptext = document.getElementById('popupContent');
+const popup = document.querySelector('.popup');
+        popuptext.innerHTML = message;
+  popup.classList.add('show');
+  setTimeout(() => {
+    popup.classList.remove('show');
+  }, 5000);
 }
