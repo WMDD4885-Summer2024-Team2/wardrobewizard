@@ -19,7 +19,7 @@ onAuthStateChanged(firebase.getAuth(), async (user) => {
     if (userProfile && userProfile.size == 0) {
       window.location.href = "#profilecreation";
     } else {
-      window.location.href = "#profile";
+      window.location.href = "#userhome";
     }
   } else {
     firebase.setUser(null);
