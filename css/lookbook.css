@@ -1,0 +1,78 @@
+/* Lookbook styling */
+.page6 {
+    padding: 1rem;
+}
+.header-wrapper {
+    gap: 1rem;
+    .title-container {
+        width: 100%;
+        h1 {
+        display: inline-block;
+        margin: 0;
+        }
+    }
+    .search-container {
+        width: 100%;
+        box-shadow: 0px 4px 10px 3px #00000059;
+        border-radius: 10px;
+        input {
+            flex-grow: 1;
+            border-radius: 10px 0 0 10px;
+            height: 45px;
+            margin-bottom: 0;
+            border-color: var(--color6);
+        }
+        i {
+            color: var(--color6);
+            padding: 0.5rem 1rem;
+            background-color: var(--color4);
+            border-radius: 0 10px 10px 0;
+            font-size: 1.82rem;
+        }
+    }
+    .button-container{
+        gap: 1rem;
+        a {
+            flex-grow: 1;
+            text-decoration: none;
+            color: var(--color6);
+            background-color: var(--color4);
+            border-radius: 10px;
+            text-align: center;
+            padding: 0.8rem;
+        }
+    }
+}
+
+.lookbook-container {
+    display: flex;
+    flex-flow: row wrap;
+
+    .lookbook-heading {
+        flex-grow: 1;
+        flex-basis: 100%;
+        margin: 2rem 0;
+        ul {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-evenly;
+            align-items: center;
+            padding: 0;
+            li {
+              list-style: none;
+              padding: 1rem;
+          
+              a {
+                text-decoration: none;
+                color: var(--color4);
+                font-weight: 400;
+                font-size: 1rem;
+              }
+            }
+        }
+    }
+    .outfits-container {
+      margin-left: 1rem;
+    }
+    
+  }
