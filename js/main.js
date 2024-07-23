@@ -47,5 +47,5 @@ const loadRouter = () =>{
 /* loadRouter(); */
 //setting up the Router with pages
 setTimeout(loadRouter
-,500);
+,50);
 

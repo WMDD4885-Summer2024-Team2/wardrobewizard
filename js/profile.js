@@ -32,6 +32,9 @@ profileSelect.addEventListener('click', function () {
 
 let userDocID;
 let imageUrl;
+console.log('see');
+getInformation();
+ 
 async function getInformation() {
   const result = await loadUserProfile();
   const documents = result.docs;
@@ -48,7 +51,6 @@ async function getInformation() {
   });
 }
 
-getInformation();
 
 userImageUpdate.addEventListener('click', function () {
   document.getElementById('fileInput').click();
