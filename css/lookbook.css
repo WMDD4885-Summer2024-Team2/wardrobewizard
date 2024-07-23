@@ -75,4 +75,33 @@
       margin-left: 1rem;
     }
     
-  }
+}
+
+
+@media screen and (min-width: 700px) {
+    .header-wrapper {
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        .title-container {
+            display: none;
+            
+        }
+        .search-container {
+            flex-basis: 40%;
+        }
+        .button-container {
+            flex-flow: row nowrap;
+            /* flex-basis: 70%; */
+        }
+    }
+    
+}
+
+@media screen and (min-width: 1010px) {
+    .header-wrapper {
+        .search-container {
+            flex-basis: 30%;
+        }
+        
+    }
+}
