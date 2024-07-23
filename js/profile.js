@@ -30,10 +30,16 @@ profileSelect.addEventListener('click', function () {
 
 })
 
+export const init =  () => {
+  getInformation();
+
+}
+
+
 let userDocID;
 let imageUrl;
 console.log('see');
-getInformation();
+
  
 async function getInformation() {
   const result = await loadUserProfile();
