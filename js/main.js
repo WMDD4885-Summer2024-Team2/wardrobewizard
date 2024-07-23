@@ -49,3 +49,10 @@ const loadRouter = () =>{
 setTimeout(loadRouter
 ,50);
 
+window.addEventListener('offline', () => {
+  alert('offline');
+});
+
+window.addEventListener('online', () => {
+  alert('online');
+});

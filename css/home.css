@@ -10,18 +10,18 @@ html {
     scroll-behavior: smooth;
 }
 
-header {
+/* header {
     display: flex;
     flex-flow: row;
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-ul{
-    display: flex;
-flex-flow: row;
-    gap: 1rem;
+    ul{
+        display: flex;
+        flex-flow: row;
+        gap: 1rem;
 
-}
+    }
     li {
 
         list-style: none;
@@ -32,7 +32,7 @@ flex-flow: row;
             text-transform: uppercase;
         }
     }
-}
+} */
 
 a {
     text-decoration: none;
