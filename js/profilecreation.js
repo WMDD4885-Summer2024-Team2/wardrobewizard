@@ -134,10 +134,6 @@ const takeSnap = async() => {
     image.onload = async function() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
-      
-     
-
-     
     }
     image.src=result;
   }catch(e){

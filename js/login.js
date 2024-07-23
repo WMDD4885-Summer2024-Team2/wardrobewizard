@@ -1,8 +1,3 @@
-import { userSignIn } from "./common.js";
-
-// export const init = () => { 
-//     googleSignIn.addEventListener("click", userSignIn);
-// }
 import { wardrowizAlert } from "./common.js";
 
 import { firebase } from './firebase.js';
@@ -27,7 +22,6 @@ login.addEventListener('click', function () {
     loginForm.style.display = 'block';
     signupForm.style.display = 'none';
 })
-
 
 var login = document.getElementById("loginUser");
 
@@ -78,34 +72,32 @@ signup.addEventListener('click', (event) => {
 
             const user = userCredential.user;
             console.log(user);
-            if (user) {
-                const userId = user.uid;
-                const userEmail = user.email;
+            // if (user) {
+            //     const userId = user.uid;
+            //     const userEmail = user.email;
 
-                const userProfileRef = doc(collection(db, "user-profile"), userEmail);
-                setDoc(userProfileRef, {
-                    // Add any additional data you want to store in the user's profile
-                    name: user.displayName ? user.displayName : 'anonymous',
-                    email: user.email,
-                    image: "https://firebasestorage.googleapis.com/v0/b/integrated-project1.appspot.com/o/amneeshsingh5%40gmail.com%2Fuser-image%2Fprofile-user-icon-isolated-on-white-background-eps10-free-vector.jpg?alt=media&token=b995f98c-24d2-40d9-95c0-e5a0a773628c"
+            //     const userProfileRef = doc(collection(db, "user-profile"), userEmail);
+            //     setDoc(userProfileRef, {
+            //         // Add any additional data you want to store in the user's profile
+            //         name: user.displayName ? user.displayName : 'anonymous',
+            //         email: user.email,
+            //         image: "https://firebasestorage.googleapis.com/v0/b/integrated-project1.appspot.com/o/amneeshsingh5%40gmail.com%2Fuser-image%2Fprofile-user-icon-isolated-on-white-background-eps10-free-vector.jpg?alt=media&token=b995f98c-24d2-40d9-95c0-e5a0a773628c"
 
-                    //...
-                })
-                    .then(() => {
+            //         //...
+            //     })
+            //         .then(() => {
 
-                        console.log("User profile document added successfully");
-                    })
-                    .catch((error) => {
-                        console.error("Error adding user profile document: ", error);
-                    });
-            } else {
-                console.log("No user logged in");
-            }
-
+            //             console.log("User profile document added successfully");
+            //         })
+            //         .catch((error) => {
+            //             console.error("Error adding user profile document: ", error);
+            //         });
+            // } else {
+            //     console.log("No user logged in");
+            // }
             wardrowizAlert('You have been signed up !. Please Log In');
             signupForm.style.display = 'none';
             loginForm.style.display = 'block';
-
         })
         .catch((error) => {
             var errorCode = error.code;
@@ -116,6 +108,22 @@ signup.addEventListener('click', (event) => {
 
 });
 
+
+
+
+var google_sign_in = document.getElementById("googleUser");
+
+google_sign_in.addEventListener('click', (event) => {
+    event.preventDefault();
+    signInWithPopup(auth, provider).then((result) => {
+   //     window.location.href = '../generate_outfit/gen_outfit.html';
+        wardrowizAlert('Welcome to WardroWiz');
+    }).catch((error) => {
+        var errorCode = error.code;
+       showErrors(errorCode);
+    });
+
+});
 
 function showErrors(error){
     if (error === 'auth/user-not-found' || error === 'auth/wrong-password') {
@@ -136,35 +144,9 @@ function showErrors(error){
     else if(error == 'auth/missing-password'){
         wardrowizAlert('Please enter password.');
     } else {
-        console.error(error)
+        wardrowizAlert('Please try again.');
     }
 }
-var google_sign_in = document.getElementById("googleUser");
-
-google_sign_in.addEventListener('click', (event) => {
-    event.preventDefault();
-
-
-    signInWithPopup(auth, provider).then((result) => {
-        var credential = GoogleAuthProvider.credentialFromResult(result);
-        const user = result.user;
-        //  onAuthStateChanged();
-
-   //     window.location.href = '../generate_outfit/gen_outfit.html';
-        //updateUserProfile(user);
-        wardrowizAlert('Welcome to WardroWiz');
-    }).catch((error) => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        var email = error.email;
-        var credential = error.credential;
-        console.error(error);
-
-        // ...
-    });
-
-});
-
 
 
 onAuthStateChanged(firebase.auth, async (user) => {
@@ -173,27 +155,25 @@ onAuthStateChanged(firebase.auth, async (user) => {
         console.log("loggedin");
         const userId = user.uid;
         const userEmail = user.email;
-        const userProfileRef = doc(collection(db, "user-profile"), userEmail);
+        // const userProfileRef = doc(collection(db, "user-profile"), userEmail);
 
-        const qu = query(collection(db, 'user-profile'), where('email', '==', user.email));
+        // const qu = query(collection(db, 'user-profile'), where('email', '==', user.email));
    
 
-        const querySnapshot = await getDocs(qu);
+        // const querySnapshot = await getDocs(qu);
 
-        if (querySnapshot.empty) {
-          console.log('No matching documents.');
-          setDoc(userProfileRef, {
-            // Add any additional data you want to store in the user's profile
-            name: user.displayName,
-            email: user.email,
-            image: "https://firebasestorage.googleapis.com/v0/b/integrated-project1.appspot.com/o/amneeshsingh5%40gmail.com%2Fuser-image%2Fprofile-user-icon-isolated-on-white-background-eps10-free-vector.jpg?alt=media&token=b995f98c-24d2-40d9-95c0-e5a0a773628c"
-            //...
-        })
-        } else {
-          querySnapshot.forEach((doc) => {
-            console.log(`Document data: ${doc.data()}`);
-          });
-        }
+        // if (querySnapshot.empty) {
+        //   console.log('No matching documents.');
+        //   setDoc(userProfileRef, {
+        //     name: user.displayName,
+        //     email: user.email,
+        //     image: "https://firebasestorage.googleapis.com/v0/b/integrated-project1.appspot.com/o/amneeshsingh5%40gmail.com%2Fuser-image%2Fprofile-user-icon-isolated-on-white-background-eps10-free-vector.jpg?alt=media&token=b995f98c-24d2-40d9-95c0-e5a0a773628c"
+        // })
+        // } else {
+        //   querySnapshot.forEach((doc) => {
+        //     console.log(`Document data: ${doc.data()}`);
+        //   });
+        // }
         
     } else {
         console.log("No user logged in");

@@ -9,15 +9,11 @@
   }
   
   
-  body {
-    font-family: "Charter", sans-serif;
-    background: linear-gradient(to bottom, #f0e1ce, #f3ebc6);
-    color: #333;
-    min-height: 100vh;
-  }
+
   
   .google-signin {
-   p{display: flex;
+   p{
+    display: flex;
    flex-flow: row;
    justify-content: center;
    align-items: center;
@@ -45,11 +41,13 @@
   
   
   
-  main {
+  #page1 {
     display: flex;
     flex-flow: row nowrap;
     width: 100%;
     gap: 3rem;
+    min-height: 100vh;
+
   }
   
   .intro {
@@ -73,6 +71,7 @@
   }
   
   .closet img {
+    margin: 0 auto;
     max-width: 70%;
     height: auto;
     padding-bottom: 2em;
@@ -177,7 +176,7 @@
       display: none;
     }
   
-    main {
+    #page1 {
       display: grid;
       align-content: center;
       justify-content: center;
@@ -186,9 +185,6 @@
       background-size: cover;
     }
   
-    body {
-      background-color: unset;
-    }
   
   
     .form-container {

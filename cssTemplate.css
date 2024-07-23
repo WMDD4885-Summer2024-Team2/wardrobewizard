@@ -1,0 +1,653 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css');
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+:root {
+  --primary-color: #000000;
+  --secondary-color: #2ecc71;
+  --background-color: #F0E3CB;
+  --text-color: rgb(0, 0, 0);
+  --header-bg-color: #f8f9fa;
+  --nav-bg-color: #e9ecef;
+  --footer-bg-color: #f8f9fa;
+
+  --button-bg-color: #031B4A;
+  --button-hover-color: linear-gradient(82.3deg,
+      #00000073 10.8%,
+      rgba(0, 0, 0, 0.272) 94.3%);
+  --button-text-color: #fff;
+  --button-hover-text-color: black;
+  --card-bg-color: #23232399;
+  --card-text-color: white;
+
+  --like-button-color: red;
+  --like-button-bg-color: rgb(226, 226, 226);
+
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.fa-trash-can {
+  position: relative;
+  color: white;
+  z-index: -3;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--primary-color);
+  font-family: "Playfair Display", serif;
+}
+
+p,
+a,
+text,
+span {
+  line-height: 1.6;
+  font-family: "Noto Sans", sans-serif;
+}
+
+
+
+
+
+
+/* .card {
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--card-border-color);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px 0;
+} */
+
+.card h3 {
+  margin-top: 0;
+}
+
+/* .card p {
+  margin-bottom: 0;
+} */
+
+/* wardrowiz button style */
+.wardrowiz-button {
+  position: relative;
+  display: inline-block;
+  margin: 15px;
+  padding: 15px 30px;
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: #031B4A;
+  background: var(--background-color);
+  cursor: pointer;
+  transition: ease-out 0.5s;
+  border: 2px solid #031B4A;
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 0 #031B4A;
+}
+
+.wardrowiz-button:hover {
+  color: white;
+  box-shadow: inset 0 -100px 0 0 #031B4A;
+}
+
+.wardrowiz-button:active {
+  transform: scale(0.9);
+}
+
+/* wardrowiz button style */
+
+/* wardrowiz card style   */
+/* .wardrowiz-card {
+    width: 20rem;
+    height: 25rem;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    position: relative;
+    border-radius: 1.5rem;
+}
+
+.wardrowiz-image {
+    width: 100%;
+    position: absolute;
+    border-radius: 1.5rem;
+
+    img {
+aspect-ratio: 1/1;
+        width: 100%;
+        height: auto;
+        position: absolute;
+        object-fit: scale-down;
+        left: 0;
+        top: 0;
+        border-radius: 1.5rem;
+        display: block;
+    }
+} */
+
+.wardrowiz-details>.tags {
+  font-size: .8em;
+  margin-top: .5em;
+  padding: 0rem 1rem;
+  border-radius: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 20px;
+}
+
+.wardrowiz-details>label {
+  padding: 1rem;
+  font-weight: bold;
+}
+
+.wardrowiz-details {
+  color: var(--card-text-color);
+  background-color: var(--card-bg-color);
+  position: absolute;
+  bottom: 0;
+  border-bottom-left-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+  width: 100%;
+  left: 0;
+  height: 3.3em;
+  transition: height .5s ease-in-out;
+  padding: 1rem 1rem 0rem 1rem;
+  overflow: hidden;
+  box-sizing: border-box;
+
+  .container {
+    cursor: pointer;
+  }
+
+  .container input {
+    display: none;
+  }
+
+  .container svg {
+    overflow: visible;
+  }
+
+  .path {
+    fill: none;
+    stroke: white;
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke-dasharray 0.5s ease, stroke-dashoffset 0.5s ease;
+    stroke-dasharray: 241 9999999;
+    stroke-dashoffset: 0;
+  }
+
+  .container input:checked~svg .path {
+    stroke-dasharray: 70.5096664428711 9999999;
+    stroke-dashoffset: -262.2723388671875;
+  }
+
+
+}
+
+.wardrowiz-header {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.wardrowiz-card:hover>.wardrowiz-details {
+  height: 30%;
+}
+
+/* wardrowiz card style   */
+
+
+/* file upload */
+.custum-file-upload {
+  height: 200px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  gap: 20px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #031B4A;
+  background-color: transparent;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0px 48px 35px -48px #031B4A;
+}
+
+.custum-file-upload .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custum-file-upload .icon svg {
+  height: 80px;
+  fill: #CB874E;
+}
+
+.custum-file-upload .text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custum-file-upload .text span {
+  font-weight: 400;
+  color: #CB874E;
+}
+
+.custum-file-upload input {
+  display: none;
+}
+
+/* file upload */
+
+/* checkbox style */
+
+/* add this to your :root variables */
+.checkbox {
+  --light: rgba(207, 205, 205, 0.425);
+  --primary-color: #8c00ff;
+  --duration: 0.3s;
+  --ease: ease-in-out;
+}
+
+/* hide checkbox */
+.checkbox input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox label {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+}
+
+.checkbox label span {
+  margin-left: 8px;
+}
+
+.checkbox svg {
+  height: 30px;
+  width: 30px;
+}
+
+/* svg rectangle property */
+.checkbox svg>rect {
+  fill: var(--light);
+  stroke: #8c00ff;
+  /* responsive values */
+  stroke-dasharray: 400%;
+  stroke-dashoffset: 400%;
+  transition: var(--duration) stroke-dashoffset var(--ease);
+}
+
+/* svg check property */
+.checkbox svg path {
+  stroke: var(--primary-color);
+  /* responsive values */
+  stroke-dasharray: 100%;
+  stroke-dashoffset: 100%;
+  transition: var(--duration) stroke-dashoffset var(--ease);
+}
+
+.checkbox input[type="checkbox"]:checked+label svg>rect,
+.checkbox input[type="checkbox"]:checked+label svg path {
+  stroke-dashoffset: 0;
+}
+
+
+/* popup */
+.popup {
+  z-index: 999999999999;
+  position: fixed;
+  top: 2rem;
+  left: 0;
+  width: 100%;
+  height: auto;
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  display: none;
+  justify-content: center;
+  /* align-items: center; */
+
+}
+
+.popup-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.popup.show {
+  display: flex;
+  animation: fadeOut 5s forwards;
+  opacity: 1;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+
+/* popup */
+
+
+/* History Fav Outfits */
+.filter-categories {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 1rem;
+
+  select {
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    color: var(--button-bg-color);
+  }
+}
+
+.history-fav,
+.flex-1 {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.history-fav-container,.outfit-1 {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 1rem;
+  flex-grow: 1;
+
+  .history-fav-card, .grid-cat {
+    flex-grow: 1;
+    /* 2 column layout */
+    flex-basis: calc(50% - .5rem);
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    position: relative;
+    border-radius: 1.5rem;
+
+    div img {
+      margin: auto !important;
+    }
+
+    img {
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      width: 150px;
+    }
+
+    .delete-btn {
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+      color: var(--like-button-color);
+      border: 0px;
+      border-radius: 50%;
+      background: var(--like-button-bg-color);
+      padding: 8px;
+    }
+
+    .delete-btn:hover {
+      font-size: larger;
+    }
+  }
+    .wardrowiz-card {
+      flex-grow: 1;
+      /* 2 column layout */
+      flex-basis: calc(50% - .5rem);
+      box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+      border-radius: 1.5rem;
+      position: relative;
+      .wardrowiz-image {
+        width: 100%;
+        border-radius: 1.5rem;
+        img {
+          aspect-ratio: 1/1;
+          width: 100%;
+          height: auto;
+          object-fit: scale-down;
+          border-radius: 1.5rem;
+          display: block;
+
+        }
+
+      }
+
+    }
+  }
+
+  .sub-categories {
+    flex-grow: 1;
+    flex-basis: 100%;
+    background-color: lightyellow;
+
+    ul {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-evenly;
+      align-items: center;
+
+      padding: 0;
+
+      li {
+        list-style: none;
+        padding: 1rem;
+
+        a {
+          text-decoration: none;
+          color: var(--button-bg-color);
+          font-weight: 400;
+          font-size: 1rem;
+        }
+      }
+    }
+
+    /* my closet styling */
+
+    .cards {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-evenly;
+      align-items: center;
+      padding: 0;
+
+      .card {
+        list-style: none;
+        padding: 1rem;
+        p {
+          text-decoration: none;
+          color: var(--button-bg-color);
+          font-weight: 400;
+          font-size: 1rem;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+
+  @media screen and (min-width: 1010px) {
+    .wardrowiz-card {
+      flex-grow: 0;
+      flex-basis: 30%;
+    }
+  }
+
+  @media screen and (min-width: 700px) {
+
+    .filter-categories {
+      justify-content: flex-end;
+
+      select {
+        margin: 0 1rem;
+
+      }
+    }
+
+    .history-fav, .grid-cat {
+      display: flex;
+      flex-flow: row nowrap;
+      .history-fav-container, .outfit-1 {
+        margin-left: 1rem;
+        .history-fav-card {
+          flex-grow: 0;
+          width: 10rem;
+          padding: 0 4rem;
+          flex-basis: 20%;
+        }
+        .wardrowiz-card {
+          flex-grow: 0;
+          /* width: 10rem; */
+          /* padding: 0 4rem; */
+          flex-basis: 30%;
+        }
+      }
+    }
+
+    .sub-categories {
+      flex-grow: 0;
+      flex-basis: 0%;
+      min-height: 80vh;
+      height: auto;
+
+      ul {
+        flex-flow: column wrap;
+        margin: 0;
+
+        li {
+          padding: 1rem 3rem;
+        }
+      }
+      .cards {
+
+        flex-flow: column wrap;
+  
+        margin: 0;
+  
+        .card {
+  
+          padding: 1rem 3rem;
+  
+        }
+  
+      }
+
+    }
+  }
+
+
+  /* loaderrrrr */
+
+  .loader {
+    display: flex;
+    padding: 10rem 3rem 0rem 3rem;
+    align-items: center;
+    margin: 0 auto;
+    justify-content: center;
+
+  }
+
+
+  .ball {
+    position: relative;
+    bottom: 50px;
+    left: calc(100% - 20px);
+    width: 50px;
+    height: 50px;
+    background: #28282800;
+    background-image: url(./images/homePageImages/ww.png);
+    background-size: cover;
+    border-radius: 50%;
+    transition: 0.5s ease-in-out;
+    animation: ball-move8234 3s ease-in-out infinite alternate;
+
+  }
+
+
+  .ball::after {
+    position: absolute;
+    content: '';
+    top: 25px;
+    right: 5px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+  }
+
+  .bar {
+    width: 200px;
+    height: 12.5px;
+    background: #031B4A;
+    border-radius: 30px;
+    transform: rotate(-15deg);
+    animation: up-down6123 3s ease-in-out 1s infinite alternate;
+  }
+
+  @keyframes up-down6123 {
+    from {
+      transform: rotate(-15deg);
+    }
+
+    to {
+      transform: rotate(15deg);
+    }
+  }
+
+  @keyframes ball-move8234 {
+    from {
+      left: calc(100% - 40px);
+      transform: rotate(360deg);
+    }
+
+    to {
+      left: calc(0% - 20px);
+      transform: rotate(0deg);
+    }
+  }
