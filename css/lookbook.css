@@ -82,6 +82,7 @@
         flex-grow: 1;
       
         .history-fav-card {
+            padding: 1rem;
           /* 2 column layout */
           flex-basis: calc(50% - .5rem);   
           box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
@@ -122,7 +123,7 @@
 @media screen and (min-width: 600px) {
     .header-wrapper {
         flex-flow: row nowrap;
-        justify-content: space-between;
+        justify-content: flex-end;
         .title-container {
             display: none;
             

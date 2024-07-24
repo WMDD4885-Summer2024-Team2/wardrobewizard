@@ -1,5 +1,5 @@
 import { firebase } from "./firebase.js";
-import { collection, query, getDocs, doc, limit , orderBy } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { collection, query, getDocs, doc, limit , orderBy, deleteDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
   
 export const init = () => {  
@@ -133,8 +133,8 @@ const result = (outfit, tabselection) => {
     }
 }
 
-const deleteOutfitFromDatabase = () => {
-    const documentRef = doc(firebase.getDB(), 'favorites');
+const deleteOutfitFromDatabase = (outfitDocumentId) => {
+    const documentRef = doc(firebase.getDB(), 'favorites', firebase.getUser().email);
     const subcollectionRef = collection(documentRef, 'favfit');
     const outfitDocRef = doc(subcollectionRef, outfitDocumentId);
 
