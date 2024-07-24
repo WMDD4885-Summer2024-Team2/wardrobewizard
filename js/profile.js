@@ -1,7 +1,6 @@
 
 import { wardrowizAlert } from "./common.js";
-import { loadUserProfile } from "./common.js";
-import { updateDataName, uploadImageToStorage, updateDataImage, userSignOut , resetPassword} from "./common.js";
+import {loadUserProfile, updateDataName, uploadImageToStorage, updateDataImage, userSignOut , resetPassword} from "./common.js";
 
 import { firebase } from './firebase.js';
 import { getFirestore, query, where, getDocs, collection, doc, getDoc, setDoc, updateDoc } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
@@ -39,7 +38,11 @@ export const init =  () => {
 let userDocID;
 let imageUrl;
 console.log('see');
+<<<<<<< Updated upstream
 
+=======
+await getInformation();
+>>>>>>> Stashed changes
  
 async function getInformation() {
   const result = await loadUserProfile();
