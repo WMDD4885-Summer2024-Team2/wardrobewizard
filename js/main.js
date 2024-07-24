@@ -41,7 +41,9 @@ const loadRouter = () =>{
     new Page('#profilecreation', 'pages/profilecreation.html','pages/header.html'),
     new Page('#uploadoutfithome', 'pages/uploadoutfit.html','pages/header.html'),
     new Page('#uploadoutfitmycloset', 'pages/uploadoutfit.html','pages/header.html'),
-    new Page('#contact', 'pages/contact.html','pages/header.html')
+    new Page('#contact', 'pages/contact.html','pages/header.html'),
+    new Page('#404page', 'pages/404page.html','pages/header.html')
+
   ])
 };
 
@@ -51,9 +53,15 @@ setTimeout(loadRouter
 ,50);
 
 window.addEventListener('offline', () => {
+
   alert('offline');
+  window.location.href = '#404page'
+
 });
 
 window.addEventListener('online', () => {
+  window.location.href = '#userhome'
+
   alert('online');
+
 });

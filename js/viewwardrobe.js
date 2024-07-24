@@ -72,6 +72,8 @@ const db = getFirestore(app);
 const user = auth.currentUser;
 const storage = getStorage();
 export const init = () => {
+  showOutfit();
+ // viewwardrobe.addEventListener("click", showOutfit);
 
   let email;
 let uid;
@@ -412,6 +414,15 @@ function generateClothes(clothes_manager) {
 
 
 
+    element.innerHTML += `<div class='card flex-grow'>
+        <div class='card-body'>
+          <div><img src='${outfit.imageUrl}'></div>
+        
+        </div>
+        <div class='card-footer'>
+          ${tags}
+        </div>
+      </div>`;
   });
   listenerAdded = true;
 

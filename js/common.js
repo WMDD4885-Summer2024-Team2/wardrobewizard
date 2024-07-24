@@ -143,7 +143,7 @@ export const getHistory = () => {
 
 // Method to get outfits by category
 export const getOutfitsByCategory = (category) => {
-  return outfitArray.filter((outfit) => outfit.category === category);
+  return outfitArray.filter((outfit) => outfit.garment_type === category);
 };
 
 
@@ -155,7 +155,7 @@ export const getOutfitCount = async () => {
 // Method to get unique outfit categories
 export const getOutfitCategories = () => {
   const categories = new Set();
-  outfitArray.forEach((outfit) => categories.add(outfit.category));
+  outfitArray.forEach((outfit) => categories.add(outfit.garment_type));
   return Array.from(categories);
 };
 

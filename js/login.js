@@ -8,6 +8,7 @@ const provider = new GoogleAuthProvider();
 const db = firebase.getDB();
 
 //  const userSignIn = firebase.userSignIn;
+export const init = async () => {
 
 signupForm.style.display = 'none';
 var signup = document.getElementById('signup');
@@ -180,3 +181,4 @@ onAuthStateChanged(firebase.auth, async (user) => {
     }
 
 });
+}
