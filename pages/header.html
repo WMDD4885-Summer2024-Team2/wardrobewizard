@@ -1,20 +1,63 @@
-<div class="header">
+<!-- <div class="header">
     <div class="header-logo">
         <a href="#home"><img src="./resources/images/logo.svg"></a>
-    </div>
-    <nav class="menu">
+    </div> -->
+<!-- <nav class="menu">
         <ul class="menu-list">
             <li class="menu-item"><a href="#userhome"><img src="./resources/images/home-icon.svg">Home</a></li>
-            <li class="menu-item"><a href="#mycloset"><img src="./resources/images/mycloset-icon.svg">My Closet</a></li>
+            <li class="menu-item"><a href="#mycloset" id="viewwardrobe"><img src="./resources/images/mycloset-icon.svg">My Closet</a></li>
             <li class="menu-item"><a href="#lookbook" ><img src="./resources/images/lookbook-icon.svg">Look Book</a></li>
             <li class="menu-item"><a href="#profile"><img src="./resources/images/profile-icon.svg">Profile</a></li>
             <li class="menu-item"><a id="signOutButton">Sign Out</a></li>
            
         </ul>
         
-    </nav>
-    
+    </nav> -->
+
+
+<div class="bloom-mobile-header" id="header-menu">
+    <div class="header-logo">
+        <a href="#home"><img src="./resources/images/logo.svg"></a>
+    </div>
+
+    <div class="toggle-nav">
+        <i class="fa-solid fa-bars" id="openNavButton"></i>
+        <i class="fa-solid fa-xmark" id="closeNavButton"></i>
+    </div>
+
+    <ol class="nav">
+
+        <li class="item"><a href="#userhome">Home</a></li>
+        <li class="item"><a href="#mycloset" id="viewwardrobe">My Closet</a></li>
+        <li class="item"><a href="#lookbook">Look Book</a></li>
+        <li class="item"><a href="#profile">Profile</a></li>
+        <li class="item"><a id="signOutButton">Sign Out</a></li>
+
+    </ol>
+  
+    <ol class="nav-desktop">
+
+        <li class="menu-item"><a href="#userhome">Home</a></li>
+        <li class="menu-item"><a href="#mycloset" id="viewwardrobe">My
+                Closet</a></li>
+        <li class="menu-item"><a href="#lookbook">Look Book</a></li>
+        <li class="menu-item"><a href="#profile">Profile</a></li>
+        <li class="menu-item"><a id="signOutButton2">Sign Out</a></li>
+
+    </ol>
+  
+
+
+
+
+    <!-- <div class="search-container">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                <img src="./IMG_7389.PNG" alt="">
+            </div> -->
+
 </div>
+
+<!-- </div> -->
 
 <dialog class="modal" id="uploadDialog">
     <div class="modal-content">
@@ -23,14 +66,14 @@
             <div>
                 <label for="fileupload" class="custom-file-upload">Photo from Gallery
                 </label>
-                <input id="fileupload" type="file" accept="image/*"/>
+                <input id="fileupload" type="file" accept="image/*" />
             </div>
             <div>
-                
+
                 <a class="custom-file-upload" id="startCameraBtn">Photo from Camera</a>
             </div>
         </div>
-       
+
 
     </div>
 </dialog>

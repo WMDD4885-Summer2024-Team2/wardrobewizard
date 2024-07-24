@@ -1,0 +1,137 @@
+#page5{
+    
+    img{
+    width: 100%;
+    height: auto;
+}
+#imageProfilePreview{
+    img{
+        border-radius: 50%;
+        width: 250px;
+        object-fit: cover;
+        aspect-ratio: 1 / 1;
+        height: 250px;
+    }
+}
+.profileSectionImage, .user_info, .section-features{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+
+}
+#editProfile,#userImageUpdate, #userProfileUpdate{
+    margin: 1rem auto;
+    width: 50%;
+    display: block;
+}
+.tabs{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row;
+}
+#sectionFeatures{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    div{
+        display: grid;
+       grid-template-columns: 10px 200px;
+       gap: 2rem;
+       i{
+       align-self: center;
+       }
+    }
+}
+#profileForm{
+    margin: 0 auto;
+    width: 60%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    input, select {
+        width: 100%;
+    }
+.layer{
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    i{
+        font-size: 1.2rem;
+    }
+}
+
+}
+section{
+    padding: 1rem;
+    display: flex;
+    flex-flow: column;
+    gap: 2rem;
+}
+
+.radio-inputs-custom {
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 0.5rem;
+    background-color: #031b4a;
+    box-sizing: border-box;
+    box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.06);
+    padding: 0.25rem;
+    width: 300px;
+    font-size: 14px;
+    label{
+        margin-bottom:0;
+    }
+  }
+  
+  .radio-inputs-custom .radio {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+  
+  .radio-inputs-custom .radio input {
+    display: none;
+  }
+  
+  .radio-inputs-custom .radio .name {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    border: none;
+    padding: .5rem 0;
+    color: white;
+    transition: all .15s ease-in-out;
+  }
+  
+  .radio-inputs-custom .radio input:checked + .name {
+    background-color: #fff;
+    font-weight: 600;
+    color: #000;
+  }
+
+  @media  only screen and (min-width:800px) {
+    
+    hr{
+        display: none;
+    }
+  
+  .profilePage{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+  }
+  .asideSection{
+    align-self: center;
+  }
+}
+}
