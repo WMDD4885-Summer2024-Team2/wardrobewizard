@@ -126,6 +126,7 @@ section{
     }
   
   .profilePage{
+    padding: 10rem 0rem 0rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
     

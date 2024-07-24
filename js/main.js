@@ -53,12 +53,15 @@ setTimeout(loadRouter
 ,50);
 
 window.addEventListener('offline', () => {
+
   alert('offline');
-  window.location.href = '#404page.html'
+  window.location.href = '#404page'
+
 });
 
 window.addEventListener('online', () => {
+  window.location.href = '#userhome'
+
   alert('online');
-  window.location.href = '#userhome.html'
 
 });

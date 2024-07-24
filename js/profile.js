@@ -42,10 +42,6 @@ export const init =  () => {
 let userDocID;
 let imageUrl;
 console.log('see');
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 await getInformation();
  
 async function getInformation() {
@@ -56,7 +52,7 @@ async function getInformation() {
     userDocID = doc.id;
     imageUrl = doc.data().profileImageUrl;
     imageProfilePreview.innerHTML = `<img src="${doc.data().profileImageUrl}" alt="user image">`
-    document.getElementById('userNameHeading').innerHTML += `${doc.data().name}`;
+    document.getElementById('userNameHeading').innerHTML = `${doc.data().name}`;
     document.getElementById('user_email').innerHTML = `<p id="userEmailHeading">${firebase.getUser().email}</p>`;
     document.getElementById('name').value = `${doc.data().name}`;
     document.getElementById('gender').value = `${doc.data().gender}`;
@@ -77,6 +73,8 @@ userProfileUpdate.addEventListener('click', function () {
 
   updateDataName(userDocID, dataName, dataGender, imageUrl);
   wardrowizAlert('Updated');
+  document.getElementById('userNameHeading').innerHTML = `${dataName}`;
+
 })
 
 

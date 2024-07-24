@@ -463,7 +463,7 @@ input[type="file"] {
 
    .loader {
     display: flex;
-    padding: 10rem 3rem 0rem 3rem;
+    padding: 10rem 3rem 10rem 3rem;
     align-items: center;
     margin: 0 auto;
     justify-content: center;
@@ -529,8 +529,8 @@ input[type="file"] {
   }
 
 .card {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  transition: 0.3s;
     
     background-color: var(--color1);
     /* padding: 1rem; */

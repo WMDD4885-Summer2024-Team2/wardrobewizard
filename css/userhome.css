@@ -77,7 +77,8 @@
         }
 
         img {
-            width: 100%;
+            mix-blend-mode: darken;
+            width: 50%;
         }
     }
 
@@ -125,7 +126,7 @@
         border-radius: 2rem;
 
         border: 1px solid #888;
-        width: 65%;
+        width: 600px;
 
         span {
             grid-column: 1/-1;
@@ -259,7 +260,7 @@
         padding: 20px 10px;
         border-radius: 10px;
         backdrop-filter: blur(30px);
-        background-color: rgba(65, 65, 65, 0.308);
+        background-color: #F9EAD7;
         border: 1px solid rgba(255, 255, 255, 0.089);
         cursor: pointer;
     }
@@ -315,15 +316,18 @@
     }
 .userHomeHeading{
     margin-bottom: 3rem;
+    hr{
+        margin: 2rem 0rem;
+    }
 }
     @media only screen and (min-width:700px) {
         .desktopView {
             display: grid;
             grid-template-columns: 1fr 1fr;
         }
-        #outfitSection{
+        /* #outfitSection{
             grid-column: 1/-1;
-        }
+        } */
 .userHomeHeading{
     grid-column: 1/-1;
 }

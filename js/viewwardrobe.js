@@ -2,7 +2,7 @@ import { getOutfitsByCategory } from "./common.js";
 
 export const init = () => {
   showOutfit();
-  viewwardrobe.addEventListener("click", showOutfit);
+ // viewwardrobe.addEventListener("click", showOutfit);
 
   outfitupload.addEventListener('click', ()=>{
     window.location.href = '#uploadoutfitmycloset';
