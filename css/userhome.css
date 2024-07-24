@@ -233,18 +233,6 @@
             display: none;
         }
     }
-<<<<<<< Updated upstream
-    .uploadImageButton{
-      grid-column: 1/-1;
-    }
-    .weatherWidget{
-      display: flex;
-      flex-flow: row;
-      justify-content: space-evenly;
-      align-items: center;
-      margin-bottom: 0;
-  
-=======
 
 
 
@@ -258,7 +246,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
->>>>>>> Stashed changes
     }
 
     .card {
@@ -333,6 +320,9 @@
         .desktopView {
             display: grid;
             grid-template-columns: 1fr 1fr;
+        }
+        #outfitSection{
+            grid-column: 1/-1;
         }
 .userHomeHeading{
     grid-column: 1/-1;

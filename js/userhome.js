@@ -195,7 +195,7 @@ export const init = async () => {
 
 
   showMatchingOutfit();
-  createWeatherRecommendation();
+  // createWeatherRecommendation();
 
 
 
@@ -391,17 +391,17 @@ export const init = async () => {
     console.log(topGarment);
     console.log(lowerGarment);
 
-    // const response = await fetchData(base64data1, topGarment, "upper_body", "shirt");
+    const response = await fetchData(base64data1, topGarment, "upper_body", "shirt");
 
-    // setTimeout(async () => {
-    //   console.log("Upload timed out after 5 seconds");
-    //   uploadBottom(response.image.url);
+    setTimeout(async () => {
+      console.log("Upload timed out after 5 seconds");
+      uploadBottom(response.image.url);
 
-    //   const jsonData = await fetchData(response.image.url, lowerGarment, "lower_body", "jeans");
-    //   uploadBottom(jsonData.image.url);
-    //   loader.style.display = 'none';
+      const jsonData = await fetchData(response.image.url, lowerGarment, "lower_body", "jeans");
+      uploadBottom(jsonData.image.url);
+      loader.style.display = 'none';
 
-    // }, 5000); // 5 seconds
+    }, 5000); // 5 seconds
 
 
 
@@ -430,10 +430,10 @@ ctx1.drawImage(image1, 0, 0);
 const base64data1 = canvas1.toDataURL('image/jpeg');
 
 
-// function uploadBottom(srcData){
-//   image1.src = srcData;
+function uploadBottom(srcData){
+  image1.src = srcData;
 
-// }
+}
 
 // Get the modal
 var ebModal = document.getElementById('mySizeChartModal');
