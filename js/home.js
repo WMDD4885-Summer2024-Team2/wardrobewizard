@@ -34,6 +34,5 @@ const getLocation = () => {
       reject(new Error("Geolocation is not supported by this browser."));
     }
   });
-
 }
 

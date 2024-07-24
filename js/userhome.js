@@ -120,8 +120,73 @@ import { wardrowizAlert } from "./common.js";
 // image1.src=response.image.url;
 
 // }
+const createWeatherRecommendation = async () => {
+  const lat = sessionStorage.getItem('latitude')
+  const lon = sessionStorage.getItem('longitude')
+  const latitude = lat === 'null' || lat === 'undefined' ? null : lat;
+  const longitude = lon === 'null' || lon === 'undefined' ? null : lon;
 
+  if (!!latitude || !!longitude) {
+    console.log('lat', lat, lon);
+    const apiKey = "240082a5a5ad45019573f09a73ca8d30";
+    try {
+      const response = await fetch(`https://api.weatherbit.io/v2.0/current?lat=${latitude}&lon=${longitude}&key=${apiKey}`);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
 
+      const data = await response.json();
+
+      if (data != null) {
+        console.log(data, 'data');
+        const result = data.data[0].weather.description;
+        showWeatherSuggestion(data);
+      } else {
+        console.log('Weather API did not return any data');
+      }
+
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+  else {
+    //  alert('Failed to get location or weather data')
+  }
+}
+
+const showWeatherSuggestion = (data) => {
+  const city = document.getElementById('city_name');
+  city.innerHTML = data.data[0].city_name;
+
+  const temp = document.getElementById('temp');
+  temp.innerHTML = `${data.data[0].temp}°C`;
+
+  const conditions = document.getElementById('conditions');
+  conditions.innerHTML = data.data[0].weather.description;
+
+  const result = data.data[0].weather.description;
+
+  const suggestionBox = document.createElement('div');
+  suggestionBox.className = 'suggestion';
+  const image = document.createElement('img');
+  const label = document.createElement('h3');
+
+  if (result.toLowerCase().includes('cloud') || result.toLowerCase().includes('rain')) {
+    image.src = "resources/images/umbrella.jpeg";
+    label.innerText = `Looks like it's gonna pour! Don't forget your umbrella ☔️`;
+    suggestionBox.appendChild(label);
+    suggestionBox.appendChild(image);
+  } else if (result.toLowerCase().includes('sun')) {
+    image.src = 'resources/images/sunglasses.jpg';
+    label.innerText = `Sunny vibes ahead! Grab those shades and enjoy 😎.`;
+    suggestionBox.appendChild(label);
+    suggestionBox.appendChild(image);
+  } else {
+    label.innerText = `Weather's looking fine, enjoy your day!`;
+    suggestionBox.appendChild(label);
+  }
+  suggestionContainer.appendChild(suggestionBox);
+}
 
 
 
@@ -266,73 +331,8 @@ export const init = async () => {
   generate_outfit.addEventListener('click', showMatchingOutfit);
   // loader.style.display = "none";
   
-const createWeatherRecommendation = async () => {
-  const lat = sessionStorage.getItem('latitude')
-  const lon = sessionStorage.getItem('longitude')
-  const latitude = lat === 'null' || lat === 'undefined' ? null : lat;
-  const longitude = lon === 'null' || lon === 'undefined' ? null : lon;
 
-  if (!!latitude || !!longitude) {
-    console.log('lat', lat, lon);
-    const apiKey = "240082a5a5ad45019573f09a73ca8d30";
-    try {
-      const response = await fetch(`https://api.weatherbit.io/v2.0/current?lat=${latitude}&lon=${longitude}&key=${apiKey}`);
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
 
-      const data = await response.json();
-
-      if (data != null) {
-        console.log(data, 'data');
-        const result = data.data[0].weather.description;
-        showWeatherSuggestion(data);
-      } else {
-        console.log('Weather API did not return any data');
-      }
-
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  }
-  else {
-    //  alert('Failed to get location or weather data')
-  }
-}
-
-const showWeatherSuggestion = (data) => {
-  const city = document.getElementById('city_name');
-  city.innerHTML = data.data[0].city_name;
-
-  const temp = document.getElementById('temp');
-  temp.innerHTML = `${data.data[0].temp}°C`;
-
-  const conditions = document.getElementById('conditions');
-  conditions.innerHTML = data.data[0].weather.description;
-
-  const result = data.data[0].weather.description;
-
-  const suggestionBox = document.createElement('div');
-  suggestionBox.className = 'suggestion';
-  const image = document.createElement('img');
-  const label = document.createElement('h3');
-
-  if (result.toLowerCase().includes('cloud') || result.toLowerCase().includes('rain')) {
-    image.src = "resources/images/umbrella.jpeg";
-    label.innerText = `Looks like it's gonna pour! Don't forget your umbrella ☔️`;
-    suggestionBox.appendChild(label);
-    suggestionBox.appendChild(image);
-  } else if (result.toLowerCase().includes('sun')) {
-    image.src = 'resources/images/sunglasses.jpg';
-    label.innerText = `Sunny vibes ahead! Grab those shades and enjoy 😎.`;
-    suggestionBox.appendChild(label);
-    suggestionBox.appendChild(image);
-  } else {
-    label.innerText = `Weather's looking fine, enjoy your day!`;
-    suggestionBox.appendChild(label);
-  }
-  suggestionContainer.appendChild(suggestionBox);
-}
 
   // var up_images = document.getElementById('uploadMoreImages');
   // up_images.addEventListener('click', function (e) {
