@@ -1,8 +1,11 @@
-#uploadoutfitsection{
+#uploadoutfitsection {
     display: none;
 }
+main{
+    padding: 0rem 0rem;
+}
 
-.todays-suggestion-section{
+.todays-suggestion-section {
     display: none;
 }
 
@@ -41,6 +44,7 @@ a {
 .imageContainer {
     width: 20%;
     height: auto;
+
     img {
         width: 40%;
         height: auto;
@@ -68,11 +72,11 @@ section {
 
 /* card */
 
-.teamCards {
-
+.teamImages {
+padding: 3rem 0rem;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(1fr);
+    grid-template-columns: 1fr 1fr;
     gap: 2rem;
 
     @media only screen and (min-width:600px) {
@@ -93,6 +97,8 @@ section {
     display: flex;
     justify-content: center;
     padding: 1rem;
+    position: relative;
+    bottom: 13rem;
 }
 
 .book {
@@ -174,6 +180,15 @@ p {
     font-weight: bolder;
 }
 
+.content h3 {
+    font-size: 2rem;
+}
+
+main h1 {
+    font-size: 3rem;
+    text-align: center;
+}
+
 /* card*/
 
 
@@ -220,6 +235,27 @@ p {
     font-weight: 600;
 }
 
+.content {
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.content h3 {
+    text-align: center;
+}
+
+.content p {
+    font-size: 15px;
+    text-align: center;
+}
+
+.content span {
+    margin-top: 1.5rem;
+    font-size: 2rem;
+    font-weight: 800;
+
+}
+
 /* radio-slider*/
 
 
@@ -241,9 +277,8 @@ p {
 
 
             img {
-
+                width: 450px;
                 margin: 0 auto;
-                width: 100%;
             }
         }
     }
@@ -256,6 +291,108 @@ p {
             }
 
 
+
+
         }
     }
+
+    .radioSliders {
+        display: flex;
+        justify-content: center;
+        padding: 1rem;
+        position: relative;
+        margin-top: 4rem;
+    }
+    #team {
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        h1{
+            grid-column: 1/-1;
+        }
+    }
+
+}
+
+#team {
+
+.teamVideo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    .frame{
+        box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+padding: 1rem;
+
+    }
+    video{
+        margin: 0 auto;
+        width:400px;
+        height: auto;
+    }
+}
+
+    .card1 {
+        margin: 0 auto;
+        width: 190px;
+        height: 254px;
+        background: rgba(162, 188, 195, 0);
+        transition: all 0.4s;
+        /* border-radius: 10px; */
+        box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+        font-size: 30px;
+        font-weight: 900;
+        img {
+            padding: 1rem;
+            /* border-radius: 30px; */
+        }
+    }
+
+    .card1:hover {
+        /* border-radius: 15px; */
+        cursor: pointer;
+        transform: scale(1.2);
+        box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+        background: #DC9656;
+    }
+
+    .first-content {
+        height: 100%;
+        width: 100%;
+        transition: all 0.4s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 1;
+        border-radius: 15px;
+    }
+
+    .card1:hover .first-content {
+        height: 0px;
+        opacity: 0;
+    }
+
+    .second-content {
+        padding: 1rem;
+        height: 0%;
+        width: 100%;
+        opacity: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* border-radius: 15px; */
+        transition: all 0.4s;
+        font-size: 0px;
+        transform: rotate(90deg) scale(-1);
+    }
+
+    .card1:hover .second-content {
+        opacity: 1;
+        height: 100%;
+        font-size: 1.8rem;
+        transform: rotate(0deg);
+    }
+
 }

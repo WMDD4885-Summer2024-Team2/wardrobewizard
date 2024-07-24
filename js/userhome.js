@@ -120,6 +120,8 @@ import { wardrowizAlert } from "./common.js";
 // image1.src=response.image.url;
 
 // }
+export const init = async () => {
+
 const createWeatherRecommendation = async () => {
   const lat = sessionStorage.getItem('latitude')
   const lon = sessionStorage.getItem('longitude')
@@ -190,12 +192,11 @@ const showWeatherSuggestion = (data) => {
 
 
 
-export const init = async () => {
 
 
-
+  loader2.style.display = 'flex';
   showMatchingOutfit();
-  // createWeatherRecommendation();
+   createWeatherRecommendation();
 
 
 
@@ -216,6 +217,7 @@ export const init = async () => {
       matchingoutfit.innerHTML = '';
 
       if (searchResult.length > 0) {
+        loader2.style.display = 'none';
         const outfit = searchResult[Math.floor(Math.random() * searchResult.length)];
         topRecommendedOutfit.innerHTML = `<img src='${outfit[0].imageUrl}' alt=''>`;
         bottomRecommendedOutfit.innerHTML = `<img src='${outfit[1].imageUrl}' alt=''>`;
@@ -381,7 +383,7 @@ export const init = async () => {
 
     virtualTryOn.addEventListener('click', async function (e) {
     e.preventDefault();
-    loader.style.display = 'block';
+    loader.style.display = 'flex';
 
 
     // var topGarment = clothes_manager.find(obj => obj.garment_type === 'top');
@@ -395,10 +397,12 @@ export const init = async () => {
 
     setTimeout(async () => {
       console.log("Upload timed out after 5 seconds");
-      uploadBottom(response.image.url);
+      // uploadBottom(response.image.url);
+      image1.src = response.image.url;
 
       const jsonData = await fetchData(response.image.url, lowerGarment, "lower_body", "jeans");
-      uploadBottom(jsonData.image.url);
+      // uploadBottom(jsonData.image.url);
+      image1.src = jsonData.image.url;
       loader.style.display = 'none';
 
     }, 5000); // 5 seconds
@@ -430,10 +434,10 @@ ctx1.drawImage(image1, 0, 0);
 const base64data1 = canvas1.toDataURL('image/jpeg');
 
 
-function uploadBottom(srcData){
-  image1.src = srcData;
+// function uploadBottom(srcData){
+//   image1.src = srcData;
 
-}
+// }
 
 // Get the modal
 var ebModal = document.getElementById('mySizeChartModal');

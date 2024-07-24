@@ -299,27 +299,31 @@ aspect-ratio: 1/1;
 .popup {
   z-index: 999999999999;
   position: fixed;
-  top: 2rem;
+  top: 0;
+  padding: 2rem;
+
   left: 0;
   width: 100%;
   height: auto;
   /* background-color: rgba(0, 0, 0, 0.5); */
   display: none;
   justify-content: center;
+  backdrop-filter: blur(10px);
   /* align-items: center; */
 
 }
 
 .popup-content {
-  background-color: #fff;
+  background-color: #031B4A;
   padding: 20px;
+  color: white;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .popup.show {
   display: flex;
-  animation: fadeOut 5s forwards;
+  animation: fadeOut 4s forwards;
   opacity: 1;
 }
 
@@ -553,7 +557,7 @@ aspect-ratio: 1/1;
 
   .loader {
     display: flex;
-    padding: 10rem 3rem 0rem 3rem;
+    padding: 10rem 3rem 10rem 3rem;
     align-items: center;
     margin: 0 auto;
     justify-content: center;

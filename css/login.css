@@ -42,15 +42,15 @@
   
   
   #page1 {
+    position: fixed;
     display: flex;
     flex-flow: row nowrap;
     width: 100%;
     gap: 3rem;
-    min-height: 100vh;
-
   }
   
   .intro {
+    margin-top: 4rem;
     padding-right: 5rem;
     flex: 1 1 100%;
     background: linear-gradient(to bottom, #e0c680, #dc9150);
@@ -104,7 +104,7 @@
   
   label {
     display: block;
-    margin-bottom: 0.5em;
+    /* margin-bottom: 0.5em; */
     font-weight: bold;
   }
   

@@ -23,7 +23,7 @@ import {
   query,
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import config from '../resources/config.json' with { type: 'json' };
-
+import { wardrowizAlert } from "./common.js"
 // Firebase class to encapsulate Firebase functionalities
 export class Firebase {
   // Array to store outfit data
@@ -84,7 +84,7 @@ export class Firebase {
   userSignOut = async () => {
     try {
       await signOut(this.auth);
-      alert("You have signed out successfully!");
+      wardrowizAlert("You have signed out successfully!");
       return true;
     } catch (error) {
       return false;
