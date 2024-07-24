@@ -93,6 +93,8 @@ section {
     display: flex;
     justify-content: center;
     padding: 1rem;
+    position: relative;
+    bottom: 13rem;
 }
 
 .book {
@@ -174,6 +176,13 @@ p {
     font-weight: bolder;
 }
 
+.content h3{
+    font-size: 2rem;
+}
+main h1{
+    font-size: 3rem;
+ text-align: center;
+}
 /* card*/
 
 
@@ -219,6 +228,24 @@ p {
     color: #020047;
     font-weight: 600;
 }
+.content{
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+.content h3{
+    text-align: center;
+}
+.content p{
+    font-size: 15px;
+    text-align: center;
+}
+
+.content span{
+    margin-top: 1.5rem;
+    font-size: 2rem;
+    font-weight: 800;
+  
+}
 
 /* radio-slider*/
 
@@ -255,7 +282,19 @@ p {
                 grid-row: 1/-1;
             }
 
+            
+
 
         }
     }
+
+    .radioSliders {
+        display: flex;
+        justify-content: center;
+        padding: 1rem;
+        position: relative;
+        margin-top: 4rem;
+    }
+
+
 }
