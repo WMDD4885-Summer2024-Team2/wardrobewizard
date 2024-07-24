@@ -241,8 +241,15 @@ main{
   .cardContainer:hover::before {
     transform: translate(-50px, 50px);
   }
-  
-  
+  .virtualTrying{
+    position: relative;
+  }
+  .loaded{
+  height: 100vh;
+    top: 0;
+    backdrop-filter: blur(7px);
+    position: absolute;
+  }
   @media only screen and (min-width:700px){
     main{
       grid-template-columns: 1fr 1fr;
@@ -265,3 +272,4 @@ main{
     }
   }
 }
+
