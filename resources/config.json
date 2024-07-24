@@ -11,6 +11,6 @@
     "rmbgURL" : "https://us-central1-integrated-project1.cloudfunctions.net/rmbg/upload",
     "colormatchURL" : "https://colormatch-62ct2fngha-uc.a.run.app/colorMatch",
     "deepTagingURL" : "https://cloudapi.lykdat.com/v1/detection/tags",
-    "deepTagAPIKey" : "e593a94da6ebc1836ee59b695cb5402f8997681fd3c90dd62d7c5bf4c99985bd",
+    "deepTagAPIKey" : "ef96476e1df8176576aaf673e5d5ce12e77ba7ad2fef2a6c3fde14d391a20091",
     "virtualTryOnAPI" : "https://us-central1-integrated-project1.cloudfunctions.net/virtualtryon/virtualOutfit"
 }
