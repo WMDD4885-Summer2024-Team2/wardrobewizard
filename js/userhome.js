@@ -87,7 +87,12 @@ const outfitGenreator = async() =>{
      
     </div>`;
 
-   // saveHistoryToDb(`{"data" : ${outfit}`);
+   /*  let data={
+      "top" : outfit[0],
+      "bottom" : outfit[1]
+    }
+
+    saveHistoryToDb(data); */
 
   }
  

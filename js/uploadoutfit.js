@@ -1,5 +1,5 @@
 import {startCamera,stopCamera,colorThief,uploadImageToStorage,saveOutfitToDb} from "./common.js";
-import {fetchData,fetchDepTagData,hexToHsl, navigateToPage} from "./utils.js";
+import {fetchData,fetchDepTagData,hexToHsl} from "./utils.js";
 import config from '../resources/config.json' with { type: 'json' };
 
 const ctx = canvas.getContext("2d");
@@ -109,9 +109,12 @@ const saveoutfit = async() =>{
    
 }
 
+//uploadoutfitmycloset
 const pageNavigation = () =>{
     if( window.location.href.includes( "#uploadoutfithome")){
         window.location.href = "#userhome";
+    }else if(window.location.href.includes( "#uploadoutfitmycloset")){
+      window.location.href = "#mycloset";
     }
 }
 const handleImage = (e) => {

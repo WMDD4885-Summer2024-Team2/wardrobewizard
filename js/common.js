@@ -1,4 +1,5 @@
 import { firebase } from "./firebase.js";
+
 import {
   collection,
   getFirestore,
@@ -7,6 +8,8 @@ import {
   query,
   getDocs,
   getCountFromServer,
+  doc,
+  updateDoc,
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 import { genreateOutfit } from "./outfitsearch.js";
@@ -86,6 +89,7 @@ export const loadHistoryData = () => {
   });
 };
 
+
 // Method to load user profile data from Firestore
 export const loadUserProfile = async () => {
   const q = query(
@@ -104,6 +108,26 @@ export const loadUserProfile = async () => {
     console.error("Error loading user profile:", error);
   }
 };
+
+//  update user profile
+
+export const updateDataName = async (userDocumentID, dataName, dataGender) => {
+
+  updateDoc(doc(firebase.getDB(), "user-profile", firebase.getUser().email, "profile", userDocumentID), {
+    name: dataName,
+    gender: dataGender,
+  });
+}
+
+
+export const updateDataImage = async (userDocumentID, dataImage) => {
+
+  updateDoc(doc(firebase.getDB(), "user-profile", firebase.getUser().email, "profile", userDocumentID), {
+    profileImageUrl: dataImage
+  });
+}
+
+
 
 
 // Method to get Favourites
@@ -151,9 +175,17 @@ export const userSignOut = async () => {
 export const userSignIn = async () => {
   try {
     const status = await firebase.userSignIn();
-    
+
   } catch (error) {
     console.error("Error signing in:", error);
+  }
+};
+
+export const resetPassword = async (email) => {
+  try {
+    const status = await firebase.resetPassword(email);
+ 
+  } catch (error) {
   }
 };
 
@@ -206,7 +238,7 @@ export const genreateOutfits = () => {
 export const colorThief = new ColorThief();
 
 
-export const  getFileAsBase64 =  async(url) => {
+export const getFileAsBase64 = async (url) => {
   // Fetch the file from the URL
   const response = await fetch(url);
   const blob = await response.blob();
@@ -222,4 +254,31 @@ export const  getFileAsBase64 =  async(url) => {
     };
     reader.readAsDataURL(blob);
   });
+}
+
+
+
+
+export function wardrowizAlert(message) {
+  const asideElement = document.createElement('aside');
+
+  asideElement.innerHTML = `
+  <section>
+    <div class="popup">
+      <div class="popup-content" id="popupContent">
+        <p></p>
+      </div>
+    </div>
+  </section>
+`;
+
+  document.body.appendChild(asideElement);
+
+  const popuptext = document.getElementById('popupContent');
+  const popup = document.querySelector('.popup');
+  popuptext.innerHTML = message;
+  popup.classList.add('show');
+  setTimeout(() => {
+    popup.classList.remove('show');
+  }, 5000);
 }
