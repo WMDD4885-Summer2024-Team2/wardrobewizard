@@ -459,39 +459,34 @@ input[type="file"] {
     padding-left: .1rem;
   }
 /* ##################################### Loader CSS ################################# */
-  .loader{
-    display: none;
-    position: absolute;
-    inset: 0;
-    background-color: rgba(255, 255, 255, 0.5);
-    /* display: flex; */
-    overflow: hidden;
+   /* loaderrrrr */
+
+   .loader {
+    display: flex;
+    padding: 10rem 3rem 0rem 3rem;
     align-items: center;
+    margin: 0 auto;
     justify-content: center;
+
   }
 
-  .relative-position{
-    position: relative;
-  }
 
-  
-.ball {
-    
+  .ball {
     position: relative;
     bottom: 50px;
     left: calc(100% - 20px);
     width: 50px;
     height: 50px;
-    background: var(--color4);
-    background-image: url('./resources/images/icon.png');
+    background: #28282800;
+    background-image: url(./images/homePageImages/ww.png);
     background-size: cover;
     border-radius: 50%;
     transition: 0.5s ease-in-out;
     animation: ball-move8234 3s ease-in-out infinite alternate;
-  
+
   }
-  
-  
+
+
   .ball::after {
     position: absolute;
     content: '';
@@ -501,40 +496,37 @@ input[type="file"] {
     height: 5px;
     border-radius: 50%;
   }
-  
+
   .bar {
-    flex-grow: 1;
-    max-width: 100vh;
+    width: 200px;
     height: 12.5px;
-    background: var(--color4);
+    background: #031B4A;
     border-radius: 30px;
     transform: rotate(-15deg);
     animation: up-down6123 3s ease-in-out 1s infinite alternate;
   }
-  
+
   @keyframes up-down6123 {
     from {
       transform: rotate(-15deg);
     }
-  
+
     to {
       transform: rotate(15deg);
     }
   }
-  
+
   @keyframes ball-move8234 {
     from {
       left: calc(100% - 40px);
       transform: rotate(360deg);
     }
-  
+
     to {
       left: calc(0% - 20px);
       transform: rotate(0deg);
     }
   }
-
-
 
 .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
