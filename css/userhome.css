@@ -1,289 +1,239 @@
-#userHome{
-main{
-    display: grid;
-    grid-template-columns: 1fr;
-  
-    padding: 1rem;
-    img {
-      mix-blend-mode: darken;
-      width: 300px;
-    height: 300px;
-    aspect-ratio: 1/1; /* set a consistent aspect ratio for all images */
-    object-fit: contain;
-    border-radius: 10px;
-  }
-  }
-  #top_recommended_outfit, #bottom_recommended_outfit{
-    img{
-        aspect-ratio: 1/1; /* set a consistent aspect ratio for all images */
-        object-fit: contain;
+#userHome {
+    main {
+        display: grid;
+        grid-template-columns: 1fr;
+
+        padding: 1rem;
+
+        img {
+            mix-blend-mode: darken;
+            width: 300px;
+            height: 300px;
+            aspect-ratio: 1/1;
+            /* set a consistent aspect ratio for all images */
+            object-fit: contain;
+            border-radius: 10px;
+        }
     }
-  }
 
-  #recommendedOutfit{
-    border-top-left-radius: 20rem;
-    border-top-right-radius: 20rem;
-    padding: 3rem 1rem 0rem 1rem;
-    background: antiquewhite;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-    /* box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px; */
+    #top_recommended_outfit,
+    #bottom_recommended_outfit {
+        img {
+            aspect-ratio: 1/1;
+            /* set a consistent aspect ratio for all images */
+            object-fit: contain;
+        }
+    }
 
-  }
-  .buttonsHome{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-flow: row;
-  }
-  /* section{
+    #recommendedOutfit {
+        width: 400px;
+        border-top-left-radius: 20rem;
+        border-top-right-radius: 20rem;
+        padding: 3rem 1rem 0rem 1rem;
+        background: antiquewhite;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        /* box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px; */
+
+    }
+
+    .buttonsHome {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-flow: row;
+    }
+
+    /* section{
   display: flex;
   flex-flow: column;
   align-items: center;}
   section:nth-child(1){
     grid-column: 2/3;
   } */
-  section{
-    padding: 0rem 1rem;
-    text-align: center;
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    justify-content: center;
-  }
-  .weatherWidget{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin-bottom: 5rem;
-  }
-  .suggestion{
-    display: flex;
-    flex-flow: column-reverse;
-    align-items: center;
-    justify-content: center;
-    h3{
-      margin:0;
+    section {
+        padding: 0rem 1rem;
+        text-align: center;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
     }
-    img{
-      width: 100%;
+
+    .weatherWidget {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin-bottom: 5rem;
     }
-  }
-  .uploadImageButton{
-    display: flex;
-    flex-flow: row;
-    justify-content: end;
-  }
-  #likeBtn{
-    button{
+
+    .suggestion {
+        display: flex;
+        flex-flow: column-reverse;
+        align-items: center;
+        justify-content: center;
+
+        h3 {
+            margin: 0;
+        }
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .uploadImageButton {
+        display: flex;
+        flex-flow: row;
+        justify-content: end;
+    }
+
+    #likeBtn {
+        button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            ;
+            background-color: transparent;
+            border: none;
+        }
+
+        display: flex;
+        justify-content: center;
+    }
+
+    .ebcf_modal {
+        z-index: 33333333;
+        height: 100%;
+        /* width: 100vw; */
+        top: 0;
+        right: 0;
+        left: 0;
+        backdrop-filter: blur(5px);
+        /* right: 0; */
+        position: absolute;
+    }
+
+    .ebcf_modal-content {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        text-align: center;
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px 20px 50px;
+        border-radius: 2rem;
+
+        border: 1px solid #888;
+        width: 65%;
+
+        span {
+            grid-column: 1/-1;
+        }
+    }
+
+    /* The Close Button */
+    .ebcf_close {
+        color: #760707;
+        text-align: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .ebcf_close:hover,
+    .ebcf_close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+
+
+    .con-like {
+        --red: rgb(255, 50, 50);
+        position: relative;
+        width: 50px;
+        height: 50px;
+    }
+
+    .con-like .like {
+        left: 0;
+        top: 0;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        z-index: 20;
+        cursor: pointer;
+    }
+
+    .con-like .checkmark {
+        width: 100%;
+        height: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 1rem;;
-    background-color: transparent;
-    border: none;
     }
-    display: flex;
-      justify-content: center;
-  }
-  
-  .ebcf_modal-content {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap:3rem;
-    text-align: center;
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px 20px 50px;
-    border-radius: 2rem;
 
-        border: 1px solid #888;
-    width: 65%;
-    span{
-        grid-column: 1/-1;
+    .con-like .outline,
+    .con-like .filled {
+        fill: var(--red);
+        position: absolute;
     }
-}
 
-/* The Close Button */
-.ebcf_close {
-    color: #760707;
-    text-align: right;
-    font-size: 28px;
-    font-weight: bold;
-}
+    .con-like .filled {
+        animation: kfr-filled 0.5s;
+        display: none;
+    }
 
-.ebcf_close:hover,
-.ebcf_close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-  
-   
-  
-  .con-like {
-    --red: rgb(255, 50, 50);
-    position: relative;
-    width: 50px;
-    height: 50px;
-  }
-  
-  .con-like .like {
-    left: 0;
-      top: 0;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    z-index: 20;
-    cursor: pointer;
-  }
-  
-  .con-like .checkmark {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .con-like .outline,
-  .con-like .filled {
-    fill: var(--red);
-    position: absolute;
-  }
-  
-  .con-like .filled {
-    animation: kfr-filled 0.5s;
-    display: none;
-  }
-  
-  .con-like .celebrate {
-    position: absolute;
-    animation: kfr-celebrate 0.5s;
-    animation-fill-mode: forwards;
-    display: none;
-  }
-  
-  .con-like .poly {
-    stroke: var(--red);
-    fill: var(--red);
-  }
-  
-  .con-like .like:checked ~ .checkmark .filled {
-    display: block
-  }
-  
-  .con-like .like:checked ~ .checkmark .celebrate {
-    display: block
-  }
-  
-  @keyframes kfr-filled {
-    0% {
-      opacity: 0;
-      transform: scale(0);
+    .con-like .celebrate {
+        position: absolute;
+        animation: kfr-celebrate 0.5s;
+        animation-fill-mode: forwards;
+        display: none;
     }
-  
-    50% {
-      opacity: 1;
-      transform: scale(1.2);
+
+    .con-like .poly {
+        stroke: var(--red);
+        fill: var(--red);
     }
-  }
-  
-  @keyframes kfr-celebrate {
-    0% {
-      transform: scale(0);
+
+    .con-like .like:checked~.checkmark .filled {
+        display: block
     }
-  
-    50% {
-      opacity: 0.8;
+
+    .con-like .like:checked~.checkmark .celebrate {
+        display: block
     }
-  
-    100% {
-      transform: scale(1.2);
-      opacity: 0;
-      display: none;
+
+    @keyframes kfr-filled {
+        0% {
+            opacity: 0;
+            transform: scale(0);
+        }
+
+        50% {
+            opacity: 1;
+            transform: scale(1.2);
+        }
     }
-  }
-  
-  
-  
-  
-  
-  /* weather 2 */
-  .cardContainer {
-    align-self: center;
-    width: fit-content;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .card {
-    position: relative;
-    width: 150px;
-    height: 250px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 10px;
-    border-radius: 10px;
-    backdrop-filter: blur(30px);
-    background-color: rgba(65, 65, 65, 0.308);
-    border: 1px solid rgba(255, 255, 255, 0.089);
-    cursor: pointer;
-  }
-  
-  .city {
-    font-weight: 700;
-    font-size: 1.1em;
-    letter-spacing: 1.2px;
-    color: rgb(0, 0, 0);
-  }
-  
-  .weather {
-    font-weight: 500;
-    font-size: 1.3rem;
-    letter-spacing: 1.2px;
-    color: rgb(0, 0, 0);
-  }
-  
-  .temp {
-    font-size: 1.8em;
-    color: rgb(0, 0, 0);
-  }
-  
-  
-  .cardContainer::before {
-    width: 50px;
-    height: 100px;
-    content: "";
-    position: absolute;
-    background-color: rgb(144, 161, 255);
-    z-index: -1;
-    border-radius: 50%;
-    left: 100px;
-    top: 50px;
-    transition: all 1s;
-  }
-  
-  .cardContainer:hover::before {
-    transform: translate(-50px, 50px);
-  }
-  .virtualTrying{
-    position: relative;
-  }
-  .loaded{
-  height: 100vh;
-    top: 0;
-    backdrop-filter: blur(7px);
-    position: absolute;
-  }
-  @media only screen and (min-width:700px){
-    main{
-      grid-template-columns: 1fr 1fr;
+
+    @keyframes kfr-celebrate {
+        0% {
+            transform: scale(0);
+        }
+
+        50% {
+            opacity: 0.8;
+        }
+
+        100% {
+            transform: scale(1.2);
+            opacity: 0;
+            display: none;
+        }
     }
+<<<<<<< Updated upstream
     .uploadImageButton{
       grid-column: 1/-1;
     }
@@ -294,12 +244,120 @@ main{
       align-items: center;
       margin-bottom: 0;
   
-    }
-    .card {
-      position: relative;
-      width: 250px;
-      height: 250px;
-    }
-  }
-}
+=======
 
+
+
+
+
+    /* weather 2 */
+    .cardContainer {
+        align-self: center;
+        width: fit-content;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+>>>>>>> Stashed changes
+    }
+
+    .card {
+        position: relative;
+        width: 150px;
+        height: 250px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 10px;
+        border-radius: 10px;
+        backdrop-filter: blur(30px);
+        background-color: rgba(65, 65, 65, 0.308);
+        border: 1px solid rgba(255, 255, 255, 0.089);
+        cursor: pointer;
+    }
+
+    .city {
+        font-weight: 700;
+        font-size: 1.1em;
+        letter-spacing: 1.2px;
+        color: rgb(0, 0, 0);
+    }
+
+    .weather {
+        font-weight: 500;
+        font-size: 1.3rem;
+        letter-spacing: 1.2px;
+        color: rgb(0, 0, 0);
+    }
+
+    .temp {
+        font-size: 1.8em;
+        color: rgb(0, 0, 0);
+    }
+
+
+    .cardContainer::before {
+        width: 50px;
+        height: 100px;
+        content: "";
+        position: absolute;
+        background-color: rgb(144, 161, 255);
+        z-index: -1;
+        border-radius: 50%;
+        left: 100px;
+        top: 50px;
+        transition: all 1s;
+    }
+
+    .cardContainer:hover::before {
+        transform: translate(-50px, 50px);
+    }
+
+    .img-div {
+        position: relative;
+    }
+
+    .loaded {
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        backdrop-filter: blur(7px);
+        position: absolute;
+    }
+.userHomeHeading{
+    margin-bottom: 3rem;
+}
+    @media only screen and (min-width:700px) {
+        .desktopView {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+.userHomeHeading{
+    grid-column: 1/-1;
+}
+        .uploadImageButton {
+            grid-column: 1/-1;
+        }
+.buttonsAll{
+    grid-column: 1/-1;
+}
+        .weatherWidget {
+            grid-column: 2;
+            grid-row: 2;
+            display: flex;
+            flex-flow: column;
+            justify-content: space-evenly;
+            align-items: center;
+            margin-bottom: 0;
+
+        }
+
+        .card {
+            position: relative;
+            width: 250px;
+            height: 250px;
+        }
+    }
+}

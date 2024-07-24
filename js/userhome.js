@@ -133,7 +133,6 @@ export const init = async () => {
   createWeatherRecommendation();
 
 
-  }
 
   var topRecommendedOutfit = document.getElementById('top_recommended_outfit');
   var bottomRecommendedOutfit = document.getElementById('bottom_recommended_outfit');
@@ -156,6 +155,8 @@ export const init = async () => {
         topRecommendedOutfit.innerHTML = `<img src='${outfit[0].imageUrl}' alt=''>`;
         bottomRecommendedOutfit.innerHTML = `<img src='${outfit[1].imageUrl}' alt=''>`;
         // console.log(outfit[0].image64);
+        generateClothes(outfit[0].image64, outfit[1].image64);
+
         console.log('outfit', outfit);
         const top = {
           garment_type: outfit[0].garment_type,
@@ -185,7 +186,7 @@ export const init = async () => {
       console.error('Error generating outfit:', error);
     }
   }
-   showMatchingOutfit();
+  // showMatchingOutfit();
   let outfit_id;
 
   function createLikeButton(matchingoutfit, outfit) {
@@ -249,7 +250,7 @@ export const init = async () => {
 
   function addOutfitToHistory(outfit) {
     console.log(outfit[0], outfit[1]);
-    generateClothes(outfit[0].image64, outfit[1].image64);
+  //  generateClothes(outfit[0].image64, outfit[1].image64);
     const structuredOutfit = {
       top: outfit[0],
       bottom: outfit[1]
@@ -390,17 +391,17 @@ const showWeatherSuggestion = (data) => {
     console.log(topGarment);
     console.log(lowerGarment);
 
-    const response = await fetchData(base64data1, topGarment, "upper_body", "shirt");
+    // const response = await fetchData(base64data1, topGarment, "upper_body", "shirt");
 
-    setTimeout(async () => {
-      console.log("Upload timed out after 5 seconds");
-      uploadBottom(response.image.url);
+    // setTimeout(async () => {
+    //   console.log("Upload timed out after 5 seconds");
+    //   uploadBottom(response.image.url);
 
-      const jsonData = await fetchData(response.image.url, lowerGarment, "lower_body", "jeans");
-      uploadBottom(jsonData.image.url);
-      loader.style.display = 'none';
+    //   const jsonData = await fetchData(response.image.url, lowerGarment, "lower_body", "jeans");
+    //   uploadBottom(jsonData.image.url);
+    //   loader.style.display = 'none';
 
-    }, 5000); // 5 seconds
+    // }, 5000); // 5 seconds
 
 
 
@@ -429,7 +430,35 @@ ctx1.drawImage(image1, 0, 0);
 const base64data1 = canvas1.toDataURL('image/jpeg');
 
 
-function uploadBottom(srcData){
-  image1.src = srcData;
+// function uploadBottom(srcData){
+//   image1.src = srcData;
+
+// }
+
+// Get the modal
+var ebModal = document.getElementById('mySizeChartModal');
+ebModal.style.display = "none";
+vton.style.display= 'none';
+
+// Get the button that opens the modal
+var ebBtn = document.getElementById("virtualTryOn");
+
+// Get the <span> element that closes the modal
+var ebSpan = document.getElementById("closeModal");
+
+// When the user clicks the button, open the modal 
+ebBtn.onclick = function() {
+    ebModal.style.display = "block";
+    vton.style.display= 'block';
+
+}
+
+// When the user clicks on <span> (x), close the modal
+ebSpan.onclick = function() {
+    ebModal.style.display = "none";
+    vton.style.display= 'none';
+
+}
+
 
 }

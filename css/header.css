@@ -75,7 +75,7 @@
     padding: 1rem;
     position: fixed;
     z-index: 10;
-    transition: all 0.9s ease-in-out;
+    /* transition: all 0.9s ease-in-out; */
     display: flex;
     top: 0;
     left: 0;
@@ -118,7 +118,7 @@
             line-height: 72px;
             cursor: pointer;
             position: absolute;
-            transition: transform 0.3s;
+            /* transition: transform 0.3s; */
 
             &#openNavButton {
                 transform: scale(1) rotate(0deg);
@@ -141,7 +141,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
-        transition: left 0.3s;
+         transition:  0.3s;
         z-index: -1;
         background-color: rgba(0, 0, 0, 0.478);
         backdrop-filter: blur(20px);

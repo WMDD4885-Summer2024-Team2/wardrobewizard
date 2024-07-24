@@ -1302,3 +1302,7 @@ input[type="file"] {
         transform: rotate(0deg);
       }
     }
+
+    header{
+      z-index: 99999999999;
+    }

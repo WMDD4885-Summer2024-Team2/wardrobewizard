@@ -35,7 +35,7 @@ const renderdata = (catgeory, element) => {
 
     element.innerHTML += `<div class='card flex-grow'>
         <div class='card-body'>
-          <div><img src='${outfit.downloadURL}'></div>
+          <div><img src='${outfit.imageUrl}'></div>
         
         </div>
         <div class='card-footer'>
