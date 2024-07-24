@@ -32,6 +32,10 @@ profileSelect.addEventListener('click', function () {
 
 export const init =  () => {
   getInformation();
+  const contactPage = document.getElementById('contactUs');
+  contactPage.addEventListener("click", () => {
+    window.location.href = "#contact";
+  })
 
 }
 

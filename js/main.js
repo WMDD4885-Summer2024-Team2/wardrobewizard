@@ -40,7 +40,8 @@ const loadRouter = () =>{
     new Page('#lookbook', 'pages/lookbook.html','pages/header.html'),
     new Page('#profilecreation', 'pages/profilecreation.html','pages/header.html'),
     new Page('#uploadoutfithome', 'pages/uploadoutfit.html','pages/header.html'),
-    new Page('#uploadoutfitmycloset', 'pages/uploadoutfit.html','pages/header.html')
+    new Page('#uploadoutfitmycloset', 'pages/uploadoutfit.html','pages/header.html'),
+    new Page('#contact', 'pages/contact.html','pages/header.html')
   ])
 };
 
