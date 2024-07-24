@@ -86,7 +86,37 @@ main{
       justify-content: center;
   }
   
-  
+  .ebcf_modal-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap:3rem;
+    text-align: center;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px 20px 50px;
+    border-radius: 2rem;
+
+        border: 1px solid #888;
+    width: 65%;
+    span{
+        grid-column: 1/-1;
+    }
+}
+
+/* The Close Button */
+.ebcf_close {
+    color: #760707;
+    text-align: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.ebcf_close:hover,
+.ebcf_close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
   
    
   
