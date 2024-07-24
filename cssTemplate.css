@@ -11,41 +11,7 @@
   width: 1px;
 }
 
-:root {
-  --primary-color: #000000;
-  --secondary-color: #2ecc71;
-  --background-color: #F0E3CB;
-  --text-color: rgb(0, 0, 0);
-  --header-bg-color: #f8f9fa;
-  --nav-bg-color: #e9ecef;
-  --footer-bg-color: #f8f9fa;
 
-  --button-bg-color: #031B4A;
-  --button-hover-color: linear-gradient(82.3deg,
-      #00000073 10.8%,
-      rgba(0, 0, 0, 0.272) 94.3%);
-  --button-text-color: #fff;
-  --button-hover-text-color: black;
-  --card-bg-color: #23232399;
-  --card-text-color: white;
-
-  --like-button-color: red;
-  --like-button-bg-color: rgb(226, 226, 226);
-
-}
-
-body {
-  font-family: Arial, sans-serif;
-  color: var(--text-color);
-  margin: 0;
-  padding: 0;
-}
-
-img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
 
 .fa-trash-can {
   position: relative;
