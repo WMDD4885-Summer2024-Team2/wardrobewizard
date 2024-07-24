@@ -1,5 +1,12 @@
-/* 
-function getLocation() {
+export const init = () => {
+  getLocation().then(position => {
+    console.log("Geolocation obtained successfully:", position);
+  }).catch(error => {
+    console.error("Error obtaining geolocation:", error);
+  });
+}
+
+const getLocation = () => {
   return new Promise((resolve, reject) => {
     if (navigator.geolocation) {
       console.log("Geolocation is supported. Requesting location...");
@@ -27,10 +34,6 @@ function getLocation() {
       reject(new Error("Geolocation is not supported by this browser."));
     }
   });
+
 }
 
-getLocation().then(position => {
-    console.log("Geolocation obtained successfully:", position);
-  }).catch(error => {
-    console.error("Error obtaining geolocation:", error);
-  }); */
