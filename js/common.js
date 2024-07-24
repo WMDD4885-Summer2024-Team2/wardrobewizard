@@ -26,12 +26,12 @@ export const saveOutfitToDb = (data) => {
 
 // Method to add history data to Firestore
 export const saveHistoryToDb = (data) => {
-  return firebase.dbSave(data, "history", "outfit");
+  return firebase.dbSave(data, "history", "historyOutfit");
 };
 
 // Method to add favorite data to Firestore
 export const saveFavoriteToDb = (data) => {
-  return firebase.dbSave(data, "favorite", "outfit");
+  return firebase.dbSave(data, "favorites", "favfit");
 };
 
 // Method to add user profile data to Firestore

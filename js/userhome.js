@@ -1,4 +1,4 @@
-// import { getOutfitCount,genreateOutfits,getFileAsBase64,saveHistoryToDb } from "./common.js";
+ import { getOutfitCount,genreateOutfits,getFileAsBase64,saveHistoryToDb,saveFavoriteToDb } from "./common.js";
 // import config from '../resources/config.json' with { type: 'json' };
 // import {fetchData} from "./utils.js";
 import { wardrowizAlert } from "./common.js";
@@ -123,91 +123,13 @@ import { wardrowizAlert } from "./common.js";
 
 
 
-import { genreateOutfit } from "./outfitsearch.js";
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getDatabase } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js';
-// import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
-import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
-import { getFirestore, collection, doc, addDoc, setDoc, getDocs, getDoc, deleteDoc } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
-import { getStorage, ref, uploadBytes, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
-
-
-const firebaseConfig = {
-  apiKey: "AIzaSyBxkMWakgmz97Ulk79whfqSQcA-Q2uXQDA",
-  authDomain: "integrated-project1.firebaseapp.com",
-  projectId: "integrated-project1",
-  storageBucket: "integrated-project1.appspot.com",
-  messagingSenderId: "168333709827",
-  appId: "1:168333709827:web:eb9a1c473b1af653aeb436",
-  measurementId: "G-MSNKDYWBK4"
-};
-const firebase = initializeApp(firebaseConfig);
-const database = getDatabase(firebase);
-const auth = getAuth(firebase);
-auth.languagecode = 'en';
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const user = auth.currentUser;
-const storage = getStorage();
-
 
 
 export const init = async () => {
-  let filteredDataTop = [];
-  let filteredDataBottom = [];
-  let email;
-  let uid;
-
-  onAuthStateChanged(auth, (user) => {
-
-    if (user) {
-      uid = user.uid;
-      email = user.email;
-      getData(email);
-    } else {
-
-    }
-  });
-  console.log('email', email);
-  const collectionName = 'outfit-info';
-  var outfit_info_data = [];
-  var history_info_data = [];
-
-  function getData(documentId) {
-    const documentRef = doc(db, 'outfit-info', documentId);
-    const subcollectionRef = collection(documentRef, 'outfit');
-    getDocs(subcollectionRef).then((querySnapshot) => {
-
-      querySnapshot.forEach((doc) => {
-        var data = doc.data();
-        //   console.log(data);
-        outfit_info_data.push(data);
 
 
-      });
 
-      outputResult(outfit_info_data);
-
-      filteredDataTop = outfit_info_data.filter(item => item.garment_type == "top");
-      filteredDataBottom = outfit_info_data.filter(item => item.garment_type == "bottom");
-
-    });
-
-    const history = doc(db, 'history', email);
-    const historyRef = collection(history, 'historyOutfit');
-    getDocs(historyRef).then((querySnapshot) => {
-
-      querySnapshot.forEach((doc) => {
-        var data = doc.data();
-        //   console.log(data);
-        history_info_data.push(data);
-
-
-      });
-
-  //    outputHistorytResult(history_info_data);
-
-    });
+  showMatchingOutfit();
 
 
   }
@@ -215,35 +137,14 @@ export const init = async () => {
   var topRecommendedOutfit = document.getElementById('top_recommended_outfit');
   var bottomRecommendedOutfit = document.getElementById('bottom_recommended_outfit');
 
-  // function outputHistorytResult(history_info_data) {
+  
 
-  //   console.log(history_info_data);
 
-  //   const randomIndex = Math.floor(Math.random() * history_info_data.length);
-  //   const randomObject = history_info_data[randomIndex];
-
-  //   console.log(randomIndex);
-  //   if (history_info_data.length == 0) {
-  //     topRecommendedOutfit.innerHTML = "No Outfit";
-  //   } else {
-  //     topRecommendedOutfit.innerHTML = `<img src='${randomObject.outfit.top.imageUrl}' alt=''>`;
-  //     bottomRecommendedOutfit.innerHTML = `<img src='${randomObject.outfit.bottom.imageUrl}' alt=''>`;
-
-  //   }
-  // }
-
-  function outputResult(outfit_info_data) {
-    console.log(outfit_info_data);
-    filteredDataTop = outfit_info_data.filter(item => item.garment_type == "top");
-    filteredDataBottom = outfit_info_data.filter(item => item.garment_type == "bottom");
-  }
 
   async function showMatchingOutfit() {
-    // loader.style.display = "block";
-    console.log(filteredDataTop);
-    console.log(filteredDataBottom);
+    
     try {
-      const searchResult = await genreateOutfit(filteredDataTop, filteredDataBottom, 'Auto');
+      const searchResult = await genreateOutfits();
       const matchingoutfit = document.getElementById('likeBtn');
 
 
@@ -338,16 +239,9 @@ export const init = async () => {
       top: outfit[0],
       bottom: outfit[1]
     };
-    // Method to add outfit data to Fav Collection
-    // addDoc(collection(db, "favorites", email, "favfit"), outfitsData);
-    addDoc(collection(db, "favorites", email, "favfit"), outfitsData)
-      .then((docRef) => {
-        outfit_id = docRef.id;
-        console.log(`Document ID: ${docRef}`);
-      })
-      .catch((error) => {
-        console.error("Error adding document:", error);
-      });
+
+  saveFavoriteToDb(outfitsData);
+
 
 
   }
@@ -363,7 +257,7 @@ export const init = async () => {
       outfit: structuredOutfit,
       createdAt: new Date()
     };
-    addDoc(collection(db, "history", email, "historyOutfit"), outfitsData);
+    saveHistoryToDb(outfitsData);
   }
 
   var generate_outfit = document.getElementById('genrateOutfit');
@@ -520,7 +414,7 @@ export const init = async () => {
 
 }
 }
-}
+
 
 const image1 = document.getElementById('image1');
 
