@@ -42,11 +42,8 @@ export const init =  () => {
 let userDocID;
 let imageUrl;
 console.log('see');
-<<<<<<< Updated upstream
 
-=======
 await getInformation();
->>>>>>> Stashed changes
  
 async function getInformation() {
   const result = await loadUserProfile();
