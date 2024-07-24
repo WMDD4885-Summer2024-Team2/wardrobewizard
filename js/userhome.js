@@ -393,19 +393,19 @@ const showWeatherSuggestion = (data) => {
     console.log(topGarment);
     console.log(lowerGarment);
 
-    // const response = await fetchData(base64data1, topGarment, "upper_body", "shirt");
+    const response = await fetchData(base64data1, topGarment, "upper_body", "shirt");
 
-    // setTimeout(async () => {
-    //   console.log("Upload timed out after 5 seconds");
-    //   // uploadBottom(response.image.url);
-    //   image1.src = response.image.url;
+    setTimeout(async () => {
+      console.log("Upload timed out after 5 seconds");
+      // uploadBottom(response.image.url);
+      image1.src = response.image.url;
 
-    //   const jsonData = await fetchData(response.image.url, lowerGarment, "lower_body", "jeans");
-    //   // uploadBottom(jsonData.image.url);
-    //   image1.src = jsonData.image.url;
-    //   loader.style.display = 'none';
+      const jsonData = await fetchData(response.image.url, lowerGarment, "lower_body", "jeans");
+      // uploadBottom(jsonData.image.url);
+      image1.src = jsonData.image.url;
+      loader.style.display = 'none';
 
-    // }, 5000); // 5 seconds
+    }, 5000); // 5 seconds
 
 
 

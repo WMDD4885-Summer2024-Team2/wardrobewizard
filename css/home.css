@@ -1,6 +1,9 @@
 #uploadoutfitsection {
     display: none;
 }
+main{
+    padding: 0rem 1rem;
+}
 
 .todays-suggestion-section {
     display: none;
@@ -69,11 +72,11 @@ section {
 
 /* card */
 
-.teamCards {
-
+.teamImages {
+padding: 3rem 0rem;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(1fr);
+    grid-template-columns: 1fr 1fr;
     gap: 2rem;
 
     @media only screen and (min-width:600px) {
@@ -274,9 +277,8 @@ main h1 {
 
 
             img {
-
+                width: 450px;
                 margin: 0 auto;
-                width: 100%;
             }
         }
     }
@@ -301,11 +303,37 @@ main h1 {
         position: relative;
         margin-top: 4rem;
     }
+    #team {
 
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        h1{
+            grid-column: 1/-1;
+        }
+    }
 
 }
 
 #team {
+
+.teamVideo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    .frame{
+        box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+padding: 1rem;
+
+    }
+    video{
+        margin: 0 auto;
+        width:400px;
+        height: auto;
+    }
+}
+
     .card1 {
         margin: 0 auto;
         width: 190px;
@@ -327,7 +355,7 @@ main h1 {
         cursor: pointer;
         transform: scale(1.2);
         box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
-        background: rgba(251, 226, 162, 0.823);
+        background: #DC9656;
     }
 
     .first-content {
