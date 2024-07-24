@@ -3,6 +3,7 @@
     padding: 1rem;
 }
 .header-wrapper {
+    margin-top: 1rem;
     gap: 1rem;
     .title-container {
         width: 100%;
@@ -162,7 +163,7 @@
         .outfits-container {
             .history-fav-card {
                 img {
-                    width: 120px;
+                    width: 100px;
                 }
             }
             .history-fav-card {
