@@ -1,0 +1,46 @@
+#mycloset{
+    .cards-closet{
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        /* color:  #031B4A; */
+        color: black;
+        margin: 0 auto;
+        box-shadow: none;
+        background-color: transparent;
+        justify-content: space-around;
+    }
+
+    .outfit-1{
+display: grid;
+grid-template-columns: 1fr 1fr;
+margin-top: 1rem;
+    }
+
+    button{
+        display: none;
+    }
+    .wardrowiz-details {
+        color: white;
+        background-color: #031B4A;
+    }
+    .wardrowiz-image {
+        border-top-right-radius: 20px;
+    }
+   
+
+
+    @media only screen and (min-width: 700px){
+        .outfit-1{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+                }
+
+                .grid-cat{
+                    display: flex;
+                    flex-direction: column;
+                }
+                
+
+    }
+}
