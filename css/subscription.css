@@ -28,7 +28,7 @@ gap: 1rem;
     
  }
 } 
-    .card {
+    .cardSubscription {
         margin: 0 auto;
         overflow: hidden;
         position: relative;
@@ -58,7 +58,7 @@ gap: 1rem;
         border-radius: 0.5rem;
       }
       
-      .card::before {
+      .cardSubscription::before {
         content: "";
         position: absolute;
         top: 2rem;
@@ -75,7 +75,7 @@ gap: 1rem;
         box-shadow: 0 1px 5px 3px var(--colorBeige), 0 0 30px 5px var(--colorBeige);
       }
       
-      .card .title {
+      .cardSubscription .title {
         display: flex;
         flex-flow: column wrap;
         gap: 0.5rem;
@@ -90,7 +90,7 @@ gap: 1rem;
        
       }
       
-      .card .pricing {
+      .cardSubscription .pricing {
         
         font-size: 2rem;
         color: white;
@@ -100,14 +100,14 @@ gap: 1rem;
         }
       }
       
-      .card .pricing .pricing-time,
-      .card .sub-title {
+      .cardSubscription .pricing .pricing-time,
+      .cardSubscription .sub-title {
         font-size: 1rem;
         color: var(--colorBeige);
         font-weight: 500;
       }
       
-      .card .list {
+      .cardSubscription .list {
         display: flex;
         flex-direction: column;
         gap: 0.25rem;
@@ -117,14 +117,14 @@ gap: 1rem;
         list-style: none;
       }
       
-      .card .list .list-item .check {
+      .cardSubscription .list .list-item .check {
         margin-right: 0.25rem;
         font-size: 1rem;
         color: var(--colorBeige);
                 font-weight: 900;
       }
       
-      .card .button {
+      .cardSubscription .button {
         overflow: hidden;
         cursor: pointer;
         position: relative;
@@ -141,13 +141,13 @@ gap: 1rem;
         transition: all 0.3s cubic-bezier(1, 0, 0, 1);
       }
       
-      .card .button .text-button {
+      .cardSubscription .button .text-button {
         position: relative;
         z-index: 10;
       }
       
-      .card .button::before,
-      .card .button::after {
+      .cardSubscription .button::before,
+      .cardSubscription .button::after {
         content: "";
         position: absolute;
         top: 0;
@@ -155,7 +155,7 @@ gap: 1rem;
         height: 100%;
         transition: all 0.3s ease-in-out;
       }
-      /* .card .button::before {
+      /* .cardSubscription .button::before {
         left: 0;
         /* background-image: radial-gradient(
           circle at 0% 45%,
@@ -164,7 +164,7 @@ gap: 1rem;
           rgba(16, 5, 36, 0) 100%
         ); 
       } */
-      /* .card .button::after {
+      /* .cardSubscription .button::after {
         right: 0;
         background-image: radial-gradient(
           circle at 100% 45%,
@@ -174,12 +174,12 @@ gap: 1rem;
         );
       /* } */
       
-      .card .button:hover {
+      .cardSubscription .button:hover {
         box-shadow: 0px 0px 20px 0 var(--colorBeige);
       }
       
-      .card .button:hover::before,
-      .card .button:hover::after {
+      .cardSubscription .button:hover::before,
+      .cardSubscription .button:hover::after {
         width: 0;
         opacity: 0;
       }
