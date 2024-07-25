@@ -72,7 +72,7 @@ const db = getFirestore(app);
 const user = auth.currentUser;
 const storage = getStorage();
 export const init = () => {
-  showOutfit();
+  showOutfits();
  // viewwardrobe.addEventListener("click", showOutfit);
 
   let email;
@@ -82,8 +82,8 @@ onAuthStateChanged(auth, (user) => {
   if (user) {
     uid = user.uid;
     email = user.email;
-    getData(uid);
-    getModelData(uid)
+    getData(email);
+    getModelData(email)
   } else {
 
   }
@@ -290,7 +290,7 @@ function result(outfit) {
           console.log(id);
           const subcollectionName = "outfit";
 
-          const parentDocRef = doc(collection(db, "outfit-info"), uid);
+          const parentDocRef = doc(collection(db, "outfit-info"), email);
           const subcollectionRef = collection(parentDocRef, subcollectionName);
 
           const subDocRef = doc(subcollectionRef, id);
@@ -474,7 +474,7 @@ function uploadBottom(im) {
 
 function deleteOutfit(outfitDocumentId) {
   console.log(outfitDocumentId + "go");
-  const documentRef = doc(db, 'outfit-info', uid);
+  const documentRef = doc(db, 'outfit-info', email);
   const subcollectionRef = collection(documentRef, 'outfit');
 
   const outfitDocRef = doc(subcollectionRef, outfitDocumentId);
