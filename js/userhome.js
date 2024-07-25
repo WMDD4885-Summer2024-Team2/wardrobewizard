@@ -247,6 +247,9 @@ const showWeatherSuggestion = (data) => {
         addOutfitToHistory(structuredOutfitData);
         //  loader.style.display = "none";
       } else {
+        loader2.style.display = 'none';
+        topRecommendedOutfit.innerHTML = `<p>No outfits are there</p>`;
+    
         console.log('No matching outfit found');
       }
     } catch (error) {
