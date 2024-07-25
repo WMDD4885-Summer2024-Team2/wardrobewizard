@@ -21,12 +21,12 @@
             border-radius: 10px 0 0 10px;
             height: 45px;
             margin-bottom: 0;
-            border-color: var(--color6);
+            border-color: var(--colorBeige);
         }
         i {
-            color: var(--color6);
+            color: var(--colorBeige);
             padding: 0.5rem 1rem;
-            background-color: var(--color4);
+            background-color: var(--colorNavyBlue);
             border-radius: 0 10px 10px 0;
             font-size: 1.82rem;
         }
@@ -36,8 +36,8 @@
         a {
             flex-grow: 1;
             text-decoration: none;
-            color: var(--color6);
-            background-color: var(--color4);
+            color: var(--colorBeige);
+            background-color: var(--colorNavyBlue);
             border-radius: 10px;
             text-align: center;
             padding: 0.8rem;
@@ -65,7 +65,7 @@
           
               a {
                 text-decoration: none;
-                color: var(--color4);
+                color: var(--colorNavyBlue);
                 font-weight: 400;
                 font-size: 1rem;
               }

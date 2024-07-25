@@ -63,7 +63,7 @@ const outputFavoriteResult = (model_info_data, isClicked) => {
         result(model_info_data, 'favorite');
     }
     favoriteTab.addEventListener('click', function () {
-        favoriteTab.style.borderBottom = '1px solid var(--color4)';
+        favoriteTab.style.borderBottom = '1px solid var(--colorNavyBlue)';
         const historyTab = document.getElementById('history');
         historyTab.style.borderBottom = '';
         result(model_info_data, 'favorite');
@@ -74,9 +74,9 @@ const outputHistoryResult = (outfit_info_data) => {
     result(outfit_info_data, 'history');
 
     const historyTab = document.getElementById('history');
-    historyTab.style.borderBottom = '1px solid var(--color4)';
+    historyTab.style.borderBottom = '1px solid var(--colorNavyBlue)';
     historyTab.addEventListener('click', function () {
-        historyTab.style.borderBottom = '1px solid var(--color4)';
+        historyTab.style.borderBottom = '1px solid var(--colorNavyBlue)';
         const favoriteTab = document.getElementById('favorite');
         favoriteTab.style.borderBottom = '';
         result(outfit_info_data, 'history');

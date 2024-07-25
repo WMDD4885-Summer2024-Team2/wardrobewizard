@@ -7,7 +7,17 @@ import { getFirestore, query, where, getDocs, collection, doc, getDoc, setDoc, u
 const auth = firebase.auth;
 const db = getFirestore();
 
-profileForm.style.display = 'none';
+
+export const init =  () => {
+
+  profileForm.style.display = 'none';
+
+  getInformation();
+  const contactPage = document.getElementById('contactUs');
+  contactPage.addEventListener("click", () => {
+    window.location.href = "#contact";
+  });
+
 
 nameEdit.addEventListener('click', function () {
   document.getElementById('name').disabled = false;
@@ -29,13 +39,27 @@ profileSelect.addEventListener('click', function () {
 
 })
 
-export const init =  () => {
-  getInformation();
-  const contactPage = document.getElementById('contactUs');
-  contactPage.addEventListener("click", () => {
-    window.location.href = "#contact";
-  })
+signout.addEventListener('click', function () {
 
+  userSignOut();
+
+})
+
+var reset_passcode = document.getElementById("resetPassword");
+reset_passcode.addEventListener('click', (event) => {
+  event.preventDefault();
+  resetPassword(firebase.getUser().email);
+  var email = document.getElementById('userEmailHeading').innerHTML;
+  wardrowizAlert('Password reset email sent successfully at ' + email);
+
+
+});
+
+
+subscription.addEventListener('click', (event) => {
+  event.preventDefault();
+window.location.href = '#subscription';
+});
 }
 
 
@@ -103,22 +127,7 @@ fileInput.addEventListener('change', async function () {
  
 
 
-var signout = document.getElementById('signout');
-signout.addEventListener('click', function () {
 
-  userSignOut();
-
-})
-
-var reset_passcode = document.getElementById("resetPassword");
-reset_passcode.addEventListener('click', (event) => {
-  event.preventDefault();
-  resetPassword(firebase.getUser().email);
-  var email = document.getElementById('userEmailHeading').innerHTML;
-  wardrowizAlert('Password reset email sent successfully at ' + email);
-
-
-});
 
 
 

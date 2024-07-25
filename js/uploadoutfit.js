@@ -574,6 +574,7 @@ var colorHex;
                         console.log(`Outfit document added with ID: ${docRef.id}`);
                        // alert('Outfit uploaded');
                         wardrowizAlert('Outfit uploaded');
+                        // window.location.href = '#uploadOutfit';
                         resetPage();
                     })
                         .catch((error) => {

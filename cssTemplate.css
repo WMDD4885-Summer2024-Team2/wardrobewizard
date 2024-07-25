@@ -1,15 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css');
 
-.visually-hidden {
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-}
 
 
 
@@ -553,71 +544,4 @@ aspect-ratio: 1/1;
   }
 
 
-  /* loaderrrrr */
-
-  .loader {
-    display: flex;
-    padding: 10rem 3rem 10rem 3rem;
-    align-items: center;
-    margin: 0 auto;
-    justify-content: center;
-
-  }
-
-
-  .ball {
-    position: relative;
-    bottom: 50px;
-    left: calc(100% - 20px);
-    width: 50px;
-    height: 50px;
-    background: #28282800;
-    background-image: url(./images/homePageImages/ww.png);
-    background-size: cover;
-    border-radius: 50%;
-    transition: 0.5s ease-in-out;
-    animation: ball-move8234 3s ease-in-out infinite alternate;
-
-  }
-
-
-  .ball::after {
-    position: absolute;
-    content: '';
-    top: 25px;
-    right: 5px;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-  }
-
-  .bar {
-    width: 200px;
-    height: 12.5px;
-    background: #031B4A;
-    border-radius: 30px;
-    transform: rotate(-15deg);
-    animation: up-down6123 3s ease-in-out 1s infinite alternate;
-  }
-
-  @keyframes up-down6123 {
-    from {
-      transform: rotate(-15deg);
-    }
-
-    to {
-      transform: rotate(15deg);
-    }
-  }
-
-  @keyframes ball-move8234 {
-    from {
-      left: calc(100% - 40px);
-      transform: rotate(360deg);
-    }
-
-    to {
-      left: calc(0% - 20px);
-      transform: rotate(0deg);
-    }
-  }
+  

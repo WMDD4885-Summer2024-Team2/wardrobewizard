@@ -32,13 +32,13 @@
     text-decoration: none;
     display: block;
 
-    color: var(--color1);
+    color: var(--colorWhite);
     font-weight: bold;
     font-size: 1rem;
 }
 
 .menu-item a:hover{
-    border-bottom: 2px solid var(--color5) ;
+    border-bottom: 2px solid var(--colorMustard) ;
     
 }
 
@@ -48,7 +48,7 @@
 }
 
 .menu{
-    background-color: var(--color4);
+    background-color: var(--colorNavyBlue);
     flex-grow: 1;
     padding: 1rem;
     position: fixed;
@@ -241,7 +241,7 @@ display: none ;
     }
 
     .menu-item a{
-        color: var(--color4);
+        color: var(--colorNavyBlue);
     }
 
     .menu-item img{
@@ -257,7 +257,7 @@ display: none ;
     }
 
     .menu-item a:hover{
-        color: var(--color4);
+        color: var(--colorNavyBlue);
     } */
 
 
