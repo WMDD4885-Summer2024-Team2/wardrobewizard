@@ -2,6 +2,11 @@
 import { loadOutfitData, deleteOufitDoc } from "./common.js";
 
 export const init = () => {
+<<<<<<< Updated upstream
+=======
+  showOutfits();
+ // viewwardrobe.addEventListener("click", showOutfit);
+>>>>>>> Stashed changes
 
     showOutfits(loadOutfitData());
 
