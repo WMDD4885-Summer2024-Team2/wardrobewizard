@@ -95,6 +95,8 @@
 
         .nav {
             left: 0;
+            width: 100%;
+           height: 1000vh;
 
             .item {
                 opacity: 1;
