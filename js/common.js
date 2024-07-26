@@ -10,6 +10,7 @@ import {
   getCountFromServer,
   doc,
   updateDoc,
+  deleteDoc
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 import { genreateOutfit } from "./outfitsearch.js";
@@ -55,10 +56,28 @@ export const loadOutfitData = () => {
   );
 
   onSnapshot(q, (querySnapshot) => {
-    outfitArray = querySnapshot.docs.map((doc) => doc.data());
+    outfitArray = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    console.log(outfitArray);
+
   });
+  return outfitArray;
+
 };
 
+export const deleteOufitDoc = (docId) => {
+  const db = firebase.getDB();
+  const docRef = doc(db, "outfit-info", firebase.getUser().email, "outfit", docId);
+  deleteDoc(docRef)
+    .then(() => {
+      console.log("Document deleted successfully");
+      wardrowizAlert('Document deleted successfully');
+    })
+    .catch((error) => {
+      console.error("Error deleting document: ", error);
+      wardrowizAlert('Please try again');
+
+    });
+};
 export const loadFavouritesData = () => {
   const q = query(
     collection(
@@ -73,6 +92,8 @@ export const loadFavouritesData = () => {
     favoriteArray = querySnapshot.docs.map((doc) => doc.data());
   });
 };
+
+
 
 export const loadHistoryData = () => {
   const q = query(

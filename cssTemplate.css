@@ -4,11 +4,7 @@
 
 
 
-.fa-trash-can {
-  position: relative;
-  color: white;
-  z-index: -3;
-}
+
 
 
 h1,
@@ -361,8 +357,8 @@ aspect-ratio: 1/1;
   display: flex;
   flex-flow: row wrap;
   gap: 1rem;
-  justify-content: center;
-  align-items: flex-start;
+  justify-content: space-evenly;
+  align-items: center;
   padding: 1rem;
   flex-grow: 1;
 
@@ -400,6 +396,8 @@ aspect-ratio: 1/1;
     }
   }
     .wardrowiz-card {
+      width: 250px;
+      height: 450px;
       flex-grow: 1;
       /* 2 column layout */
       flex-basis: calc(50% - .5rem);
@@ -407,6 +405,7 @@ aspect-ratio: 1/1;
       border-radius: 1.5rem;
       position: relative;
       .wardrowiz-image {
+        box-sizing: border-box;
         width: 100%;
         border-radius: 1.5rem;
         img {

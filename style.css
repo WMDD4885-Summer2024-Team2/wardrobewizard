@@ -358,7 +358,6 @@ video {
  */
 
  .fa-trash-can {
-    position: relative;
     color: white;
     z-index: -3;
   }
