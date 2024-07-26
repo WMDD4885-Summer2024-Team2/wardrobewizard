@@ -30,6 +30,9 @@
             border-radius: 0 10px 10px 0;
             font-size: 1.82rem;
         }
+        i:hover {
+            cursor: pointer;
+        }
     }
     .button-container{
         gap: 1rem;
@@ -77,43 +80,65 @@
         flex-flow: row wrap;
         gap: 1rem;
         justify-content: center;
-        align-items: center;
+        align-items: normal;
         padding: 1rem;
         flex-grow: 1;
       
         .history-fav-card {
-            padding: 1rem;
           /* 2 column layout */
           flex-basis: calc(50% - .5rem);   
           box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
           position: relative;
           border-radius: 50% 50% 0 0;
-      
-          div img{
-            margin: auto !important;
+          
+          .topOutfit {
+            margin: 1rem 1rem 0 1rem;
           }
-      
+          .bottomOutfit {
+            margin: 0 1rem 1rem 1rem;
+          }
           img {
+            margin: auto !important;
             aspect-ratio: 1/1;
             object-fit: cover;
-            width: 80px;
+            width: 50px;
+          }
+          .tags {
+            display: flex;
+            flex-flow: row wrap;
+            gap: 0.5rem;
+            border-top: 1px solid #ccc;
+            padding: 10px;
+            label {
+                display: inline;
+                color: white;
+                background-color: #9B5A1C;
+                border-radius: 20px;
+                padding: 5px;
+                font-size: 0.4rem;
+            }
           }
       
           .delete-btn {
-            position: absolute;
-            bottom: 0;
-            right: 1rem;
-            color: var(--like-button-color);
-            width: auto;
-      
+            color: red;
             border: 0px;
-            border-radius: 50%;
-            background: var(--like-button-bg-color);
-            padding: 8px;
+            border-radius: 0;
+            padding: 0;
+            background-color: #FFFFFF;
+            width: 100%;
+            text-align: right !important;
+            i {
+                border: 1px solid #ccc;
+                border-bottom: 0;
+                padding: 10px;
+                border-radius: 10px 10px 0 0;
+            }
           }
       
-          .delete-btn:hover {
-            font-size: larger;
+          .delete-btn{
+            i:hover {
+                border: 1px solid #9B5A1C;
+            }
           }
         }
     }   
@@ -123,13 +148,13 @@
 @media screen and (min-width: 600px) {
     .header-wrapper {
         flex-flow: row nowrap;
-        justify-content: flex-end;
+        justify-content: space-between;
         .title-container {
             display: none;
             
         }
         .search-container {
-            flex-basis: 40%;
+            flex-basis: 35%;
         }
         .button-container {
             flex-flow: row nowrap;
@@ -145,6 +170,11 @@
             }
             .history-fav-card {
                 flex-basis: 30%;
+                .tags {
+                    label {
+                        font-size: 0.7rem;
+                    }
+                }
             }
 
         }
@@ -156,7 +186,7 @@
 @media screen and (min-width: 1010px) {
     .header-wrapper {
         .search-container {
-            flex-basis: 30%;
+            flex-basis: 40%;
         }
         
     }
@@ -164,11 +194,11 @@
         .outfits-container {
             .history-fav-card {
                 img {
-                    width: 100px;
+                    width: 130px;
                 }
             }
             .history-fav-card {
-                flex-basis: 20%;
+                flex-basis: 23%;
             }
         }
     }

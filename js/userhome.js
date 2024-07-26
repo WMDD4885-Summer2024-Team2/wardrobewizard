@@ -224,27 +224,7 @@ const showWeatherSuggestion = (data) => {
         // console.log(outfit[0].image64);
         generateClothes(outfit[0].image64, outfit[1].image64);
 
-        console.log('outfit', outfit);
-        const top = {
-          garment_type: outfit[0].garment_type,
-          imageUrl: outfit[0].imageUrl,
-          occasion: outfit[0].occasion,
-          color: outfit[0].colorName,
-          image64: outfit[0].image64
-        }
-        const bottom = {
-          garment_type: outfit[1].garment_type,
-          imageUrl: outfit[1].imageUrl,
-          occasion: outfit[1].occasion,
-          color: outfit[1].colorName,
-          image64: outfit[1].image64
-        }
-
-        const structuredOutfitData = [top, bottom]
-
-        createLikeButton(matchingoutfit, structuredOutfitData);
-
-        addOutfitToHistory(structuredOutfitData);
+        storeOutfitInDatabase(outfit, matchingoutfit);
         //  loader.style.display = "none";
       } else {
         loader2.style.display = 'none';
@@ -257,46 +237,73 @@ const showWeatherSuggestion = (data) => {
     }
   }
   // showMatchingOutfit();
+  
   let outfit_id;
+  const storeOutfitInDatabase = (outfit, matchingoutfit) => {
 
-  function createLikeButton(matchingoutfit, outfit) {
+    const top = {
+      garment_type: outfit[0].garment_type,
+      imageUrl: outfit[0].imageUrl,
+      occasion: outfit[0].occasion,
+      color: outfit[0].colorName,
+      image64: outfit[0].image64,
+      tags: outfit[0].tags
+    }
+    const bottom = {
+      garment_type: outfit[1].garment_type,
+      imageUrl: outfit[1].imageUrl,
+      occasion: outfit[1].occasion,
+      color: outfit[1].colorName,
+      image64: outfit[1].image64,
+      tags: outfit[1].tags
+    }
+
+    const structuredOutfitData = [top, bottom];
+    addOutfitToHistory(top, bottom);
+    addOutfitToFavorites(matchingoutfit, structuredOutfitData);
+
+  }
+
+  const addOutfitToHistory = (top, bottom) => {
+    const outfitsData = {
+      outfit: { top, bottom },
+      createdAt: new Date()
+    };
+    saveHistoryToDb(outfitsData);
+  }
+
+  const addOutfitToFavorites = (matchingoutfit, outfit) => {
     let islike = false;
     const heartButton = document.createElement('button');
-    //heartButton.className = 'heart-button';
     heartButton.innerHTML = `<div class="con-like">
-<input class="like" type="checkbox" title="like">
-<div class="checkmark">
-  <svg xmlns="http://www.w3.org/2000/svg" class="outline" viewBox="0 0 24 24">
-    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z"></path>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" class="filled" viewBox="0 0 24 24">
-    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z"></path>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" height="100" width="100" class="celebrate">
-    <polygon class="poly" points="10,10 20,20"></polygon>
-    <polygon class="poly" points="10,50 20,50"></polygon>
-    <polygon class="poly" points="20,80 30,70"></polygon>
-    <polygon class="poly" points="90,10 80,20"></polygon>
-    <polygon class="poly" points="90,50 80,50"></polygon>
-    <polygon class="poly" points="80,80 70,70"></polygon>
-  </svg>
-</div>
-</div>`;
+        <input class="like" type="checkbox" title="like">
+        <div class="checkmark">
+        <svg xmlns="http://www.w3.org/2000/svg" class="outline" viewBox="0 0 24 24">
+        <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z"></path>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="filled" viewBox="0 0 24 24">
+        <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z"></path>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" height="100" width="100" class="celebrate">
+        <polygon class="poly" points="10,10 20,20"></polygon>
+        <polygon class="poly" points="10,50 20,50"></polygon>
+        <polygon class="poly" points="20,80 30,70"></polygon>
+        <polygon class="poly" points="90,10 80,20"></polygon>
+        <polygon class="poly" points="90,50 80,50"></polygon>
+        <polygon class="poly" points="80,80 70,70"></polygon>
+        </svg>
+        </div>
+        </div>`;
     heartButton.addEventListener('click', () => {
       islike = !islike;
-      console.log(`Heart clicked`);
       if (islike) {
-        //  heartButton.style.fontSize = 'large';
         addOutfitToFav(outfit);
         wardrowizAlert('Outfit has been added to favorites')
       } else {
-        //  heartButton.style.fontSize = 'small';
-        const documentRef = doc(db, 'favorites', email);
-        const subcollectionRef = collection(documentRef, 'favfit');
-        const outfitDocRef = doc(subcollectionRef, outfit_id);
+
+        const outfitDocRef = doc(collection(doc(db, 'favorites', email), 'favfit'), outfit_id);
 
         deleteDoc(outfitDocRef).then(() => {
-          console.log('Outfit document deleted successfully!');
           wardrowizAlert('Outfit has been removed from favorites');
         }).catch((error) => {
           console.error('Error deleting outfit document:', error);
@@ -305,31 +312,12 @@ const showWeatherSuggestion = (data) => {
     });
     matchingoutfit.appendChild(heartButton);
   }
-  function addOutfitToFav(outfit) {
-    console.log(outfit);
+  const addOutfitToFav = (outfit) => {
     const outfitsData = {
       top: outfit[0],
       bottom: outfit[1]
     };
-
-  saveFavoriteToDb(outfitsData);
-
-
-
-  }
-
-  function addOutfitToHistory(outfit) {
-    console.log(outfit[0], outfit[1]);
-  //  generateClothes(outfit[0].image64, outfit[1].image64);
-    const structuredOutfit = {
-      top: outfit[0],
-      bottom: outfit[1]
-    };
-    const outfitsData = {
-      outfit: structuredOutfit,
-      createdAt: new Date()
-    };
-    saveHistoryToDb(outfitsData);
+    saveFavoriteToDb(outfitsData);
   }
 
   var generate_outfit = document.getElementById('genrateOutfit');
