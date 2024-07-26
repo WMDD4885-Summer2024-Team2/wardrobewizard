@@ -123,14 +123,14 @@ import { wardrowizAlert } from "./common.js";
 export const init = async () => {
 
 const createWeatherRecommendation = async () => {
-  const lat = sessionStorage.getItem('latitude')
-  const lon = sessionStorage.getItem('longitude')
+  const lat = sessionStorage.getItem('latitude');
+  const lon = sessionStorage.getItem('longitude');
   const latitude = lat === 'null' || lat === 'undefined' ? null : lat;
   const longitude = lon === 'null' || lon === 'undefined' ? null : lon;
 
   if (!!latitude || !!longitude) {
     console.log('lat', lat, lon);
-    const apiKey = "240082a5a5ad45019573f09a73ca8d30";
+    const apiKey = "d3fb1f87ce8d4a17aff8019ecb8b9262";
     try {
       const response = await fetch(`https://api.weatherbit.io/v2.0/current?lat=${latitude}&lon=${longitude}&key=${apiKey}`);
       if (!response.ok) {
@@ -173,7 +173,7 @@ const showWeatherSuggestion = (data) => {
   const image = document.createElement('img');
   const label = document.createElement('h3');
 
-  if (result.toLowerCase().includes('cloud') || result.toLowerCase().includes('rain')) {
+  if (result.toLowerCase().includes('rain')) {
     image.src = "resources/images/umbrella.jpeg";
     label.innerText = `Looks like it's gonna pour! Don't forget your umbrella ☔️`;
     suggestionBox.appendChild(label);
@@ -181,6 +181,11 @@ const showWeatherSuggestion = (data) => {
   } else if (result.toLowerCase().includes('sun')) {
     image.src = 'resources/images/sunglasses.jpg';
     label.innerText = `Sunny vibes ahead! Grab those shades and enjoy 😎.`;
+    suggestionBox.appendChild(label);
+    suggestionBox.appendChild(image);
+  } else if (result.toLowerCase().includes('cloud')) {
+    image.src = 'resources/images/jacket.jpeg';
+    label.innerText = `Take Light Jacket or Sweater with you, In case it gets cooler.`;
     suggestionBox.appendChild(label);
     suggestionBox.appendChild(image);
   } else {
