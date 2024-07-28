@@ -133,10 +133,6 @@ const result = (outfit, tabselection) => {
                 tags.innerHTML += label;
             }
             if (item.outfit.bottom.tags && (item.outfit.bottom.tags.length > 0)) {
-                for(let i=0; i<= 2; i++) {
-                    const label = `<label>${tag[i]}</label>`;
-                    tags.innerHTML += label;
-                }
                 item.outfit.bottom.tags.map((tag) => {
                     const label = `<label>${tag}</label>`;
                     tags.innerHTML += label;
@@ -168,19 +164,19 @@ const result = (outfit, tabselection) => {
             const tags = document.createElement('div');
             tags.className = "tags";
             if (item.top.tags && (item.top.tags.length > 0)) {
-                for(let i=0; i<= 1; i++) {
-                    const label = `<label>${item.top.tags[i]}</label>`;
+                item.top.tags.map((tag) => {
+                    const label = `<label>${tag}</label>`;
                     tags.innerHTML += label;
-                }
+                });
             } else {
                 const label = `<label>No Tags</label>`;
                 tags.innerHTML += label;
             }
             if (item.bottom.tags && (item.bottom.tags.length > 0)) {
-                for(let i=0; i<= 2; i++) {
-                    const label = `<label>${item.bottom.tags[i]}</label>`;
+                item.bottom.tags.map((tag) => {
+                    const label = `<label>${tag}</label>`;
                     tags.innerHTML += label;
-                }
+                });
             }
 
             const likeButton = document.createElement('button');
@@ -226,7 +222,12 @@ const searchFromOutfits = () => {
 
             return hasTopTag || hasBottomTag;
         });
-        result(filteredHistoryOutfits, 'history');
+        console.log('length', filteredHistoryOutfits.length);
+        if (filteredHistoryOutfits.length === 0) {
+            wardrowizAlert(`No results found for ${searchKeyword}`);
+        } else {
+            result(filteredHistoryOutfits, 'history');
+        }   
     } else {
         const filteredFavouriteOutfits = favOutfits.filter(item => {
             const topTags = item.top && item.top.tags ? item.top.tags : [];
@@ -237,7 +238,12 @@ const searchFromOutfits = () => {
 
             return hasTopTag || hasBottomTag;
         });
-        result(filteredFavouriteOutfits, 'favorite');
+        if(filteredFavouriteOutfits.length === 0) {
+            wardrowizAlert(`No results found for ${searchKeyword}`);
+        } else {
+            result(filteredFavouriteOutfits, 'favorite');
+        }
+        
     }
 }
 

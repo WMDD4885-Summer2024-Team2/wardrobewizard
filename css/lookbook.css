@@ -95,7 +95,7 @@
             margin: 1rem 1rem 0 1rem;
           }
           .bottomOutfit {
-            margin: 0 1rem 1rem 1rem;
+            margin: 0 1rem 0 1rem;
           }
           img {
             margin: auto !important;
@@ -109,6 +109,8 @@
             gap: 0.5rem;
             border-top: 1px solid #ccc;
             padding: 10px;
+            height: 40px;
+            overflow: scroll;
             label {
                 display: inline;
                 color: white;
@@ -127,6 +129,7 @@
             background-color: #FFFFFF;
             width: 100%;
             text-align: right !important;
+            background: transparent;
             i {
                 border: 1px solid #ccc;
                 border-bottom: 0;
@@ -171,6 +174,7 @@
             .history-fav-card {
                 flex-basis: 30%;
                 .tags {
+                    height: 47px;
                     label {
                         font-size: 0.7rem;
                     }
@@ -199,6 +203,9 @@
             }
             .history-fav-card {
                 flex-basis: 23%;
+                .tags {
+                    height: 47px;
+                }
             }
         }
     }
