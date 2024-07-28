@@ -122,15 +122,27 @@ import { wardrowizAlert } from "./common.js";
 // }
 export const init = async () => {
 
-const createWeatherRecommendation = async () => {
+const createWeatherRecommendation = () => {
   const lat = sessionStorage.getItem('latitude');
   const lon = sessionStorage.getItem('longitude');
   const latitude = lat === 'null' || lat === 'undefined' ? null : lat;
   const longitude = lon === 'null' || lon === 'undefined' ? null : lon;
 
+
   if (!!latitude || !!longitude) {
-    console.log('lat', lat, lon);
-    const apiKey = "d3fb1f87ce8d4a17aff8019ecb8b9262";
+    fetchDataFromWeatherAPI(latitude, longitude);
+  }
+  else {
+    getLocation().then(position => {
+      console.log("Geolocation obtained successfully:", position);
+    }).catch(error => {
+      console.error("Error obtaining geolocation:", error);
+    });
+  }
+}
+
+const fetchDataFromWeatherAPI = async(latitude, longitude) => {
+  const apiKey = "d3fb1f87ce8d4a17aff8019ecb8b9262";
     try {
       const response = await fetch(`https://api.weatherbit.io/v2.0/current?lat=${latitude}&lon=${longitude}&key=${apiKey}`);
       if (!response.ok) {
@@ -140,8 +152,6 @@ const createWeatherRecommendation = async () => {
       const data = await response.json();
 
       if (data != null) {
-        console.log(data, 'data');
-        const result = data.data[0].weather.description;
         showWeatherSuggestion(data);
       } else {
         console.log('Weather API did not return any data');
@@ -150,11 +160,9 @@ const createWeatherRecommendation = async () => {
     } catch (error) {
       console.error('Error:', error);
     }
-  }
-  else {
-    //  alert('Failed to get location or weather data')
-  }
+  
 }
+
 
 const showWeatherSuggestion = (data) => {
   const city = document.getElementById('city_name');
@@ -195,13 +203,42 @@ const showWeatherSuggestion = (data) => {
   suggestionContainer.appendChild(suggestionBox);
 }
 
-
+const getLocation = () => {
+  return new Promise((resolve, reject) => {
+    if (navigator.geolocation) {
+      console.log("Geolocation is supported. Requesting location...");
+      const options = {
+        enableHighAccuracy: false,
+        timeout: 5000,
+        maximumAge: 0,
+      };
+      function success(position) {
+        const crd = position.coords;
+        console.log(`Latitude : ${crd.latitude}`);
+        console.log(`Longitude: ${crd.longitude}`);
+        sessionStorage.setItem('latitude', crd.latitude);
+        sessionStorage.setItem('longitude', crd.longitude);
+        fetchDataFromWeatherAPI(crd.latitude, crd.longitude);
+        console.log(`More or less ${crd.accuracy} meters.`);
+      }
+      
+      function error(err) {
+        console.warn(`ERROR(${err.code}): ${err.message}`);
+        sessionStorage.setItem('latitude', undefined);
+        sessionStorage.setItem('longitude', undefined);
+      }
+      navigator.geolocation.getCurrentPosition(success, error, options);
+    } else {
+      reject(new Error("Geolocation is not supported by this browser."));
+    }
+  });
+}
 
 
 
   loader2.style.display = 'flex';
   showMatchingOutfit();
-   createWeatherRecommendation();
+  createWeatherRecommendation();
 
 
 
