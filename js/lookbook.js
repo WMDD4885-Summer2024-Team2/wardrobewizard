@@ -77,7 +77,7 @@ const outputHistoryResult = (outfit_info_data) => {
     const historyTab = document.getElementById('history');
     historyTab.style.borderBottom = '1px solid var(--colorNavyBlue)';
     historyTab.addEventListener('click', function () {
-        historyTab.stylcolor4m = '1px solid var(--colorNavyBlue)';
+        historyTab.style.borderBottom = '1px solid var(--colorNavyBlue)';
         selectedTab = 'history';
         const favoriteTab = document.getElementById('favorite');
         favoriteTab.style.borderBottom = '';
