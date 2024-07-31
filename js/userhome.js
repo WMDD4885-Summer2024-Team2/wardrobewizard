@@ -143,23 +143,23 @@ const createWeatherRecommendation = () => {
 
 const fetchDataFromWeatherAPI = async(latitude, longitude) => {
   const apiKey = "d3fb1f87ce8d4a17aff8019ecb8b9262";
-    try {
-      const response = await fetch(`https://api.weatherbit.io/v2.0/current?lat=${latitude}&lon=${longitude}&key=${apiKey}`);
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-
-      const data = await response.json();
-
-      if (data != null) {
-        showWeatherSuggestion(data);
-      } else {
-        console.log('Weather API did not return any data');
-      }
-
-    } catch (error) {
-      console.error('Error:', error);
+  try {
+    const response = await fetch(`https://api.weatherbit.io/v2.0/current?lat=${latitude}&lon=${longitude}&key=${apiKey}`);
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
     }
+
+    const data = await response.json();
+
+    if (data != null) {
+      showWeatherSuggestion(data);
+    } else {
+      console.log('Weather API did not return any data');
+    }
+
+  } catch (error) {
+    console.error('Error:', error);
+  }
   
 }
 

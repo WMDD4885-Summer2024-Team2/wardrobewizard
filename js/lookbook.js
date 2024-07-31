@@ -66,7 +66,7 @@ const getFavouriteData = async (isClicked) => {
             outputFavoriteResult(outfit_favorite_data, isClicked);
         });
     } catch (error) {
-        console.error('Errocolor4vourite data:', error);
+        console.error('Error in fetching fvourite data:', error);
     }
 }
 
@@ -75,12 +75,16 @@ const outputHistoryResult = (outfit_info_data) => {
     result(outfit_info_data, 'history');
 
     const historyTab = document.getElementById('history');
-    historyTab.style.borderBottom = '1px solid var(--colorNavyBlue)';
-    historyTab.addEventListener('click', function () {
-        historyTab.style.borderBottom = '1px solid var(--colorNavyBlue)';
+    
+    // historyTab.style.borderBottom = '1px solid var(--colorNavyBlue)';
+    historyTab.addEventListener('click', function (eve) {
+        eve.preventDefault();
         selectedTab = 'history';
-        const favoriteTab = document.getElementById('favorite');
-        favoriteTab.style.borderBottom = '';
+        // historyTab.checked = true;
+        // historyTab.stylcolor4m = '1px solid var(--colorNavyBlue)';
+        // const favoriteTab = document.getElementById('favorite');
+        // favoriteTab.style.borderBottom = '';
+        // favoriteTab.checked = false;
         result(outfit_info_data, 'history');
     });
 }
@@ -91,11 +95,14 @@ const outputFavoriteResult = (model_info_data, isClicked) => {
     if (isClicked) {
         result(model_info_data, 'favorite');
     }
-    favoriteTab.addEventListener('click', function () {
+    favoriteTab.addEventListener('click', function (e) {
+        e.preventDefault();
         selectedTab = 'favorite';
-        favoriteTab.style.borderBottom = '1px solid var(--colorNavyBlue)';
-        const historyTab = document.getElementById('history');
-        historyTab.style.borderBottom = '';
+        // favoriteTab.checked = true;
+        // favoriteTab.style.borderBottom = '1px solid var(--colorNavyBlue)';
+        // const historyTab = document.getElementById('history');
+        // historyTab.style.borderBottom = '';
+        // historyTab.checked = false;
         result(model_info_data, 'favorite');
     });
 }
@@ -105,22 +112,28 @@ const outputFavoriteResult = (model_info_data, isClicked) => {
 const result = (outfit, tabselection) => {
     if (tabselection == 'history') {
         const totalItems = document.getElementById('totalOutfits');
-        totalItems.innerHTML = `${outfit.length} items`;
+        totalItems.innerHTML = `${outfit.length} outfits`;
         const outfitContainer = document.getElementById("outfits");
         outfitContainer.innerHTML = '';
         outfit.forEach((item) => {
             const content =
                 `<div class="history-fav-card">
+                <div class="history-fav-outfit">
+                <div class="outfit-front">
                 <div class="topOutfit">
                 <img src = ${item.outfit.top.imageUrl} alt = ${item.id}>
                 </div>
                 <div class="bottomOutfit">
                 <img src = ${item.outfit.bottom.imageUrl} alt = ${item.id}>
                 </div>
+                </div>
+                </div>
                 </div>`;
                 
             const temporaryDiv = document.createElement('div');
             temporaryDiv.innerHTML = content;
+            const backTags = document.createElement('div');
+            backTags.className = "outfit-back";
             const tags = document.createElement('div');
             tags.className = "tags";
             if (item.outfit.top.tags && (item.outfit.top.tags.length > 0)) {
@@ -128,9 +141,10 @@ const result = (outfit, tabselection) => {
                     const label = `<label>${tag}</label>`;
                     tags.innerHTML += label;
                 });
-            } else {
-                const label = `<label>No Tags</label>`;
-                tags.innerHTML += label;
+            // } else {
+            //     const label = `<label>No Tags</label>`;
+            //     tags.innerHTML += label;
+            // }
             }
             if (item.outfit.bottom.tags && (item.outfit.bottom.tags.length > 0)) {
                 item.outfit.bottom.tags.map((tag) => {
@@ -138,29 +152,35 @@ const result = (outfit, tabselection) => {
                     tags.innerHTML += label;
                 });
             }
-            temporaryDiv.querySelector('.history-fav-card').appendChild(tags);
+            backTags.appendChild(tags);
+            temporaryDiv.querySelector('.history-fav-outfit').appendChild(backTags);
             outfitContainer.innerHTML += temporaryDiv.innerHTML;
         });
     }
     if (tabselection == 'favorite') {
         const totalItems = document.getElementById('totalOutfits');
-        totalItems.innerHTML = `${outfit.length} items`;
+        totalItems.innerHTML = `${outfit.length} outfits`;
         const outfitContainer = document.getElementById("outfits");
         outfitContainer.innerHTML = '';
         outfit.forEach((item) => {
-            console.log(item, 'item');
             const content =
                 `<div class="history-fav-card" id=${item.id}>
+                <div class="history-fav-outfit">
+                <div class="outfit-front">
                 <div class="topOutfit">
                 <img src = ${item.top.imageUrl} alt = ${item.id}>
                 </div>
                 <div class="bottomOutfit">
                 <img src = ${item.bottom.imageUrl} alt = ${item.id}>
                 </div>
+                </div>
+                </div>
                 </div>`;
 
             const temporaryDiv = document.createElement('div');
             temporaryDiv.innerHTML = content;
+            const backTags = document.createElement('div');
+            backTags.className = "outfit-back";
             const tags = document.createElement('div');
             tags.className = "tags";
             if (item.top.tags && (item.top.tags.length > 0)) {
@@ -168,10 +188,11 @@ const result = (outfit, tabselection) => {
                     const label = `<label>${tag}</label>`;
                     tags.innerHTML += label;
                 });
-            } else {
-                const label = `<label>No Tags</label>`;
-                tags.innerHTML += label;
-            }
+            } 
+            // else {
+            //     const label = `<label>No Tags</label>`;
+            //     tags.innerHTML += label;
+            // }
             if (item.bottom.tags && (item.bottom.tags.length > 0)) {
                 item.bottom.tags.map((tag) => {
                     const label = `<label>${tag}</label>`;
@@ -185,7 +206,9 @@ const result = (outfit, tabselection) => {
             const icon = `<i class="fa-solid fa-heart"></i>`;
             likeButton.innerHTML += icon;
             temporaryDiv.querySelector('.history-fav-card').appendChild(likeButton);
-            temporaryDiv.querySelector('.history-fav-card').appendChild(tags);
+            backTags.appendChild(tags);
+            temporaryDiv.querySelector('.history-fav-outfit').appendChild(backTags);
+            // temporaryDiv.querySelector('.history-fav-card').appendChild(tags);
             
             outfitContainer.innerHTML += temporaryDiv.innerHTML;
             document.querySelectorAll('.delete-btn').forEach(button => {
