@@ -318,15 +318,16 @@ flex-basis: 31%;
         position: absolute;
     }
 .userHomeHeading{
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
+    font-size: clamp(1rem,2vw, 1.4rem);
     hr{
         margin: 2rem 0rem;
     }
 }
     @media only screen and (min-width:700px) {
         .desktopView {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            max-width: 1200px;
+            margin: auto;
         }
         /* #outfitSection{
             grid-column: 1/-1;
@@ -341,8 +342,6 @@ flex-basis: 31%;
     grid-column: 1/-1;
 }
         .weatherWidget {
-            grid-column: 2;
-            grid-row: 2;
             display: flex;
             flex-flow: column;
             justify-content: space-evenly;
@@ -357,4 +356,10 @@ flex-basis: 31%;
             height: 250px;
         }
     }
+}
+
+.mainOutfitContent {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 2rem;
 }
