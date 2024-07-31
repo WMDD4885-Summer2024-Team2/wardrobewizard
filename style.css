@@ -58,7 +58,8 @@ a{
  
 }
 
-.circles{
+
+/* .circles{
     position: absolute;
     top: 0;
     left: 0;
@@ -171,7 +172,7 @@ a{
         border-radius: 50%;
     }
 
-}
+} */
 
 img {
     max-width: 100%;

@@ -1,12 +1,8 @@
 
-import { loadOutfitData, deleteOufitDoc } from "./common.js";
+import { loadOutfitData, deleteOufitDoc, wardrowizAlert } from "./common.js";
 
 export const init = () => {
-<<<<<<< Updated upstream
-=======
-  showOutfits();
  // viewwardrobe.addEventListener("click", showOutfit);
->>>>>>> Stashed changes
 
     showOutfits(loadOutfitData());
 
@@ -35,7 +31,6 @@ export const init = () => {
         const uniqueOccasionValues = [...new Set(occasionValues)];
         //uniqueOccasionValues.splice('selectAnOccasion', 1);
         let elementToRemove = "selectAnOccasion";
-
         let index = uniqueOccasionValues.indexOf(elementToRemove);
 
         if (index !== -1) {
@@ -132,6 +127,8 @@ export const init = () => {
         var occasion_info = loadOutfitData().filter(outfit => outfit.occasion == occasion.value);
 if(occasion_info.length != 0){
         result(occasion_info);
+        document.getElementById('outfitHeading').innerHTML = ``;
+
         }else{
             
             }
@@ -140,6 +137,7 @@ if(occasion_info.length != 0){
     var color = document.getElementById('color');
     color.addEventListener('change', function () {
         var color_info = loadOutfitData().filter(outfit => outfit.colorName == color.value);
+        document.getElementById('outfitHeading').innerHTML = ``;
 
         result(color_info);
 
