@@ -66,7 +66,7 @@ const getFavouriteData = async (isClicked) => {
             outputFavoriteResult(outfit_favorite_data, isClicked);
         });
     } catch (error) {
-        console.error('Error fetching Favourite data:', error);
+        console.error('Errocolor4vourite data:', error);
     }
 }
 
@@ -77,7 +77,7 @@ const outputHistoryResult = (outfit_info_data) => {
     const historyTab = document.getElementById('history');
     historyTab.style.borderBottom = '1px solid var(--colorNavyBlue)';
     historyTab.addEventListener('click', function () {
-        historyTab.style.borderBottom = '1px solid var(--colorNavyBlue)';
+        historyTab.stylcolor4m = '1px solid var(--colorNavyBlue)';
         selectedTab = 'history';
         const favoriteTab = document.getElementById('favorite');
         favoriteTab.style.borderBottom = '';
