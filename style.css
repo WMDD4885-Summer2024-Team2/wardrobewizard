@@ -5,7 +5,7 @@
     font-style: normal;
     font-weight: bold;
     font-stretch: normal;
-    src: url('./resources/fonts/charter_bold.woff2') format('woff2');
+    src: url('../resources/fonts/charter_bold.woff2') format('woff2');
 }
 
 .visually-hidden {
@@ -76,7 +76,7 @@ body{
     list-style: none;
     width: 20px;
     height: 20px;
-    background: url('./resources/images/backgroundImages/Group\ 631704.png');
+    background: url('../resources/images/backgroundImages/Group\ 631704.png');
     animation: animate 25s linear infinite;
     bottom: -150px;
     

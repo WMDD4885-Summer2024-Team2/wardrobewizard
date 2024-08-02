@@ -16,7 +16,7 @@ html {
 }
 
 #article1{
-    background: url(/images/homePageImages/tobias-van-schneider-gCeCpP15V1o-unsplash.jpg);
+    background: url('../images/homePageImages/tobias-van-schneider-gCeCpP15V1o-unsplash.jpg');
 background-size: cover;
 background-repeat: no-repeat;
 background-attachment: fixed;

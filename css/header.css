@@ -33,7 +33,7 @@
     text-decoration: none;
     display: block;
 
-    color: var(--colorWhite);
+    color: var(--colorNavyBlue);
     font-weight: bold;
     font-size: 1rem;
 }
@@ -67,7 +67,7 @@
 .bloom-mobile-header {
     box-sizing: border-box;
     width: 100%;
-    /* background-image:linear-gradient(270deg, rgba(220, 145, 80, 1) 0%, rgb(224, 198, 128) 100%),url('../resources/images/header-bg.png'); */
+    /* background-image:linear-gradient(270deg, rgba(220, 145, 80, 1) 0%, rgb(224, 198, 128) 100%),url('./resources/images/header-bg.png'); */
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;

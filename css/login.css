@@ -6,7 +6,7 @@
   display:flex;
   justify-content: center;
   align-items: center;
-background:url('/resources/images/backgroundImages/LoginBg.jpg');
+background:url('../resources/images/backgroundImages/LoginBg.jpg');
 background-size:cover;
 background-position:center;
 background-attachment: fixed;

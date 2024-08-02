@@ -1,5 +1,5 @@
 .page2{
-    background: url('/resources/images/backgroundImages/clothBg.jpg');
+    background: url('../resources/images/backgroundImages/clothBg.jpg');
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -437,7 +437,7 @@
             flex-flow: column;
             align-items: center;
             justify-content: center;
-            background: url("/resources/images/backgroundImages/hangerOutfit\ Background\ Removed.png");
+            background: url("../resources/images/backgroundImages/hangerOutfit\ Background\ Removed.png");
             background-size: contain;
             background-repeat: no-repeat;
             margin: 0 auto;
