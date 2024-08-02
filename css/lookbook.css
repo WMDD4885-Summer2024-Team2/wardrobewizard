@@ -278,7 +278,7 @@
         background-color: #dc9150;
         color: #fff;
         border: 10px solid #dc9150;
-        font-size: 24px;
+        font-size: 1.5rem;
         transform: rotateY(180deg);
         display: flex;
         justify-content: center;
@@ -300,7 +300,7 @@
         label {
             color: white;
             padding: 5px;
-            font-size: 24px;
+            font-size: 1.5rem;
         }
     }
     .topOutfit, .bottomOutfit {

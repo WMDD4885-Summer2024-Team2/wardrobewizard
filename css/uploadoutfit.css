@@ -229,7 +229,7 @@
     /* background: linear-gradient(#ffffff00, #9e999900) padding-box, linear-gradient(145deg, #000000 35%, #06025e, #06025e) border-box;    */
     border: 2px solid black;
     padding: 32px 24px;
-    font-size: 14px;
+    font-size: 1rem;
     font-family: inherit;
     color: white;
     display: flex;

@@ -168,7 +168,7 @@ border: none;
     color: var(--colorWhite);
     padding: 0.7em 1.7em;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 1.25rem;
     border-radius: 0.5em;
     background: var(--colorMustard);
   }

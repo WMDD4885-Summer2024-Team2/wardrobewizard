@@ -139,7 +139,7 @@ padding: 3rem 0rem;
     p {
         text-align: center;
         line-height: 0;
-        font-size: 20px;
+        font-size: 1.25rem;
         font-weight: normal;
     }
 
@@ -184,7 +184,7 @@ padding: 3rem 0rem;
 }
 
 p {
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: bolder;
 }
 #about{
@@ -226,7 +226,7 @@ main h1 {
     padding: 0.25rem;
     width: 300px;
     color: white;
-    font-size: 14px;
+    font-size: 1rem;
 }
 
 .radio-inputs .radio {
@@ -266,7 +266,7 @@ main h1 {
 }
 
 .content p {
-    font-size: 15px;
+    font-size: 1rem;
     text-align: center;
 }
 
@@ -361,7 +361,7 @@ padding: 1rem;
         transition: all 0.4s;
         /* border-radius: 10px; */
         box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
-        font-size: 30px;
+        font-size: 1.9rem;
         font-weight: 900;
         img {
             padding: 1rem;
