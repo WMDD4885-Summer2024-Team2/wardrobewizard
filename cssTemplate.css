@@ -310,7 +310,7 @@ aspect-ratio: 1/1;
 
 .popup.show {
   display: flex;
-  animation: fadeOut 4s forwards;
+  animation: fadeOut 2s forwards;
   opacity: 1;
 }
 

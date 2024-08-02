@@ -211,6 +211,7 @@
 } */
 
 .title-container {
+    padding: 1rem;
     margin-top: 1rem;
     width: 100%;
     h1 {
@@ -246,7 +247,7 @@
 .outfits-container {
     display: flex;
     flex-flow: row wrap;
-    gap: 1rem;
+    gap: 6rem;
     justify-content: center;
     align-items: normal;
     padding: 1rem;

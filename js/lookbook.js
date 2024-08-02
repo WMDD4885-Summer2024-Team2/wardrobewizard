@@ -1,12 +1,12 @@
 import { firebase } from "./firebase.js";
-import { collection, query, getDocs, doc, limit , orderBy, deleteDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { collection, query, getDocs, doc, limit, orderBy, deleteDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import { wardrowizAlert } from "./common.js";
-  
+
 let historyOutfits;
 let favOutfits;
 let selectedTab = 'history';
-export const init = () => {  
-    
+export const init = () => {
+
     getHistoryData();
 
     const historyData = document.getElementById('history');
@@ -24,11 +24,16 @@ export const init = () => {
     });
 
     searchButton.addEventListener('click', () => {
-        if(!!searchBtn.value) {
+        if (!!searchBtn.value) {
             searchFromOutfits();
         } else {
             wardrowizAlert('Please enter some keyword to search!');
         }
+    })
+
+
+    uploadButtonCloset.addEventListener('click', function () {
+        window.location.href = "#uploadoutfitmycloset";
     })
 }
 
@@ -45,7 +50,7 @@ const getHistoryData = async () => {
                 data.id = doc.id;
                 outfit_history_data.push(data);
             });
-            outputHistoryResult(outfit_history_data); 
+            outputHistoryResult(outfit_history_data);
         });
     } catch (error) {
         console.error('Error fetching history data:', error);
@@ -75,7 +80,7 @@ const outputHistoryResult = (outfit_info_data) => {
     result(outfit_info_data, 'history');
 
     const historyTab = document.getElementById('history');
-    
+
     // historyTab.style.borderBottom = '1px solid var(--colorNavyBlue)';
     historyTab.addEventListener('click', function (eve) {
         eve.preventDefault();
@@ -129,7 +134,7 @@ const result = (outfit, tabselection) => {
                 </div>
                 </div>
                 </div>`;
-                
+
             const temporaryDiv = document.createElement('div');
             temporaryDiv.innerHTML = content;
             const backTags = document.createElement('div');
@@ -141,10 +146,10 @@ const result = (outfit, tabselection) => {
                     const label = `<label>${tag}</label>`;
                     tags.innerHTML += label;
                 });
-            // } else {
-            //     const label = `<label>No Tags</label>`;
-            //     tags.innerHTML += label;
-            // }
+                // } else {
+                //     const label = `<label>No Tags</label>`;
+                //     tags.innerHTML += label;
+                // }
             }
             if (item.outfit.bottom.tags && (item.outfit.bottom.tags.length > 0)) {
                 item.outfit.bottom.tags.map((tag) => {
@@ -188,7 +193,7 @@ const result = (outfit, tabselection) => {
                     const label = `<label>${tag}</label>`;
                     tags.innerHTML += label;
                 });
-            } 
+            }
             // else {
             //     const label = `<label>No Tags</label>`;
             //     tags.innerHTML += label;
@@ -209,7 +214,7 @@ const result = (outfit, tabselection) => {
             backTags.appendChild(tags);
             temporaryDiv.querySelector('.history-fav-outfit').appendChild(backTags);
             // temporaryDiv.querySelector('.history-fav-card').appendChild(tags);
-            
+
             outfitContainer.innerHTML += temporaryDiv.innerHTML;
             document.querySelectorAll('.delete-btn').forEach(button => {
                 button.addEventListener('click', function () {
@@ -250,7 +255,7 @@ const searchFromOutfits = () => {
             wardrowizAlert(`No results found for ${searchKeyword}`);
         } else {
             result(filteredHistoryOutfits, 'history');
-        }   
+        }
     } else {
         const filteredFavouriteOutfits = favOutfits.filter(item => {
             const topTags = item.top && item.top.tags ? item.top.tags : [];
@@ -261,12 +266,12 @@ const searchFromOutfits = () => {
 
             return hasTopTag || hasBottomTag;
         });
-        if(filteredFavouriteOutfits.length === 0) {
+        if (filteredFavouriteOutfits.length === 0) {
             wardrowizAlert(`No results found for ${searchKeyword}`);
         } else {
             result(filteredFavouriteOutfits, 'favorite');
         }
-        
+
     }
 }
 

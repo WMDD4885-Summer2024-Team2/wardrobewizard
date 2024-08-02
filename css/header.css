@@ -1,4 +1,5 @@
 .header{
+    box-sizing: border-box;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
@@ -10,7 +11,7 @@
     left:0;
     right: 0;
   /*   background: linear-gradient(270deg, rgba(220, 145, 80, 0.7) 0%, rgba(224, 198, 128, 0.7) 100%); */
-    background-image:linear-gradient(270deg, rgba(220, 145, 80, 1) 0%, rgba(224, 198, 128, 0.8) 100%),url('../resources/images/header-bg.png');
+    background-image:linear-gradient(270deg, rgb(220 145 80) 0%, rgb(224 198 128) 100%), url(../resources/images/header-bg.png);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -64,6 +65,7 @@
 
 
 .bloom-mobile-header {
+    box-sizing: border-box;
     width: 100%;
     background-image:linear-gradient(270deg, rgba(220, 145, 80, 1) 0%, rgba(224, 198, 128, 0.8) 100%),url('../resources/images/header-bg.png');
     background-size: contain;
@@ -114,8 +116,8 @@
         flex-direction: column;
         align-items: center;
 
-        i {
-            color: rgb(0, 0, 0);
+      i{
+            
             font-size: 28px;
             line-height: 72px;
             cursor: pointer;
@@ -130,6 +132,12 @@
                 transform: scale(0) rotate(720deg);
             }
         }
+        .fa-bars  {
+            color: black;
+        }
+        .fa-xmark{
+            color:white;
+        }
     }
 
     .nav {
@@ -142,10 +150,11 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        
         justify-content: flex-start;
          transition:  0.3s;
         z-index: -1;
-        background-color: rgba(0, 0, 0, 0.478);
+        background-color: rgba(0, 0, 0, 0.622);
         backdrop-filter: blur(20px);
         padding: 12rem 0 0 0;
         box-sizing: border-box;
@@ -153,6 +162,7 @@
         .item {
             position: relative;
             text-align: center;
+            width: 150px;
             transition: width 0.3s, margin 0.3s;
             border-bottom: 1px solid #BDBDBD;
             opacity: 0;
@@ -161,12 +171,13 @@
             a {
                 display: flex;
                 flex-direction: row;
+                justify-content: center;
                 gap: 4rem;
 
                 color: white;
-                font-size: 16px;
+                font-size: 24px;
                 font-weight: 300;
-                line-height: 52px;
+                line-height: 90px;
                 width: 100%;
                 text-transform: uppercase;
                 text-decoration: none;
@@ -204,6 +215,9 @@
 
    
 
+}
+.toggle-nav .fa-bars{
+    color: black;
 }
 .nav-desktop{
     display: none;

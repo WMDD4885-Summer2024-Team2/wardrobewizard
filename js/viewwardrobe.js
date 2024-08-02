@@ -190,7 +190,7 @@ export const init = () => {
 
 <div class = "card-description">
 
-<div class="title">${item.garment_type}</div>
+
 
 <div class = "deleteBtns">
 <i class="fa-regular fa-trash-can" id = "${item.id}"></i>
@@ -203,6 +203,7 @@ export const init = () => {
 
 
 `;
+//<div class="title">${item.garment_type}</div> 193
             outfitContainer.innerHTML += content;
             var buttons = document.querySelectorAll('.fa-trash-can');
             buttons.forEach((button) => {

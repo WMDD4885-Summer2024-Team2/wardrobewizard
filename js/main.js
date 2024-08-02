@@ -63,14 +63,14 @@ window.addEventListener('offline', () => {
   localStorage.setItem('name', firebase.getUser().name);
 
   wardrowizAlert('Oh snap !, Please try to connect again to network');
-  window.location.href = '#404page'
+ // window.location.href = '#404page'
 
 });
 
 window.addEventListener('online', () => {
   window.location.href = '#userhome'
 
-  wardrowizAlert(`Welcome back ${firebase.getUser().name}`);
+  //wardrowizAlert(`Welcome back ${firebase.getUser().name}`);
 
 });
 
