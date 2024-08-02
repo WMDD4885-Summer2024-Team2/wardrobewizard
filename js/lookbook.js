@@ -7,6 +7,19 @@ let favOutfits;
 let selectedTab = 'history';
 export const init = () => {
 
+    const viewOptions = document.querySelectorAll('.view-option');
+
+    viewOptions.forEach(option => {
+        option.addEventListener('click', () => {
+            // Remove the selected class from all options
+            viewOptions.forEach(opt => opt.classList.remove('selected'));
+
+            // Add the selected class to the clicked option
+            option.classList.add('selected');
+        });
+    });
+    
+
     getHistoryData();
 
     const historyData = document.getElementById('history');
@@ -20,7 +33,7 @@ export const init = () => {
     favouriteData.addEventListener('click', (event) => {
         event.preventDefault();
         searchBtn.value = "";
-        getFavouriteData();
+        getFavouriteData(true); // Pass true to indicate it was clicked
     });
 
     searchButton.addEventListener('click', () => {
@@ -62,16 +75,17 @@ const getFavouriteData = async (isClicked) => {
         var outfit_favorite_data = [];
         const documentRef = doc(firebase.getDB(), 'favorites', firebase.getUser().email);
         const subcollectionRef = collection(documentRef, 'favfit');
-        getDocs(subcollectionRef).then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-                const data = doc.data();
-                data.id = doc.id;
-                outfit_favorite_data.push(data);
-            });
-            outputFavoriteResult(outfit_favorite_data, isClicked);
+        const querySnapshot = await getDocs(subcollectionRef);
+
+        querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            data.id = doc.id;
+            outfit_favorite_data.push(data);
         });
+
+        outputFavoriteResult(outfit_favorite_data, isClicked);
     } catch (error) {
-        console.error('Error in fetching fvourite data:', error);
+        console.error('Error in fetching favorite data:', error);
     }
 }
 
@@ -96,23 +110,13 @@ const outputHistoryResult = (outfit_info_data) => {
 
 const outputFavoriteResult = (model_info_data, isClicked) => {
     favOutfits = model_info_data;
-    const favoriteTab = document.getElementById('favorite');
+
     if (isClicked) {
         result(model_info_data, 'favorite');
     }
-    favoriteTab.addEventListener('click', function (e) {
-        e.preventDefault();
-        selectedTab = 'favorite';
-        // favoriteTab.checked = true;
-        // favoriteTab.style.borderBottom = '1px solid var(--colorNavyBlue)';
-        // const historyTab = document.getElementById('history');
-        // historyTab.style.borderBottom = '';
-        // historyTab.checked = false;
-        result(model_info_data, 'favorite');
-    });
 }
 
-
+document.addEventListener('DOMContentLoaded', init);
 
 const result = (outfit, tabselection) => {
     if (tabselection == 'history') {
@@ -163,6 +167,7 @@ const result = (outfit, tabselection) => {
         });
     }
     if (tabselection == 'favorite') {
+        selectedTab = 'favorite';
         const totalItems = document.getElementById('totalOutfits');
         totalItems.innerHTML = `${outfit.length} outfits`;
         const outfitContainer = document.getElementById("outfits");

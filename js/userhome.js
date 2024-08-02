@@ -345,9 +345,11 @@ const getLocation = () => {
         wardrowizAlert('Outfit has been added to favorites')
       } else {
 
-        const outfitDocRef = doc(collection(doc(firebase.getDB(), 'favorites', firebase.getUser().email, 'favfit'), outfit_id));
+        const outfitDocRef = doc(collection(doc(firebase.getDB(), 'favorites', firebase.getUser().email), 'favfit'), outfit_id);
+        
 
         deleteDoc(outfitDocRef).then(() => {
+          console.log('removed from favorites');
           wardrowizAlert('Outfit has been removed from favorites');
         }).catch((error) => {
           console.error('Error deleting outfit document:', error);
