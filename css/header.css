@@ -11,7 +11,7 @@
     left:0;
     right: 0;
   /*   background: linear-gradient(270deg, rgba(220, 145, 80, 0.7) 0%, rgba(224, 198, 128, 0.7) 100%); */
-    background-image:linear-gradient(270deg, rgb(220 145 80) 0%, rgb(224 198 128) 100%), url(../resources/images/header-bg.png);
+    /* background-image:linear-gradient(270deg, rgb(220 145 80) 0%, rgb(224 198 128) 100%), url(../resources/images/header-bg.png); */
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -67,7 +67,7 @@
 .bloom-mobile-header {
     box-sizing: border-box;
     width: 100%;
-    background-image:linear-gradient(270deg, rgba(220, 145, 80, 1) 0%, rgba(224, 198, 128, 0.8) 100%),url('../resources/images/header-bg.png');
+    /* background-image:linear-gradient(270deg, rgba(220, 145, 80, 1) 0%, rgb(224, 198, 128) 100%),url('../resources/images/header-bg.png'); */
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -242,7 +242,8 @@ display: none ;
       gap: 2rem;
 
       a{
-        font-size: 1.1rem;
+        font-size: 1.5rem;
+        font-weight: 600;
         color:#031B4A;
       }
     }

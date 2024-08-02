@@ -1,4 +1,22 @@
+.page2{
+    background: url('/resources/images/backgroundImages/clothBg.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
 #userHome {
+
+    padding: 5rem 0rem 0rem 0rem;
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+
+        font-size: 1.8rem;
+    }
+
     main {
         display: grid;
         grid-template-columns: 1fr;
@@ -25,15 +43,25 @@
         }
     }
 
-    #recommendedOutfit {
+
+    .hangerBg{
+
+        
+    }
+    #recommendedOutfit , #totalOutfit{
         width: 400px;
-        border-top-left-radius: 20rem;
-        border-top-right-radius: 20rem;
-        padding: 3rem 1rem 3rem 1rem;
-        background: antiquewhite;
-        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        padding: 10rem 0rem 0rem 0rem;
+        /* border-top-left-radius: 20rem; */
+        /* border-top-right-radius: 20rem; */
+        /* padding: 10rem 0rem 0rem 0rem; */
+      /* background: antiquewhite; */
+        /* box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset; */
         /* box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px; */
 
+        img{
+            aspect-ratio: 1/1;
+            object-fit: contain;
+        }
     }
 
     .buttonsHome {
@@ -42,8 +70,9 @@
         justify-content: space-around;
         align-items: center;
         flex-flow: row;
-        button{
-flex-basis: 31%;
+
+        button {
+            flex-basis: 31%;
         }
     }
 
@@ -57,10 +86,10 @@ flex-basis: 31%;
     section {
         padding: 0rem 1rem;
         text-align: center;
-        display: flex;
+        /* display: flex;
         flex-flow: column;
         align-items: center;
-        justify-content: center;
+        justify-content: center; */
     }
 
     .weatherWidget {
@@ -152,74 +181,74 @@ flex-basis: 31%;
     }
 
 
-    .container input {
+    /* .container input {
         position: absolute;
         opacity: 0;
         cursor: pointer;
         height: 0;
         width: 0;
-      }
-      
-      .container {
+    }
+
+    .container {
         display: block;
         position: relative;
         cursor: pointer;
         font-size: 20px;
         user-select: none;
         transition: 100ms;
-      }
-      
-      .checkmark {
+    }
+
+    .checkmark {
         top: 0;
         left: 0;
         height: 2em;
         width: 2em;
         transition: 100ms;
         animation: dislike_effect 400ms ease;
-      }
-      
-      .container input:checked ~ .checkmark path {
+    }
+
+    .container input:checked~.checkmark path {
         fill: #FF5353;
         stroke-width: 0;
-      }
-      
-      .container input:checked ~ .checkmark {
-        animation: like_effect 400ms ease;
-      }
-      
-      .container:hover {
-        transform: scale(1.1);
-      }
-      
-      @keyframes like_effect {
-        0% {
-          transform: scale(0);
-        }
-      
-        50% {
-          transform: scale(1.2);
-        }
-      
-        100% {
-          transform: scale(1);
-        }
-      }
-      
-      @keyframes dislike_effect {
-        0% {
-          transform: scale(0);
-        }
-      
-        50% {
-          transform: scale(1.2);
-        }
-      
-        100% {
-          transform: scale(1);
-        }
-      }
+    }
 
-    /* .con-like {
+    .container input:checked~.checkmark {
+        animation: like_effect 400ms ease;
+    }
+
+    .container:hover {
+        transform: scale(1.1);
+    }
+
+    @keyframes like_effect {
+        0% {
+            transform: scale(0);
+        }
+
+        50% {
+            transform: scale(1.2);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    @keyframes dislike_effect {
+        0% {
+            transform: scale(0);
+        }
+
+        50% {
+            transform: scale(1.2);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    } */
+
+    .con-like {
         --red: rgb(255, 50, 50);
         position: relative;
         width: 50px;
@@ -303,7 +332,7 @@ flex-basis: 31%;
             display: none;
         }
     }
- */
+
 
 
 
@@ -383,29 +412,52 @@ flex-basis: 31%;
         backdrop-filter: blur(7px);
         position: absolute;
     }
-.userHomeHeading{
-    margin-bottom: 3rem;
-    hr{
-        margin: 2rem 0rem;
+
+    .userHomeHeading {
+        justify-content: space-around;
+        display: flex;
+        flex-flow: row;
+        gap: 4rem;
+        align-items: center;
+        margin-bottom: 3rem;
+
+        hr {
+            margin: 2rem 0rem;
+        }
     }
-}
+
     @media only screen and (min-width:700px) {
         .desktopView {
             display: grid;
             grid-template-columns: 1fr 1fr;
         }
-        /* #outfitSection{
+
+        #recommendedOutfit, #totalOutfit{
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            justify-content: center;
+            background: url("/resources/images/backgroundImages/hangerOutfit\ Background\ Removed.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin: 0 auto;
+
+            img{
+            }
+        }
+        .userHomeHeading {
             grid-column: 1/-1;
-        } */
-.userHomeHeading{
-    grid-column: 1/-1;
-}
+        }
+
         .uploadImageButton {
             grid-column: 1/-1;
         }
-.buttonsAll{
-    grid-column: 1/-1;
-}
+
+        .buttonsAll {
+            grid-column: 1/-1;
+        }
+
+
         .weatherWidget {
             grid-column: 2;
             grid-row: 2;
@@ -424,3 +476,4 @@ flex-basis: 31%;
         }
     }
 }
+

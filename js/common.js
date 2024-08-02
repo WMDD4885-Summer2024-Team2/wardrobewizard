@@ -58,7 +58,6 @@ export const loadOutfitData = () => {
   onSnapshot(q, (querySnapshot) => {
     outfitArray = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
     console.log(outfitArray);
-
   });
   return outfitArray;
 
@@ -78,19 +77,40 @@ export const deleteOufitDoc = (docId) => {
 
     });
 };
+
+export const deleteFavDoc = (docId) => {
+  const db = firebase.getDB();
+  const docRef = doc(db, "outfit-info", firebase.getUser().email, "outfit", docId);
+  deleteDoc(docRef)
+    .then(() => {
+      console.log("Document deleted successfully");
+      wardrowizAlert('Document deleted successfully');
+    })
+    .catch((error) => {
+      console.error("Error deleting document: ", error);
+      wardrowizAlert('Please try again');
+
+    });
+};
+
 export const loadFavouritesData = () => {
   const q = query(
     collection(
       firebase.getDB(),
       "favorites",
       firebase.getUser().email,
-      "outfit"
+      "favfit"
     )
   );
 
   onSnapshot(q, (querySnapshot) => {
-    favoriteArray = querySnapshot.docs.map((doc) => doc.data());
+    favoriteArray = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    console.log(favoriteArray);
+
   });
+
+  return favoriteArray;
+
 };
 
 
@@ -152,9 +172,9 @@ export const updateDataImage = async (userDocumentID, dataImage) => {
 
 
 // Method to get Favourites
-export const getFavourites = () => {
-  return favoriteArray;
-};
+// export const getFavourites = () => {
+//   return favoriteArray;
+// };
 
 // Method to get History
 export const getHistory = () => {
