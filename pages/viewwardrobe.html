@@ -1,92 +1,68 @@
-<!-- <div class="mycloset grid gap-1" >
-    <h2 class="banner-heading">My Closet</h2>
-    <div class="sub-header flex flex-row-wrap gap-1">
-        <nav class="sub-menu">
-            <ul class="sub-menu-list">
-                <li class="sub-menu-item">
-                    <a href="#tops">Tops</a>
-                </li>
-                <li class="sub-menu-item">
-                    <a href="#bottoms">Bottoms</a>
-                </li>
-                <li class="sub-menu-item">
-                    <a href="#dresses">Dresses</a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-    <div class="grid gap-1">
-        <div><input type="button" class="button" id="outfitupload"  value="Upload Outfit"></div>
-        <div class="display-outfit flex flex-row-wrap gap-1" id="tops">
-            <h3 class="flex-basis">Tops</h3>
+<div id="mainCloset">
+
+    <section class="leftSection">
+        <h3 class="visually-hidden">Filters</h3>
+        <div class="grid-cat">
+
+
+            <div class="radio-inputs">
+
+                <label class="radio" id="allOutfits">
+                  <input type="radio" name="radio" checked="" />
+                  <span class="name">All </span>
+                </label>
+
+                <label class="radio" id="top">
+                  <input type="radio" name="radio" />
+                  <span class="name">TOP</span>
+                </label>
+
+                <label class="radio" id="bottom">
+                    <input type="radio" name="radio" />
+                    <span class="name">BOTTOM</span>
+                  </label>
+              
+                <label class="radio" id="dresses">
+                  <input type="radio" name="radio" />
+                  <span class="name">DRESSES</span>
+                </label>
+                
+
+              </div>
+              <div class="uploadCloset">
+                <i class="fa-solid fa-upload" id="uploadButtonCloset"></i>
+
+                </div>
+
         </div>
-        <div class="display-outfit flex flex-row-wrap gap-1" id="bottoms">
-            <h3 class="flex-basis">Bottoms</h3>
-        </div>
-        <div class="display-outfit flex flex-row-wrap gap-1" id="dresses">
-            <h3 class="flex-basis">Dresses</h3>
-        </div>
-    </div>
- </div> -->
- 
- <div id="mycloset">
- <section>
+    </section>
 
-    <div class="filter-categories">
-    <select id="occasion">
-        <option value="">Select Occasion</option>
-    </select>
-    <select id="color">
-        <option value="">Select Color</option>
-    </select>
+    <section class='rightSection'>
 
-    <!-- <button class = 'uploadMoreImages' id="uploadMoreImages">Upload Images</button> -->
-</div>
-  <div class="grid-cat">
+        <div class="UpperFilters">
+            <div class="filter-categories">
+                
+                <select id="occasion">
+                    <option value="">Select Occasion</option>
+                </select>
+                <select id="color">
+                    <option value="">Select Color</option>
+                </select>
 
-   
-    
-            <div class="cards-closet">
-                <div id="top" class="card red">
-                    <p class="tip">Top</p>
-                </div>
-                <div id="bottom" class="card blue">
-                    <p class="tip">Bottom</p>
-                </div>
-                <div id="dresses" class="card green">
-                    <p class="tip">Dresses</p>
-                </div>
-    
-            <!-- <li><a href="#" id="model">Model image</a></li> -->
-    
-
-</div>
-
-<div class="outfit-1" id="outfits">
-
-</div>
-</div>
-</section>
-<!-- <div class="try-div">
-    <h2>Let's try this out </h2>
-    <div>
-        <button id="generateOutfit">virtual try on</button>
-    </div>
-    <div class="img-div">
-        <div class="img-wrapper">
-            <img id="image1" src="../virtual_try_on/images/test-model.jpg" alt="image">
-        </div> -->
-        <!-- <div class="arrow">
-<img src="./angle-circle-arrow-right-icon.png" alt="">
-    </div> -->
-        <!-- <div class="img-wrapper" id="result-img">
-            <div class="loader" id="loader">
-                <div class="bar" id="bar">
-                    <div class="ball"></div>
-                </div>
+                <!-- <button class = 'uploadMoreImages' id="uploadMoreImages">Upload Images</button> -->
             </div>
         </div>
-    </div> -->
+
+        <div class="outfitData" id="outfitDataAll">
+
+            <h1 id="outfitHeading"></h1>
+            <div class="outfit-1" id="outfits">
+
+            </div>
+
+        </div>
+
+    </section>
 
 
 </div>

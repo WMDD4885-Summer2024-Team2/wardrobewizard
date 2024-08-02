@@ -1,16 +1,16 @@
-<div class="page page6" id="page6">
+<!-- <div class="page page6" id="page6">
     <div class="header-wrapper flex flex-column-wrap">
         <div class="title-container flex-grow flex-basis">
             <h1>LookBook</h1>
             <span id="totalOutfits">Total No</span>
         </div>
-        <!-- <div class="search-container flex align-items-center justify-space-between">
-            <input type="search" name="searchBtn" id="searchBtn">
-            <i class="fas fa-search search-icon"></i>
-        </div> -->
+        <div class="search-container flex align-items-center justify-space-between">
+            <input type="search" name="searchBtn" id="searchBtn" placeholder="Search by tags..">
+            <i id="searchButton" class="fas fa-search search-icon"></i>
+        </div>
         <div class="button-container flex flex-row-wrap justify-content-center">
             <a href="#userhome">Virtual Try-on</a>
-            <a href="#uploadoutfit">Upload Clothes</a>
+            <a href="#uploadoutfitmycloset">Upload Clothes</a>
         </div>
     </div>
     <div class="lookbook-container">
@@ -23,4 +23,47 @@
         <div class="outfits-container" id="outfits">
         </div>
     </div>
+</div> -->
+
+<div id="mainCloset">
+
+    <section class="leftSection">
+
+        <div class="title-container flex-grow flex-basis">
+            <h1>LookBook</h1>
+            <span id="totalOutfits">Total No</span>
+        </div>
+        
+        <div class="grid-cat">
+            <div class="radio-inputs">
+                <div class="radio">
+                    <input type="radio" id="history" name="view" checked/>
+                    <label class="name" for="history">All</label>
+                </div>
+                <div class="radio">
+                    <input type="radio" id="favorite" name="view" />
+                    <label class="name" for="favorite">Favorite</label>
+                </div>
+            </div>
+            <div class="uploadCloset">
+                <i class="fa-solid fa-upload" id="uploadButtonCloset"></i>
+            </div>
+        </div>
+    </section>
+
+    <section class='rightSection'>
+
+        <div class="search-container flex align-items-center justify-space-between">
+            <input type="search" name="searchBtn" id="searchBtn" placeholder="Search by tags..">
+            <i id="searchButton" class="fas fa-search search-icon"></i>
+        </div>
+
+        <div class="outfitData" id="outfitDataAll">
+            <!-- <h1 id="outfitHeading"></h1> -->
+            <div class="outfits-container" id="outfits">
+            </div>
+        </div>
+    </section>
+
+
 </div>

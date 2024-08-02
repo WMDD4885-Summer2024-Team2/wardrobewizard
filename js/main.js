@@ -73,3 +73,18 @@ window.addEventListener('online', () => {
   wardrowizAlert(`Welcome back ${firebase.getUser().name}`);
 
 });
+
+const images = [
+  'https://media.geeksforgeeks.org/wp-content/uploads/20200316135008/red7.png',
+  'https://media.geeksforgeeks.org/wp-content/uploads/20200316135014/yellow3.png',
+  'https://media.geeksforgeeks.org/img-practice/MaskGroup58@2x-min-1637846347.png',
+  'https://media.geeksforgeeks.org/img-practice/banner/dsa-self-paced-course-overview-image.png',
+  'https://media.geeksforgeeks.org/img-practice/banner/complete-interview-preparation-thumbnail.png',
+  'https://media.geeksforgeeks.org/img-practice/banner/Amazon-Test-Series-thumbnail.png',
+
+'https://media.geeksforgeeks.org/img-practice/banner/Amazon-Test-Series-thumbnail.png',
+
+'https://media.geeksforgeeks.org/img-practice/banner/Amazon-Test-Series-thumbnail.png',
+  'https://media.geeksforgeeks.org/img-practice/banner/dsa-self-paced-thumbnail.png'
+];
+
