@@ -1,9 +1,86 @@
 <div class="page page5" id="page5">
+    <div class="profilePage">
+        <div class="profileImage-card">
+            <div class="profileImage">
+                <div id="imageProfilePreview"></div>
+            </div>
+            <div class="card-content">
+                <div class="editImage-wrapper">
+                    <button class="wardrowiz-button" id="userImageUpdate">Edit Picture</button>
+                    <input type="file" id="fileInput" style="display: none;">
+                </div>
+            </div>
+        </div>
+        <div class="profile-menu">
+            <div>
+                <h1 id="userNameHeading"></h1>
+            </div>
+            <div class="radio-inputs-custom">
+                <button id="featureSelect" class="wardrowiz-button">SETTINGS</button>
+                <button id="profileSelect" class="wardrowiz-button">EDIT PROFILE</button>
+                <!-- <label class="radio" id="featureSelect">
+                    <input type="radio" name="radio" checked="">
+                    <span class="name"></span>
+                </label>
+                <label class="radio" id="">
+                    <input type="radio" name="radio">
+                    <span class="name">EDIT PROFILE</span>
+                </label> -->
+            </div>
+            <section class="section-features" id="sectionFeatures">
+
+                <div class="contact-Us" id="contactUs">
+                    <i class="fa-regular fa-address-book"></i>
+                    <h3>CONTACT US</h3>
+                </div>
+        
+                <div class="resetPasscode" id="resetPassword">
+                    <i class="fa-solid fa-key"></i>
+                    <h3>RESET PASSWORD</h3>
+                </div>
+        
+                <div class="subscription" id="subscription">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <h3>SUBSCRIPTION</h3>
+                </div>
+        
+                <div class="logout" id="signout">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <h3>LOGOUT</h3>
+                </div>
+            </section>
+
+            <section id="profileForm">
+                <form>
+                    <div class="form-group">
+                        <!-- <label for="name">Name</label> -->
+                        <div class="layer">
+                            <input type="text" class="form-control" id="name" placeholder="Enter name" disabled>
+                            <i id="nameEdit" class="fa-solid fa-pencil"></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <!-- <label for="gender">Gender</label> -->
+                        <div class="layer">
+                            <select class="form-control" id="gender" disabled>
+                                <option>Select Gender</option>
+                                <option value="M">Male</option>
+                                <option value="F">Female</option>
+                                <option value="O">Other</option>
+                            </select>
+                            <i id="genderEdit" class="fa-solid fa-pencil"></i>
+                        </div>
+        
+                    </div>
+                </form>
+                <button class="wardrowiz-button" id="userProfileUpdate">Update</button>
+            </section>
+        </div>
+        
+    </div>
 
 
-
-
-<div class="profilePage">
+<!-- <div class="profilePage">
     <section>
         <div class="profileSectionImage">
             <div id="imageProfilePreview"> </div>
@@ -18,11 +95,11 @@
         <div class="radio-inputs-custom">
             <label class="radio" id="featureSelect">
               <input type="radio" name="radio" checked="">
-              <span class="name">Features</span>
+              <span class="name">SETTINGS</span>
             </label>
             <label class="radio" id="profileSelect">
               <input type="radio" name="radio">
-              <span class="name">Edit Profile</span>
+              <span class="name">EDIT PROFILE</span>
             </label>
                 
 
@@ -44,6 +121,11 @@
         <div class="resetPasscode" id="resetPassword">
             <i class="fa-solid fa-key"></i>
             <h3>RESET PASSWORD</h3>
+        </div>
+
+        <div class="subscription" id="subscription">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            <h3>SUBSCRIPTION</h3>
         </div>
 
         <div class="logout" id="signout">
@@ -84,5 +166,5 @@
 
     </section>
 </div>
-</div>
+</div> -->
 </div>

@@ -175,19 +175,16 @@ export class Firebase {
 
  
 
-  dbSave = async(data,collectionStr, subcollection) =>{
+  dbSave = async(data, collectionStr, subcollection) => {
     try {
-      if(collectionStr && subcollection){
-        const docRef = await addDoc(
-          collection(this.db, collectionStr, this.user.email, subcollection),
-          data
-        );
-        console.log(docRef);
-      }else{
-        const docRef = await addDoc(collection(this.db, collectionStr),data);
-        console.log(docRef);
+      let docRef;
+      if (collectionStr && subcollection) {
+        docRef = await addDoc(collection(this.db, collectionStr, this.user.email, subcollection), data);
+      } else {
+        docRef = await addDoc(collection(this.db, collectionStr), data);
       }
-     
+      console.log('Document ID:', docRef.id);
+      return docRef.id; // Return the document ID
     } catch (error) {
       console.error("Error adding document: ", error);
     }

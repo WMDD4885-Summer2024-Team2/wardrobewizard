@@ -7,7 +7,18 @@ import { getFirestore, query, where, getDocs, collection, doc, getDoc, setDoc, u
 const auth = firebase.auth;
 const db = getFirestore();
 
-profileForm.style.display = 'none';
+
+export const init =  () => {
+
+  profileForm.style.display = 'none';
+  featureSelect.style.backgroundColor = "#CB874E";
+
+  getInformation();
+  const contactPage = document.getElementById('contactUs');
+  contactPage.addEventListener("click", () => {
+    window.location.href = "#contact";
+  });
+
 
 nameEdit.addEventListener('click', function () {
   document.getElementById('name').disabled = false;
@@ -20,22 +31,40 @@ genderEdit.addEventListener('click', function () {
 featureSelect.addEventListener('click', function () {
   document.getElementById('sectionFeatures').style.display = 'flex';
   document.getElementById('profileForm').style.display = 'none';
+  featureSelect.style.backgroundColor = "#CB874E";
+  profileSelect.style.backgroundColor = "transparent";
 
 })
 
 profileSelect.addEventListener('click', function () {
   document.getElementById('sectionFeatures').style.display = 'none';
   document.getElementById('profileForm').style.display = 'block';
+  featureSelect.style.backgroundColor = "transparent";
+  profileSelect.style.backgroundColor = "#CB874E";
 
 })
 
-export const init =  () => {
-  getInformation();
-  const contactPage = document.getElementById('contactUs');
-  contactPage.addEventListener("click", () => {
-    window.location.href = "#contact";
-  })
+signout.addEventListener('click', function () {
 
+  userSignOut();
+
+})
+
+var reset_passcode = document.getElementById("resetPassword");
+reset_passcode.addEventListener('click', (event) => {
+  event.preventDefault();
+  resetPassword(firebase.getUser().email);
+  // var email = document.getElementById('userEmailHeading').innerHTML;
+  wardrowizAlert('Password reset email sent successfully at ' + firebase.getUser().email);
+
+
+});
+
+
+subscription.addEventListener('click', (event) => {
+  event.preventDefault();
+window.location.href = '#subscription';
+});
 }
 
 
@@ -53,7 +82,7 @@ async function getInformation() {
     imageUrl = doc.data().profileImageUrl;
     imageProfilePreview.innerHTML = `<img src="${doc.data().profileImageUrl}" alt="user image">`
     document.getElementById('userNameHeading').innerHTML = `${doc.data().name}`;
-    document.getElementById('user_email').innerHTML = `<p id="userEmailHeading">${firebase.getUser().email}</p>`;
+    // document.getElementById('user_email').innerHTML = `<p id="userEmailHeading">${firebase.getUser().email}</p>`;
     document.getElementById('name').value = `${doc.data().name}`;
     document.getElementById('gender').value = `${doc.data().gender}`;
 
@@ -103,22 +132,7 @@ fileInput.addEventListener('change', async function () {
  
 
 
-var signout = document.getElementById('signout');
-signout.addEventListener('click', function () {
 
-  userSignOut();
-
-})
-
-var reset_passcode = document.getElementById("resetPassword");
-reset_passcode.addEventListener('click', (event) => {
-  event.preventDefault();
-  resetPassword(firebase.getUser().email);
-  var email = document.getElementById('userEmailHeading').innerHTML;
-  wardrowizAlert('Password reset email sent successfully at ' + email);
-
-
-});
 
 
 

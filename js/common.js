@@ -10,6 +10,7 @@ import {
   getCountFromServer,
   doc,
   updateDoc,
+  deleteDoc
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 import { genreateOutfit } from "./outfitsearch.js";
@@ -55,8 +56,41 @@ export const loadOutfitData = () => {
   );
 
   onSnapshot(q, (querySnapshot) => {
-    outfitArray = querySnapshot.docs.map((doc) => doc.data());
+    outfitArray = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    console.log(outfitArray);
   });
+  return outfitArray;
+
+};
+
+export const deleteOufitDoc = (docId) => {
+  const db = firebase.getDB();
+  const docRef = doc(db, "outfit-info", firebase.getUser().email, "outfit", docId);
+  deleteDoc(docRef)
+    .then(() => {
+      console.log("Document deleted successfully");
+      wardrowizAlert('Document deleted successfully');
+    })
+    .catch((error) => {
+      console.error("Error deleting document: ", error);
+      wardrowizAlert('Please try again');
+
+    });
+};
+
+export const deleteFavDoc = (docId) => {
+  const db = firebase.getDB();
+  const docRef = doc(db, "outfit-info", firebase.getUser().email, "outfit", docId);
+  deleteDoc(docRef)
+    .then(() => {
+      console.log("Document deleted successfully");
+      wardrowizAlert('Document deleted successfully');
+    })
+    .catch((error) => {
+      console.error("Error deleting document: ", error);
+      wardrowizAlert('Please try again');
+
+    });
 };
 
 export const loadFavouritesData = () => {
@@ -65,14 +99,22 @@ export const loadFavouritesData = () => {
       firebase.getDB(),
       "favorites",
       firebase.getUser().email,
-      "outfit"
+      "favfit"
     )
   );
 
-  onSnapshot(q, (querySnapshot) => {
-    favoriteArray = querySnapshot.docs.map((doc) => doc.data());
+  return new Promise((resolve, reject) => {
+    onSnapshot(q, (querySnapshot) => {
+      const favoriteArray = querySnapshot.docs.map((doc) => ({ id: doc.id,...doc.data() }));
+      console.log(favoriteArray);
+      resolve(favoriteArray);
+    }, (error) => {
+      reject(error);
+    });
   });
 };
+
+
 
 export const loadHistoryData = () => {
   const q = query(
@@ -131,9 +173,9 @@ export const updateDataImage = async (userDocumentID, dataImage) => {
 
 
 // Method to get Favourites
-export const getFavourites = () => {
-  return favoriteArray;
-};
+// export const getFavourites = () => {
+//   return favoriteArray;
+// };
 
 // Method to get History
 export const getHistory = () => {
@@ -280,5 +322,5 @@ export function wardrowizAlert(message) {
   popup.classList.add('show');
   setTimeout(() => {
     popup.classList.remove('show');
-  }, 5000);
+  }, 2000);
 }

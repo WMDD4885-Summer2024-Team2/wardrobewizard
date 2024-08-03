@@ -33,7 +33,7 @@ console.log(auth);
 //console.log(auth) 
 
 export const init = () => {
-
+    mainPageOutfit.style.height = '100vh';
 let uid;
 let email;
 const form = document.getElementById('upload-form');
@@ -73,6 +73,8 @@ gallery.addEventListener('click', function () {
 
 
 camera.addEventListener('click', function () {
+    mainPageOutfit.style.height = 'auto';
+
     document.getElementById("camera").classList.add('active');
     document.getElementById("gallery").classList.remove('active');
 
@@ -104,6 +106,8 @@ startButton.addEventListener('click', async () => {
 });
 
 takePictureButton.addEventListener('click', () => {
+    mainPageOutfit.style.height = '100vh';
+
     let capturedImages = [];
 
     canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
@@ -235,7 +239,7 @@ function rmbg(file) {
             //    passData(base64ToBlob(outfitImageStyle.src, 'image/png'), image64, colorHex);
                 colorPopulator(colorHex);
                 uploadForm.style.display='flex';
-
+                mainPageOutfit.style.height = 'auto';
                 outfit_form.style.display = 'block';
                 loaderBall.style.display = "none";
 
@@ -574,6 +578,7 @@ var colorHex;
                         console.log(`Outfit document added with ID: ${docRef.id}`);
                        // alert('Outfit uploaded');
                         wardrowizAlert('Outfit uploaded');
+                        // window.location.href = '#uploadOutfit';
                         resetPage();
                     })
                         .catch((error) => {

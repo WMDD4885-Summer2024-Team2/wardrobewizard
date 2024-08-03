@@ -42,3 +42,76 @@
 .hide .outfit-container{
     display: none;
 }
+.note{
+    display: none;
+}
+.grid{
+    padding: 2rem;
+  
+}
+
+.banner-heading{
+    /* padding: 3rem 1rem; */
+   
+    font-size: 2rem;
+    font-weight: 700;
+   
+}
+.banner-tagline {
+   
+    /* padding: .5rem; */
+    /* text-align: center; */
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.profile-section-3{
+    padding: 0rem;
+    
+    margin: 0rem;
+    width: 390px;
+}
+.banner{
+    border-bottom: none;
+}
+
+.profile-section-2{
+    margin-top:1rem;
+}
+
+@media only screen and (min-width: 600px){
+.note{
+    display: block;
+}
+.profile-section-1{
+    width:500px ;
+    margin: 0 auto;
+}
+.profile-section-2{
+    width:500px ;
+    margin: 0 auto;
+}
+
+.banner-heading {
+    text-align: center;
+}
+
+.banner-tagline{
+    text-align: center;
+}
+
+}
+
+@media only screen and (min-width: 1000px){
+    .profile-section-1{
+        width:40%;
+        margin: 0 auto;
+    }
+    .profile-section-2{
+        width:100% ;
+        margin: 0 auto;
+        padding: 1rem 4rem;
+    }
+
+    
+}

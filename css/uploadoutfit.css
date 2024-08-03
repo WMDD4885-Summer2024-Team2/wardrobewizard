@@ -1,5 +1,12 @@
+.mainPageOutfit{
+  background: url('/resources/images/backgroundImages/LoginBg.jpg');
+  background-size: cover;
+}
 #uploadingImages
 {
+
+  /* background-size: cover; */
+  padding-top: 10rem;
     main {
     margin: 0;
     padding: 0;
@@ -7,9 +14,10 @@
   }
   
   h1{
+    text-align: center;
     padding: 1rem;
-    font-size: 1.1rem;
     margin: 0;
+    color: var(--colorBeige);
   }
   
   
@@ -37,22 +45,26 @@
   
   
   }
+  .body{
+    padding: 2rem;
+  }
   
   .tabs {
     display: flex;
-    background-color: rgb(2, 2, 66);
-    border-radius: 1rem;
+    background-color: var(--colorBeige);
+    
+    border-radius: 5rem;
   }
   
   #camera,
   #gallery {
-    color: white;
-    padding: 1rem;
+    color: var(--colorNavyBlue);;
+    padding:1.5rem 3rem;
     background-color: transparent;
     border: none;
     overflow: hidden;
   
-    border-radius: 1rem;
+    border-radius: 5rem;
   
     text-transform: uppercase;
   }
@@ -76,10 +88,16 @@
     width: 100%;
     padding: 0rem 2rem 1rem 2rem;
     margin: 0 auto;
+    width: 600px;
+    height: auto;
+    align-self: center;
     img{
-      height: 100vh;
-      aspect-ratio: 1 / 1;
-      object-fit: contain;
+      background-color: #fbf8f0;
+            backdrop-filter: blur(29px);
+            border-radius: 25% 1% 25% 1%;
+            aspect-ratio: 1 / 1;
+            object-fit: contain;
+     
     }
   }
   
@@ -90,40 +108,7 @@
   
   
   
-  /* #cameraFile {
-    
-    width: 90%;
-    margin: 1rem auto;
-    height: 100%;
-    #video {
-      border-radius: 1rem;
-      box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-    }
-  
-    #start-button {
-      border-radius: 1rem;
-      background-color: #031B4A;
-      text-align: center;
-      padding: 0.5rem 1rem;
-      border: none;
-     color: white;
-    }
-  
-    #take-picture-button {
-      position: absolute;
-      top:50%;
-      right: 0;
-      border: none;
-      border-top-left-radius: 1rem;
-      border-top-right-radius: 1rem;
-      left: 0;
-      margin: 0 auto -1rem;
-      width: 50%;
-      padding: 1rem;
-  
-  
-    }
-  } */
+
   
   .cameraContent {
     display: grid;
@@ -136,33 +121,25 @@
     }
   
     #take-picture-button {
-      width: 50%;
+      text-transform: uppercase;
+      width: 30%;
       margin: 0 auto;
       z-index: 1;
       grid-column: 1/-1;
       grid-row: 4;
-      padding: 0.5rem;
+      padding: 1rem;
       border-top-left-radius: 1rem;
       border-top-right-radius: 1rem;
       border: none;
       color: black;
-      background-color: #CB874E;
+      background-color:#CB874E;
     }
   }
   
   #cameraFile {
     text-align: center;
   }
-  
-  #start-button {
-    background-color: #031B4A;
-    color: white;
-    margin: 1rem auto;
-    width: 30%;
-    padding: 0.5rem;
-    border: none;
-    border-radius: 1rem;
-  }
+ 
   
   #garmentTags {
   
@@ -177,7 +154,7 @@
   label{
     text-align: left;
     align-self: center;
-    font-size: 1rem;
+    font-size: 1.4rem;
   
   }
     input[type="checkbox"] {
@@ -202,8 +179,14 @@
     right: 0;
   
   }
+
+  #formDetails{
+    padding: 0rem 0rem 10rem 0rem; 
+
+  }
   @media only screen and (min-width:800px){
     #formDetails{
+      padding: 4rem 0rem;
       display: grid;
       grid-template-columns: 1fr 1fr;
   
@@ -225,11 +208,11 @@
   .form-container {
   
   margin: 0 auto;
-    width: 400px;
+    width: 600px;
     /* background: linear-gradient(#ffffff00, #9e999900) padding-box, linear-gradient(145deg, #000000 35%, #06025e, #06025e) border-box;    */
-    border: 2px solid black;
+    border: 2px solid var(--colorBeige);
     padding: 32px 24px;
-    font-size: 14px;
+    font-size: 1rem;
     font-family: inherit;
     color: white;
     display: flex;
@@ -240,6 +223,8 @@
     gap: 20px;
     border-radius: 16px;
     background-size: 200% 100%;
+    background: #00000047;
+    backdrop-filter: blur(250px);
     animation: gradient 5s ease infinite;
   }
   
@@ -259,19 +244,20 @@
   
   .form-group {
   .group{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 8px;
+    text-align: left;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+    align-self: center;
     padding: 1rem 0rem;
   
   }
   
     select {
       background-color: transparent;
-      color: rgb(0, 0, 0);
+      color: var(--colorBeige);
       padding: 0.5rem 1rem;
       border-radius: 1rem;
+      font-size: 1.4rem;
     }
   
   }
@@ -287,23 +273,36 @@
   }
   
   .form-container .form-group {
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
     gap: 2px;
   }
+  
   
   .form-container .form-group label {
     display: block;
     margin-bottom: 5px;
-    color: #000000;
-    font-size: 1.1rem;
+    color: var(--colorBeige);
+    font-size: 1.6rem;
   }
   
+  input[type="color"] {
+ width: 230px;
+  }
+  #occasionInput{
+    background: transparent;
+    width: 100%;
+    font-size: 1.3rem;
+color: var(--colorBeige);
+border: none;
+border-radius: 0px;
+border-bottom: 1px solid var(--colorBeige);
+  }
   .form-container .form-group input[type="text"] {
     width: 100%;
     padding: 12px 16px;
     border-radius: 8px;
-    color: #000000;
+    color: var(--colorBeige);
     font-family: inherit;
     background-color: transparent;
     border: 1px solid #414141;

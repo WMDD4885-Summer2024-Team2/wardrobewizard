@@ -1,23 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css');
 
-.visually-hidden {
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-}
 
 
 
-.fa-trash-can {
-  position: relative;
-  color: white;
-  z-index: -3;
-}
+
 
 
 h1,
@@ -67,21 +54,21 @@ span {
   margin: 15px;
   padding: 15px 30px;
   text-align: center;
-  font-size: 18px;
+  font-size: 1.125;
   letter-spacing: 1px;
   text-decoration: none;
   color: #031B4A;
   background: var(--background-color);
   cursor: pointer;
   transition: ease-out 0.5s;
-  border: 2px solid #031B4A;
+  border: 2px solid var(--colorBeige);
   border-radius: 10px;
-  box-shadow: inset 0 0 0 0 #031B4A;
+  box-shadow: inset 0 0 0 0 var(--colorBeige);
 }
 
 .wardrowiz-button:hover {
   color: white;
-  box-shadow: inset 0 -100px 0 0 #031B4A;
+  box-shadow: inset 0 -100px 0 0 var(--colorBeige);
 }
 
 .wardrowiz-button:active {
@@ -323,7 +310,7 @@ aspect-ratio: 1/1;
 
 .popup.show {
   display: flex;
-  animation: fadeOut 4s forwards;
+  animation: fadeOut 2s forwards;
   opacity: 1;
 }
 
@@ -370,8 +357,8 @@ aspect-ratio: 1/1;
   display: flex;
   flex-flow: row wrap;
   gap: 1rem;
-  justify-content: center;
-  align-items: flex-start;
+  justify-content: space-evenly;
+  align-items: center;
   padding: 1rem;
   flex-grow: 1;
 
@@ -409,6 +396,8 @@ aspect-ratio: 1/1;
     }
   }
     .wardrowiz-card {
+      width: 250px;
+      height: 450px;
       flex-grow: 1;
       /* 2 column layout */
       flex-basis: calc(50% - .5rem);
@@ -416,6 +405,7 @@ aspect-ratio: 1/1;
       border-radius: 1.5rem;
       position: relative;
       .wardrowiz-image {
+        box-sizing: border-box;
         width: 100%;
         border-radius: 1.5rem;
         img {
@@ -553,71 +543,4 @@ aspect-ratio: 1/1;
   }
 
 
-  /* loaderrrrr */
-
-  .loader {
-    display: flex;
-    padding: 10rem 3rem 10rem 3rem;
-    align-items: center;
-    margin: 0 auto;
-    justify-content: center;
-
-  }
-
-
-  .ball {
-    position: relative;
-    bottom: 50px;
-    left: calc(100% - 20px);
-    width: 50px;
-    height: 50px;
-    background: #28282800;
-    background-image: url(./images/homePageImages/ww.png);
-    background-size: cover;
-    border-radius: 50%;
-    transition: 0.5s ease-in-out;
-    animation: ball-move8234 3s ease-in-out infinite alternate;
-
-  }
-
-
-  .ball::after {
-    position: absolute;
-    content: '';
-    top: 25px;
-    right: 5px;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-  }
-
-  .bar {
-    width: 200px;
-    height: 12.5px;
-    background: #031B4A;
-    border-radius: 30px;
-    transform: rotate(-15deg);
-    animation: up-down6123 3s ease-in-out 1s infinite alternate;
-  }
-
-  @keyframes up-down6123 {
-    from {
-      transform: rotate(-15deg);
-    }
-
-    to {
-      transform: rotate(15deg);
-    }
-  }
-
-  @keyframes ball-move8234 {
-    from {
-      left: calc(100% - 40px);
-      transform: rotate(360deg);
-    }
-
-    to {
-      left: calc(0% - 20px);
-      transform: rotate(0deg);
-    }
-  }
+  
