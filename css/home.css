@@ -7,6 +7,15 @@ main{
     padding: 0rem 0rem;
 }
 
+h1,h2,h3{
+    color: var(--navyblue);
+}
+img{
+   
+    width: 100%;
+   
+}
+
 .todays-suggestion-section {
     display: none;
 }
@@ -365,6 +374,7 @@ padding: 1rem;
         font-weight: 900;
         img {
             padding: 1rem;
+            box-sizing: border-box;
             /* border-radius: 30px; */
         }
     }
@@ -416,3 +426,99 @@ padding: 1rem;
 
 }
 }
+/******** new **********/
+.main-h1{
+    font-size: 5rem;
+    text-align: center;
+    margin-top: 8rem;
+}
+
+.opening-sec{
+    background-color: #fef1e0;
+    padding: 1rem;
+}
+
+.home-btn{
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    
+}
+.opening-sec h2{
+    font-size: 4rem;
+}
+.slogan{
+    font-size: 1.5rem;
+}
+.feature-sec{
+    padding: 1rem;
+}
+
+.feature-sec h2{
+    font-size: 3rem;
+    text-align: center;
+}
+.feature-sec h3{
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 1rem;
+    }
+
+    .feature-sec p{
+        font-size: 1.5rem;
+       
+    }
+
+    @media only screen and (min-width: 715px){
+        .opening-div{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 1.5rem;
+        }
+    
+        h1{
+            font-size: 4rem;
+            
+        }
+       
+        .opening-sec{
+            padding-top: 6rem;
+        }
+    
+        .grid-feature{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+    
+        main{
+            max-width: 1500px;
+        }
+    } 
+
+    @media only screen and (min-width: 1000px){
+
+        .opening-sec h2{
+          font-size: 5rem;
+        }
+    }
+@media only screen and (min-width: 1300px){
+
+    .opening-sec h2{
+        font-size: 6rem;
+      }
+}
+
+/* 
+
+
+
+.feature-sec img{
+    border-radius: 50px;
+   
+    padding: 3rem;
+}
+
+
+
+ */
