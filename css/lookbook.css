@@ -277,6 +277,7 @@
         height: 45px;
         margin-bottom: 0;
         border-color: var(--colorBeige);
+        padding-left: 10px;
     }
     i {
         color: var(--colorBeige);
