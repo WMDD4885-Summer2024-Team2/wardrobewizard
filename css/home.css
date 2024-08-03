@@ -97,7 +97,7 @@ section {
 padding: 3rem 0rem;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 2rem;
 
     @media only screen and (min-width:600px) {
