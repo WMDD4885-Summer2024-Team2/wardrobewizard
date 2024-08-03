@@ -8,7 +8,7 @@
 
 
     .profilePage {
-        margin: 9rem 0;
+        margin: 8rem 0;
         display: grid;
         grid-template-columns: 1fr;
         .profileImage-card {
@@ -186,18 +186,18 @@
         .profilePage {
             .profileImage-card {
                 margin: 0 auto;
-                padding: 4rem;
+                padding: 1rem;
                 .profileImage {
                     img {
-                        width: 450px;
-                        height: 450px;
+                        width: 200px;
+                        height: 200px;
                         
                     }
                 }
                 .card-content {
                     .editImage-wrapper {
                         button {
-                            font-size: 2rem;
+                            font-size: 1rem;
                         }
                     }
                 }
@@ -205,36 +205,39 @@
             .profile-menu {
                 margin: auto;
                 h1 {
-                    font-size: 10rem;
+                    font-size: 6rem;
                 }
                 .radio-inputs-custom {
                     button {
-                        font-size: 2rem;
+                        font-size: 1rem;
                     }
                 }
                 .section-features {
                     div {
                         grid-template-columns: auto auto;
                         h3 {
-                            font-size: 3rem;
+                            font-size: 1rem;
                         }
                         i {
-                            font-size: 2rem;
+                            font-size: 1rem;
                         }
                     }
                 }
                 #profileForm {
+                    width: 100%;
+                    text-align: center;
                     input, select {
-                        height: 80px;
-                        font-size: 2rem;
+                        height: 30px;
+                        font-size: 1rem;
                     }
                     .layer {
                         i {
-                            font-size: 2rem;
+                            font-size: 1rem;
                         }
                     }
                     button {
-                        font-size: 2rem;
+                        margin: 0;
+                        font-size: 1rem;
                     }
                 }
             }
@@ -249,75 +252,76 @@
             grid-template-columns: 1fr 1fr;
             gap: 5rem;
             .profileImage-card {
-                margin: 0 0 0 auto;
-                padding: 6rem;
-                gap: 5rem;
+                margin: 0 0 0 15%;
+                padding: 3rem;
+                gap: 3rem;
                 .profileImage {
                     img {
-                        width: 450px;
-                        height: 450px;
+                        width: 250px;
+                        height: 250px;
                         
                     }
                 }
                 .card-content {
-                    h2 {
+                    /* h2 {
                         font-size: 5rem;
-                    }
+                    } */
                     .editImage-wrapper {
                         text-align: center;
                         button {
-                            font-size: 2.5rem;
+                            font-size: 1.5rem;
                         }
                     }
                 }
             }
             .profile-menu {
                 align-items: center;
-                justify-content: space-between;
+                justify-content: flex-start;
                 margin: 0 auto 0 0;
                 h1 {
-                    font-size: 15rem;
+                    font-size: 8rem;
                 }
                 .radio-inputs-custom {
                     button {
-                        font-size: 2.5rem;
+                        font-size: 1.5rem;
                     }
                 }
                 .section-features {
-                    padding-top: 4rem;
+                    padding-top: 1rem;
                     align-items: center;
                     width: 100%;
-                    margin: 0 auto 4rem 0;
-                    gap: 4rem;
+                    margin: 0 auto 1rem 0;
+                    gap: 1rem;
                     div {
                         grid-template-columns: 30px auto;
                         h3{
-                            font-size: 2.5rem;
+                            font-size: 1.5rem;
 
                         }
                         i {
-                            font-size: 2.5rem;
+                            font-size: 1.5rem;
                         }
                     }
                 }
                 #profileForm {
-                    padding-top: 1rem;
+                    padding-top: 0.5rem;
                     width: 100%;
                     text-align: center;
                     div {
-                        padding-bottom: 1rem;
+                        padding-bottom: 0.5rem;
                     }
                     input , select {
-                        height: 100px;
-                        font-size: 2.5rem;
+                        height: 50px;
+                        font-size: 1.5rem;
                     }
                     .layer {
                         i {
-                            font-size: 2.5rem;
+                            font-size: 1.5rem;
                         }
                     }
                     button {
-                        font-size: 2.5rem;
+                        margin: 0;
+                        font-size: 1.5rem;
                     }
                 }
                 
