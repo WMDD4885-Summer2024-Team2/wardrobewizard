@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Beau+Rivage&display=swap');
-
-@import url('https://fonts.googleapis.com/css2?family=Katibeh&display=swap');
+/* 
+@import url('https://fonts.googleapis.com/css2?family=Katibeh&display=swap'); */
 
 @font-face {
     font-family: charter;
@@ -16,34 +16,35 @@
   background-size: cover; */
 }
 h2,h3,h4,h5,h6{
-  font-family: 'charter';
-  color: var(--colorBeige);
+  font-family: 'charter',system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+ 
 
 }
 h1{
-  color: var(--colorBeige);
-  font-family: 'katibeh';
-  font-size: 105px;
+ 
+  font-family: 'charter',system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: clamp(2rem, 4vw,3rem);
   margin: 0;
+  line-height: 1.2;
 }
 h2{
-  font-size: 35px;
+  font-size:clamp(1rem, 3vw,3rem); 
 }
 h3{
-  font-size: 24px;
+  font-size: 1.5rem;
 }
 h4{
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 h5{
-  font-size: 18px;
+  font-size: 1.125rem;
 }
 h6{
-  font-size: 16px;
+  font-size: 1rem;
   }
 
 p, span, a , li , button, select{
-  font-size: 24px;
+  font-size: 1.5rem;
   font-family: 'Noto Sans';
 }
 .visually-hidden {
@@ -82,7 +83,7 @@ body{
     margin: 0;
     /* background: radial-gradient(51.95% 51.95% at 46.82% 48.05%, #FFEAB6 0%, #FFFFFF 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
 
-    color: var(--colorBlack);
+    color: var(--colorNavyBlue);
     line-height: 1.4;
     display: block;
     gap: 1rem;
@@ -921,25 +922,25 @@ input[type="file"] {
 .wardrowiz-button {
     position: relative;
     display: inline-block;
-    margin: 15px;
-    padding: 15px 30px;
+    margin: 1rem;
+    padding: 1rem 1.8rem;
     text-align: center;
     font-size: 1.25rem;
     letter-spacing: 1px;
     text-decoration: none;
     color: var(--colorBeige);
-    background: var(--background-color);
+    background: var(--colorNavyBlue);
     cursor: pointer;
     transition: ease-out 0.5s;
-    border: 2px solid var(--colorBeige);
+    border: 2px solid var(--colorNavyBlue);
     border-radius: 10px;
-    box-shadow: inset 0 0 0 0 var(--colorBeige);
+    box-shadow: inset 0 0 0 0 var(--colorNavyBlue);
   }
   
   .wardrowiz-button:hover {
 
-    color: var(--colorNavyBlue);
-    box-shadow: inset 0 -100px 0 0 var(--colorMustard);
+    /* color: var(--colorNavyBlue); */
+    box-shadow: inset 0 -100px 0 0 var(--colorNavyBlue);
   }
   i{
     cursor: pointer;
@@ -1092,11 +1093,11 @@ input[type="file"] {
     cursor: pointer;
     align-items: center;
     justify-content: center;
-    border: 2px dashed var(--colorBeige);
-    background-color: transparent;
+    border: 2px dashed var(--colorMustard);
+   /*  background-color: transparent; */
     padding: 1.5rem;
     border-radius: 10px;
-    box-shadow: 0px 48px 35px -48px var(--colorBeige);
+    box-shadow: 0px 48px 35px -48px var(--colorMustard);
   }
   
   .custum-file-upload .icon {
@@ -1107,7 +1108,7 @@ input[type="file"] {
   
   .custum-file-upload .icon svg {
     height: 80px;
-    fill: var(--colorBeige);
+    fill: var(--colorMustard);
   }
   
   .custum-file-upload .text {
@@ -1118,7 +1119,7 @@ input[type="file"] {
   
   .custum-file-upload .text span {
     font-weight: 400;
-    color: var(--colorBeige);
+    color: var(--colorMustard);
   }
   
   .custum-file-upload input {

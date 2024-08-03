@@ -7,7 +7,7 @@
 
 
 
-h1,
+/* h1,
 h2,
 h3,
 h4,
@@ -23,7 +23,7 @@ text,
 span {
   line-height: 1.6;
   font-family: "Noto Sans", sans-serif;
-}
+} */
 
 
 
@@ -193,7 +193,7 @@ aspect-ratio: 1/1;
   align-items: center;
   justify-content: center;
   border: 2px dashed #031B4A;
-  background-color: transparent;
+  /* background-color: transparent; */
   padding: 1.5rem;
   border-radius: 10px;
   box-shadow: 0px 48px 35px -48px #031B4A;
@@ -207,7 +207,7 @@ aspect-ratio: 1/1;
 
 .custum-file-upload .icon svg {
   height: 80px;
-  fill: #CB874E;
+  /* fill: #CB874E; */
 }
 
 .custum-file-upload .text {
@@ -218,7 +218,7 @@ aspect-ratio: 1/1;
 
 .custum-file-upload .text span {
   font-weight: 400;
-  color: #CB874E;
+  color: var(--colorBeige);
 }
 
 .custum-file-upload input {

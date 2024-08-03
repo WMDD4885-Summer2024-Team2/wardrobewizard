@@ -3,9 +3,9 @@
     padding: 1rem 2rem;
     height: 130vh;
     /* background-color: linear-gradient(180deg, var(--colorWhite) 30%, var(--colorAntiqueWhite) 0%); */
-    background: url(/resources/images/backgroundImages/LoginBg.jpg);
+   /*  background: url(/resources/images/backgroundImages/LoginBg.jpg);
     background-size: cover;
-
+ */
 
     .profilePage {
         margin: 8rem 0;
@@ -44,10 +44,10 @@
                 .editImage-wrapper {
                     button {
                         padding: 0.5rem 1rem;
-                        background-color: #CB874E;
-                        color: var(--colorNavyBlue);
+                        background-color: var(--colorNavyBlue);
+                        color: var(--colorBeige);
                         border-radius: 10px;
-                        border: 1px solid #CB874E;
+                        border: 1px solid var(--colorNavyBlue);
                     }
                 }
 
@@ -66,9 +66,9 @@
             /* margin: 0 auto 0 1rem; */
             margin: 0;
 
-            h1 {
+           /*  h1 {
                 font-size: 80px;
-            } 
+            }  */
 
             .radio-inputs-custom {
                 /* margin: 0 auto; */

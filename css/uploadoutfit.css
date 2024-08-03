@@ -1,6 +1,6 @@
 .mainPageOutfit{
-  background: url('/resources/images/backgroundImages/LoginBg.jpg');
-  background-size: cover;
+  /* background: url('/resources/images/backgroundImages/LoginBg.jpg');
+  background-size: cover; */
 }
 #uploadingImages
 {
@@ -17,7 +17,7 @@
     text-align: center;
     padding: 1rem;
     margin: 0;
-    color: var(--colorBeige);
+    /* color: var(--colorBeige); */
   }
   
   
@@ -51,14 +51,14 @@
   
   .tabs {
     display: flex;
-    background-color: var(--colorBeige);
+    background-color: var(--colorNavyBlue);
     
     border-radius: 5rem;
   }
   
   #camera,
   #gallery {
-    color: var(--colorNavyBlue);;
+    color: var(--colorBeige);;
     padding:1.5rem 3rem;
     background-color: transparent;
     border: none;
@@ -147,9 +147,13 @@
   grid-template-columns: auto auto auto;
   gap: 1rem;
   .customCheckbox{
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 1rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+
+    label{
+      text-transform: capitalize;
+    }
   }
   label{
     text-align: left;
@@ -223,7 +227,7 @@
     gap: 20px;
     border-radius: 16px;
     background-size: 200% 100%;
-    background: #00000047;
+    background: var(--colorBeige);
     backdrop-filter: blur(250px);
     animation: gradient 5s ease infinite;
   }
@@ -252,9 +256,14 @@
   
   }
   
+ h2 {
+  color: var(--colorNavyBlue);
+  text-align: left;
+ }
+  
     select {
       background-color: transparent;
-      color: var(--colorBeige);
+      color: var(--colorNavyBlue);
       padding: 0.5rem 1rem;
       border-radius: 1rem;
       font-size: 1.4rem;
@@ -282,7 +291,7 @@
   .form-container .form-group label {
     display: block;
     margin-bottom: 5px;
-    color: var(--colorBeige);
+    color: var(--colorNavyBlue);
     font-size: 1.6rem;
   }
   
