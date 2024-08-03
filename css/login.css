@@ -19,7 +19,10 @@ background-attachment: fixed;
   
   
 
-
+h1{
+  font-size: 80px;
+  color: var(--colorBeige);
+}
   .google-signin {
    p{
     display: flex;

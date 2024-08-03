@@ -1,4 +1,4 @@
-import { userSignOut } from "./common.js"
+import { userSignOut, loadUserProfile } from "./common.js"
 
 export const init = () => {  
    signOutButton.addEventListener("click", userSignOut);
@@ -31,6 +31,36 @@ export const init = () => {
          closeMenu();
        }
      });
-     
+//  console.log('testlog');
+//      console.log(loadUserProfile());
+
+//      const result =  loadUserProfile();
+//   const documents = result.docs;
+  // documents.forEach((doc) => {
+  //   console.log(doc.id + 'gotId');
+  // userImage.src =  doc.data().profileImageUrl;
+
+
+  // });
+
+ 
+  async function main() {
+    await getInformation();
+  }
+  
+  async function getInformation() {
+    const result = await loadUserProfile();
+  const documents = result.docs;
+  documents.forEach((doc) => {
+    console.log(doc.id + 'docID');
+  userImage.src =  doc.data().profileImageUrl;
+
+  });
+  }
+  
+  main();
+
+
 }
 
+ 

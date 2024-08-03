@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Beau+Rivage&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Katibeh&display=swap');
 
 @font-face {
     font-family: charter;
@@ -8,6 +11,37 @@
     src: url('../resources/fonts/charter_bold.woff2') format('woff2');
 }
 
+h2,h3,h4,h5,h6{
+  font-family: 'charter';
+  color: var(--colorBeige);
+
+}
+h1{
+  color: var(--colorBeige);
+  font-family: 'katibeh';
+  font-size: 105px;
+  margin: 0;
+}
+h2{
+  font-size: 35px;
+}
+h3{
+  font-size: 24px;
+}
+h4{
+  font-size: 20px;
+}
+h5{
+  font-size: 18px;
+}
+h6{
+  font-size: 16px;
+  }
+
+p, span, a , li , button{
+  font-size: 18px;
+  font-family: 'Noto Sans';
+}
 .visually-hidden {
     clip: rect(0 0 0 0);
     clip-path: inset(50%);
@@ -194,12 +228,12 @@ canvas{
 }
 
 main{
-    padding: 0rem;
+    /* padding: 0rem;
     position: relative;
     top: 6rem;
     left:0;
-    right: 0;
-    padding-bottom: 6rem;
+    right: 0; */
+    /* padding-bottom: 6rem; */
 }
 
 .container{
@@ -611,7 +645,7 @@ input[type="file"] {
     width: 50px;
     height: 50px;
     background: #28282800;
-    background-image: url(./images/homePageImages/ww.png);
+    background-image: url(./resources/images/backgroundImages/logoWardro.png);
     background-size: cover;
     border-radius: 50%;
     transition: 0.5s ease-in-out;
@@ -633,7 +667,7 @@ input[type="file"] {
   .bar {
     width: 200px;
     height: 12.5px;
-    background: #031B4A;
+    background: var(--colorMustard);
     border-radius: 30px;
     transform: rotate(-15deg);
     animation: up-down6123 3s ease-in-out 1s infinite alternate;
@@ -888,18 +922,19 @@ input[type="file"] {
     font-size: 1.25rem;
     letter-spacing: 1px;
     text-decoration: none;
-    color: #031B4A;
+    color: var(--colorBeige);
     background: var(--background-color);
     cursor: pointer;
     transition: ease-out 0.5s;
-    border: 2px solid #031B4A;
+    border: 2px solid var(--colorBeige);
     border-radius: 10px;
-    box-shadow: inset 0 0 0 0 #031B4A;
+    box-shadow: inset 0 0 0 0 var(--colorBeige);
   }
   
   .wardrowiz-button:hover {
-    color: white;
-    box-shadow: inset 0 -100px 0 0 #031B4A;
+
+    color: var(--colorNavyBlue);
+    box-shadow: inset 0 -100px 0 0 var(--colorBeige);
   }
   
   .wardrowiz-button:active {
@@ -1023,11 +1058,11 @@ input[type="file"] {
     cursor: pointer;
     align-items: center;
     justify-content: center;
-    border: 2px dashed #031B4A;
+    border: 2px dashed var(--colorBeige);
     background-color: transparent;
     padding: 1.5rem;
     border-radius: 10px;
-    box-shadow: 0px 48px 35px -48px #031B4A;
+    box-shadow: 0px 48px 35px -48px var(--colorBeige);
   }
   
   .custum-file-upload .icon {
@@ -1038,7 +1073,7 @@ input[type="file"] {
   
   .custum-file-upload .icon svg {
     height: 80px;
-    fill: #CB874E;
+    fill: var(--colorBeige);
   }
   
   .custum-file-upload .text {
@@ -1049,7 +1084,7 @@ input[type="file"] {
   
   .custum-file-upload .text span {
     font-weight: 400;
-    color: #CB874E;
+    color: var(--colorBeige);
   }
   
   .custum-file-upload input {
@@ -1170,7 +1205,7 @@ input[type="file"] {
     select {
       padding: 0.5rem 1rem;
       border-radius: 10px;
-      color: var(--button-bg-color);
+      color: var(--colorNavyBlue);
     }
   }
   
@@ -1266,7 +1301,7 @@ input[type="file"] {
   
           a {
             text-decoration: none;
-            color: var(--button-bg-color);
+            color: var(--colorNavyBlue);
             font-weight: 400;
             font-size: 1rem;
           }
@@ -1287,7 +1322,7 @@ input[type="file"] {
           padding: 1rem;
           p {
             text-decoration: none;
-            color: var(--button-bg-color);
+            color: var(--colorNavyBlue);
             font-weight: 400;
             font-size: 1rem;
             cursor: pointer;
@@ -1367,7 +1402,7 @@ input[type="file"] {
     }
   
   
-    /* loaderrrrr */
+    /* loaderrrrr
     .loader {
       display: flex;
       padding: 10rem 3rem 10rem 3rem;
@@ -1436,4 +1471,4 @@ input[type="file"] {
     }
 
     
-    
+     */

@@ -1,4 +1,4 @@
-import { getOutfitCount,genreateOutfits,getFileAsBase64,saveHistoryToDb,saveFavoriteToDb } from "./common.js";
+import { getOutfitCount,genreateOutfits,getFileAsBase64,saveHistoryToDb,saveFavoriteToDb , loadFavouritesData} from "./common.js";
 
 import { wardrowizAlert } from "./common.js";
 import { firebase } from "./firebase.js";
@@ -122,6 +122,48 @@ import { collection, doc, addDoc, deleteDoc } from 'https://www.gstatic.com/fire
 // }
 export const init = async () => {
 
+
+  // virtualTryOn.addEventListener('click', function(){
+  //   document.getElementById("sidebar").classList.toggle('active');
+
+  // })
+  closeSideBar.addEventListener('click', function(){
+    document.getElementById("sidebar").classList.toggle('active');
+
+  })
+
+  loadFavouritesData().then((favoriteArray) => {
+    console.log(favoriteArray);
+    top_favorite_outfit.innerHTML = `<img src='${favoriteArray[0].top.imageUrl}' alt=''>`;
+    bottom_favorite_outfit.innerHTML = `<img src='${favoriteArray[0].bottom.imageUrl}' alt=''>`;
+    
+    likeFav.innerHTML += `<div class="con-like">
+    <input class="like" type="checkbox" checked title="like">
+    <div class="checkmark">
+    <svg xmlns="http://www.w3.org/2000/svg" class="outline" viewBox="0 0 24 24">
+    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z"></path>
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" class="filled" viewBox="0 0 24 24">
+    <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z"></path>
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" height="100" width="100" class="celebrate">
+    <polygon class="poly" points="10,10 20,20"></polygon>
+    <polygon class="poly" points="10,50 20,50"></polygon>
+    <polygon class="poly" points="20,80 30,70"></polygon>
+    <polygon class="poly" points="90,10 80,20"></polygon>
+    <polygon class="poly" points="90,50 80,50"></polygon>
+    <polygon class="poly" points="80,80 70,70"></polygon>
+    </svg>
+    </div>
+    </div>`;
+
+  }).catch((error) => {
+    console.error(error);
+  });
+
+  viewFav.addEventListener('click', function(){
+    window.location.href = '#lookbook';
+  })
 
   userWelcome.innerHTML = `Welcome ${firebase.getUser().displayName} to your digital closet.`
 const createWeatherRecommendation = () => {
@@ -416,7 +458,10 @@ const getLocation = () => {
   if (!listenerAdded) {
 
     virtualTryOn.addEventListener('click', async function (e) {
+
     e.preventDefault();
+    document.getElementById("sidebar").classList.toggle('active');
+
     loader.style.display = 'flex';
 
 
@@ -427,19 +472,19 @@ const getLocation = () => {
     console.log(topGarment);
     console.log(lowerGarment);
 
-    const response = await fetchData(base64data1, topGarment, "upper_body", "shirt");
+    // const response = await fetchData(base64data1, topGarment, "upper_body", "shirt");
 
-    setTimeout(async () => {
-      console.log("Upload timed out after 5 seconds");
-      // uploadBottom(response.image.url);
-      image1.src = response.image.url;
+    // setTimeout(async () => {
+    //   console.log("Upload timed out after 5 seconds");
+    //   // uploadBottom(response.image.url);
+    //   image1.src = response.image.url;
 
-      const jsonData = await fetchData(response.image.url, lowerGarment, "lower_body", "jeans");
-      // uploadBottom(jsonData.image.url);
-      image1.src = jsonData.image.url;
-      loader.style.display = 'none';
+    //   const jsonData = await fetchData(response.image.url, lowerGarment, "lower_body", "jeans");
+    //   // uploadBottom(jsonData.image.url);
+    //   image1.src = jsonData.image.url;
+    //   loader.style.display = 'none';
 
-    }, 5000); // 5 seconds
+    // }, 5000); // 5 seconds
 
 
 
@@ -474,29 +519,29 @@ const base64data1 = canvas1.toDataURL('image/jpeg');
 // }
 
 // Get the modal
-var ebModal = document.getElementById('mySizeChartModal');
-ebModal.style.display = "none";
-vton.style.display= 'none';
+// var ebModal = document.getElementById('mySizeChartModal');
+// ebModal.style.display = "none";
+// vton.style.display= 'none';
 
 // Get the button that opens the modal
-var ebBtn = document.getElementById("virtualTryOn");
+// var ebBtn = document.getElementById("virtualTryOn");
 
-// Get the <span> element that closes the modal
-var ebSpan = document.getElementById("closeModal");
+// // Get the <span> element that closes the modal
+// var ebSpan = document.getElementById("closeModal");
 
-// When the user clicks the button, open the modal 
-ebBtn.onclick = function() {
-    ebModal.style.display = "block";
-    vton.style.display= 'block';
+// // When the user clicks the button, open the modal 
+// ebBtn.onclick = function() {
+//     ebModal.style.display = "block";
+//     vton.style.display= 'block';
 
-}
+// }
 
-// When the user clicks on <span> (x), close the modal
-ebSpan.onclick = function() {
-    ebModal.style.display = "none";
-    vton.style.display= 'none';
+// // When the user clicks on <span> (x), close the modal
+// ebSpan.onclick = function() {
+//     ebModal.style.display = "none";
+//     vton.style.display= 'none';
 
-}
+// }
 
 
 }

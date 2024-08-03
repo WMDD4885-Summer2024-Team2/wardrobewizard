@@ -103,14 +103,15 @@ export const loadFavouritesData = () => {
     )
   );
 
-  onSnapshot(q, (querySnapshot) => {
-    favoriteArray = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-    console.log(favoriteArray);
-
+  return new Promise((resolve, reject) => {
+    onSnapshot(q, (querySnapshot) => {
+      const favoriteArray = querySnapshot.docs.map((doc) => ({ id: doc.id,...doc.data() }));
+      console.log(favoriteArray);
+      resolve(favoriteArray);
+    }, (error) => {
+      reject(error);
+    });
   });
-
-  return favoriteArray;
-
 };
 
 
