@@ -18,7 +18,7 @@
             align-items: center;
             padding: 1rem;
             /* margin: 0 3rem 0 40%; */
-            margin: auto;
+            /* margin: auto; */
             background-color: var(--colorBeige);
             box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;;
             /* box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px; */
@@ -185,7 +185,7 @@
         height: 120vh;
         .profilePage {
             .profileImage-card {
-                margin: 0 auto;
+                
                 padding: 1rem;
                 .profileImage {
                     img {
@@ -203,7 +203,6 @@
                 }
             }
             .profile-menu {
-                margin: auto;
                 h1 {
                     font-size: 6rem;
                 }
@@ -248,11 +247,12 @@
     .page5 {
         height: 100vh;
         .profilePage { 
+            padding: 2rem;
             display: flex;
+            justify-content: center;
             grid-template-columns: 1fr 1fr;
             gap: 5rem;
             .profileImage-card {
-                margin: 0 0 0 15%;
                 padding: 3rem;
                 gap: 3rem;
                 .profileImage {
@@ -277,7 +277,6 @@
             .profile-menu {
                 align-items: center;
                 justify-content: flex-start;
-                margin: 0 auto 0 0;
                 h1 {
                     font-size: 8rem;
                 }
