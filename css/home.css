@@ -3,6 +3,10 @@
 #uploadoutfitsection {
     display: none;
 }
+
+h1, h2, h3, h4{
+color: var(--colorNavyBlue);
+}
 main{
     padding: 0rem 0rem;
 }

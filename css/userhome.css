@@ -158,16 +158,18 @@
     }
 
     #sidebar {
-        z-index: 99999999999;
+      
+        transform: translateX(-100%);
 
+        z-index: 99999999999;
         position: fixed;
         top: 0px;
         left: 0px;
         width: 100%;
         height: 100vh;
-        background: #151719;
+        background: #00000085;
         transition: all 300ms linear;
-        transform: translateX(-100%);
+        backdrop-filter: blur(100px);
     }
 
     .sidebarHeader {
@@ -485,7 +487,7 @@
         width: 4em;
         height: 4em;
         border: none;
-        background: rgba(180, 83, 107, 0.11);
+        background: rgba(180, 83, 107, 0);
         border-radius: 5px;
     }
 
