@@ -93,20 +93,13 @@ takePictureButton.style.display = 'none';
 
 startButton.addEventListener('click', async () => {
     try {
-        const constraints = {
-            video: {
-                facingMode: 'user', // or 'environment' for rear camera
-                width: { ideal: 640 },
-                height: { ideal: 480 }
-            },
-            audio: false
-        };
-    
-        stream = await navigator.mediaDevices.getUserMedia(constraints);
+        stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
         video.srcObject = stream;
         takePictureButton.disabled = false;
         document.getElementById('video').style.display = "block";
         takePictureButton.style.display = 'block';
+
+
     } catch (error) {
         console.error('Error accessing camera:', error);
     }
