@@ -54,8 +54,8 @@ var reset_passcode = document.getElementById("resetPassword");
 reset_passcode.addEventListener('click', (event) => {
   event.preventDefault();
   resetPassword(firebase.getUser().email);
-  var email = document.getElementById('userEmailHeading').innerHTML;
-  wardrowizAlert('Password reset email sent successfully at ' + email);
+  // var email = document.getElementById('userEmailHeading').innerHTML;
+  wardrowizAlert('Password reset email sent successfully at ' + firebase.getUser().email);
 
 
 });
