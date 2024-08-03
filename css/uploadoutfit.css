@@ -302,10 +302,11 @@
     background: transparent;
     width: 100%;
     font-size: 1.3rem;
-color: var(--colorBeige);
+color: var(--colorNavyBlue);
+padding: 0 1rem;
 border: none;
-border-radius: 0px;
-border-bottom: 1px solid var(--colorBeige);
+border-radius: 1rem !important;
+border: 1px solid #ccc;
   }
   .form-container .form-group input[type="text"] {
     width: 100%;
