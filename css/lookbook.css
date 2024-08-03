@@ -367,32 +367,18 @@
         }
     }
     .delete-btn {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        color: red;
-        border: 0px;
-        border-radius: 10px;
+        width: 100%;
+        background-color: #fff;
         padding: 0;
-        /* background-color: #FFFFFF; */
-        width: auto;
-        /* text-align: right !important; */
-        /* background: transparent; */
+        border: 1px solid white;
+        color: red;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
         i {
-            /* border: 1px solid #ccc; */
-            /* border-bottom: 0; */
-            font-size: 1rem !important;
-            padding: 10px;
-            /* border-radius: 10px; */
+            color: red !important;
         }
     }
-    .delete-btn{
-        i:hover {
-            font-size: 2rem !important;
-            background-color: #031b4a;
-            border-radius: 10px;
-        }
-    }
+    
     
 }
 .history-fav-card:hover .history-fav-outfit {
@@ -428,5 +414,6 @@
         
     }
 }
+
 
 
