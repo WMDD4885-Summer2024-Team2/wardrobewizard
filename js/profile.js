@@ -77,7 +77,7 @@ async function getInformation() {
     imageUrl = doc.data().profileImageUrl;
     imageProfilePreview.innerHTML = `<img src="${doc.data().profileImageUrl}" alt="user image">`
     document.getElementById('userNameHeading').innerHTML = `${doc.data().name}`;
-    document.getElementById('user_email').innerHTML = `<p id="userEmailHeading">${firebase.getUser().email}</p>`;
+    // document.getElementById('user_email').innerHTML = `<p id="userEmailHeading">${firebase.getUser().email}</p>`;
     document.getElementById('name').value = `${doc.data().name}`;
     document.getElementById('gender').value = `${doc.data().gender}`;
 

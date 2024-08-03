@@ -120,8 +120,8 @@ document.addEventListener('DOMContentLoaded', init);
 
 const result = (outfit, tabselection) => {
     if (tabselection == 'history') {
-        const totalItems = document.getElementById('totalOutfits');
-        totalItems.innerHTML = `${outfit.length} outfits`;
+        // const totalItems = document.getElementById('totalOutfits');
+        // totalItems.innerHTML = `${outfit.length} outfits`;
         const outfitContainer = document.getElementById("outfits");
         outfitContainer.innerHTML = '';
         outfit.forEach((item) => {
@@ -168,8 +168,8 @@ const result = (outfit, tabselection) => {
     }
     if (tabselection == 'favorite') {
         selectedTab = 'favorite';
-        const totalItems = document.getElementById('totalOutfits');
-        totalItems.innerHTML = `${outfit.length} outfits`;
+        // const totalItems = document.getElementById('totalOutfits');
+        // totalItems.innerHTML = `${outfit.length} outfits`;
         const outfitContainer = document.getElementById("outfits");
         outfitContainer.innerHTML = '';
         outfit.forEach((item) => {
