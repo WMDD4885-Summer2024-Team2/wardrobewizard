@@ -50,7 +50,48 @@ a {
         height: auto;
     }
 }
-
+.opening-sec{
+    background-color: #fef1e0;
+    padding: 1rem;
+}
+.opening-sec h2{
+    font-size: 4rem;
+}
+.slogan{
+    font-size: 1.5rem;
+}
+.home-btn{
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    
+}
+.home-img{
+   
+    width: 100%;
+   
+}
+.feature-sec{
+    padding: 1rem;
+}
+.feature-sec h2{
+    font-size: 3rem;
+    text-align: center;
+}
+.feature-sec h3{
+font-size: 2rem;
+text-align: center;
+margin-top: 1rem;
+}
+.feature-sec p{
+    font-size: 1.5rem;
+    padding: 0 2rem;
+}
+.feature-sec img{
+    border-radius: 50px;
+   
+    padding: 3rem;
+}
 
 
 article {
@@ -98,7 +139,8 @@ padding: 3rem 0rem;
     justify-content: center;
     padding: 1rem;
     position: relative;
-    bottom: 13rem;
+    bottom: 7rem;
+    
 }
 
 .book {
@@ -125,6 +167,11 @@ padding: 3rem 0rem;
     -ms-flex-pack: center;
     justify-content: center;
     color: #000;
+}
+
+h1{
+    text-align: center;
+    
 }
 
 .cover {
@@ -301,7 +348,11 @@ main h1 {
         justify-content: center;
         padding: 1rem;
         position: relative;
-        margin-top: 4rem;
+        
+    }
+    .open-sec{
+        padding: 1rem;
+
     }
     #team {
 
@@ -311,6 +362,35 @@ main h1 {
         h1{
             grid-column: 1/-1;
         }
+    }
+
+    
+
+}
+
+@media only screen and (min-width: 715px){
+    .opening-div{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    h1{
+        font-size: 4rem;
+        
+    }
+   
+    .opening-sec{
+        padding-top: 6rem;
+    }
+
+    .grid-feature{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    main{
+        max-width: 1500px;
     }
 
 }
@@ -395,4 +475,11 @@ padding: 1rem;
         transform: rotate(0deg);
     }
 
+}
+
+
+@media only screen and (min-width: 990px){
+   .opening-sec{
+padding: 2rem;
+   }
 }
