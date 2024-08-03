@@ -11,6 +11,7 @@ const db = getFirestore();
 export const init =  () => {
 
   profileForm.style.display = 'none';
+  featureSelect.style.backgroundColor = "#CB874E";
 
   getInformation();
   const contactPage = document.getElementById('contactUs');
@@ -30,12 +31,16 @@ genderEdit.addEventListener('click', function () {
 featureSelect.addEventListener('click', function () {
   document.getElementById('sectionFeatures').style.display = 'flex';
   document.getElementById('profileForm').style.display = 'none';
+  featureSelect.style.backgroundColor = "#CB874E";
+  profileSelect.style.backgroundColor = "transparent";
 
 })
 
 profileSelect.addEventListener('click', function () {
   document.getElementById('sectionFeatures').style.display = 'none';
   document.getElementById('profileForm').style.display = 'block';
+  featureSelect.style.backgroundColor = "transparent";
+  profileSelect.style.backgroundColor = "#CB874E";
 
 })
 
