@@ -111,48 +111,52 @@ const showWeatherSuggestion = (data) => {
   const suggestionBox = document.createElement('div');
   suggestionBox.className = 'suggestion';
   const image = document.createElement('img');
+  const image2 = document.createElement('img');
   const label = document.createElement('h3');
   const temperature = data.data[0].temp;
 
   // Show different accessories based on the temperature
   if (temperature < 10) {
     // Show winter accessories (e.g. hats, scarves, gloves)
-  
-
-
-    image.src = 'resources/images/jacket.jpeg';
-    label.innerText = `Take Light Jacket or Sweater with you, In case it gets cooler.`;
+    image.src = 'resources/images/hatscarfgloves.jpg';
+    label.innerText = `Stay warm! Wear a hat, scarf, and gloves.`;
     suggestionBox.appendChild(label);
     suggestionBox.appendChild(image);
-
-  } else if (temperature < 20) {
+  } else if ((temperature < 20) && result.toLowerCase().includes('rain')) {
     // Show spring/fall accessories (e.g. light jackets, sunglasses)
-    image.src = 'resources/images/sunglasses.jpg';
-    label.innerText = `Sunny vibes ahead! Grab those shades and enjoy 😎.`;
-    suggestionBox.appendChild(label);
-    suggestionBox.appendChild(image);
-  } else {
     image.src = "resources/images/umbrella.jpeg";
     label.innerText = `Looks like it's gonna pour! Don't forget your umbrella ☔️`;
+    suggestionBox.appendChild(label);
+    suggestionBox.appendChild(image);
+  } else if ((temperature < 20) && result.toLowerCase().includes('sun')) {
+    image.src = 'resources/images/polarized-sunglasses.jpg';
+    label.innerText = `Sunny vibes ahead! Grab those shades and enjoy 😎.`;
     suggestionBox.appendChild(label);
     suggestionBox.appendChild(image);
     // Show summer accessories (e.g. shorts, t-shirts, sandals)
-  
-  }
-  if (result.toLowerCase().includes('rain')) {
-    image.src = "resources/images/umbrella.jpeg";
-    label.innerText = `Looks like it's gonna pour! Don't forget your umbrella ☔️`;
+  } else {
+    image.src = 'resources/images/polarized-sunglasses.jpg';
+    label.innerText = `Sunny vibes ahead! Grab those shades and don't forget to apply sunscreen! 😎.`;
     suggestionBox.appendChild(label);
     suggestionBox.appendChild(image);
-  } else if (result.toLowerCase().includes('sun')) {
-    image.src = 'resources/images/sunglasses.jpg';
-    label.innerText = `Sunny vibes ahead! Grab those shades and enjoy 😎.`;
-    suggestionBox.appendChild(label);
-    suggestionBox.appendChild(image);
-  }  else {
-    label.innerText = `Weather's looking fine, enjoy your day!`;
-    suggestionBox.appendChild(label);
+    image2.src = 'resources/images/sunscreen.jpg';
+    suggestionBox.appendChild(image2);
+
   }
+  // if (result.toLowerCase().includes('rain')) {
+  //   image.src = "resources/images/umbrella.jpeg";
+  //   label.innerText = `Looks like it's gonna pour! Don't forget your umbrella ☔️`;
+  //   suggestionBox.appendChild(label);
+  //   suggestionBox.appendChild(image);
+  // } else if (result.toLowerCase().includes('sun')) {
+  //   image.src = 'resources/images/sunglasses.jpg';
+  //   label.innerText = `Sunny vibes ahead! Grab those shades and enjoy 😎.`;
+  //   suggestionBox.appendChild(label);
+  //   suggestionBox.appendChild(image);
+  // }  else {
+  //   label.innerText = `Weather's looking fine, enjoy your day!`;
+  //   suggestionBox.appendChild(label);
+  // }
   suggestionContainer.appendChild(suggestionBox);
 }
 
