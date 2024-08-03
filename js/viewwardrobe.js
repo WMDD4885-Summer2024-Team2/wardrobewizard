@@ -69,7 +69,7 @@ export const init = () => {
 
         } else {
             result(tops);
-
+            mainPageClosetOutfit.style.height = '100vh';
             document.getElementById('outfitHeading').innerHTML = ` No tops are there`;
         }
         console.log(tops);
@@ -87,7 +87,7 @@ export const init = () => {
 
         } else {
             result(bottom);
-
+            mainPageClosetOutfit.style.height = '100vh';
             document.getElementById('outfitHeading').innerHTML = ` No Bottoms are there `;
         }
         console.log(bottom);
@@ -103,6 +103,7 @@ export const init = () => {
 
         } else {
             result(dresses);
+            mainPageClosetOutfit.style.height = '100vh';
             document.getElementById('outfitHeading').innerHTML = `No dresses are there `;
         }
     })

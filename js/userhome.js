@@ -3,123 +3,7 @@ import { getOutfitCount,genreateOutfits,getFileAsBase64,saveHistoryToDb,saveFavo
 import { wardrowizAlert } from "./common.js";
 import { firebase } from "./firebase.js";
 import { collection, doc, addDoc, deleteDoc } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
-// export const init = async () => {
-//   loader.style.display='flex';
-//   try {
-//     const outfitArray = await getOutfitCount();
-//     console.log(outfitArray);
 
-//    /*  const count = Array.isArray(outfitArray) ? outfitArray.length : 0;
-//  */
-//     const uploadOutfitSection = document.getElementById('uploadoutfitsection');
-//     const outfitUpload = document.getElementById('outfitupload');
-
-//     if (uploadOutfitSection) {
-//       uploadOutfitSection.style.display = outfitArray < 2 ? 'grid' : 'none';
-//     }
-
-
-//     if(uploadOutfitSection.style.display === 'none'){
-
-//        todaysSuggestionSection.style.display='grid';
-
-//         await outfitGenreator();
-//         const virtytryon = document.querySelectorAll('.virtual-try');
-//         if(virtytryon){
-//           virtytryon.forEach( (ele) =>{
-//             ele.addEventListener('click',dovirtytryon);
-//           })
-//         }
-//         modelCloseBtn.addEventListener('click',()=>{
-//           mySizeChartModal.close();
-//         });
-
-//     }
-
-//     if (outfitUpload) {
-//       outfitUpload.addEventListener('click', () => {
-//         window.location.href = '#uploadoutfithome';
-//       });
-//     }
-//     loader.style.display='none';
-//   } catch (error) {
-//     console.error('Error initializing the app:', error);
-//     loader.style.display='none';
-//   }
-// };
-
-// const outfitGenreator = async() =>{
-//   let outfits;
-//   outfits= await genreateOutfits();
-//   todayssuggestions.innerHTML='';
-
-//   const outfit=outfits[Math.floor(Math.random() * outfits.length)];
-
-//   if(outfit){
-
-//     let tags='';
-
-//     outfit[0].tags.forEach((tag) => 
-//           {tags+=`<span class='tag-info'>${tag}</span>`
-//     });
-
-
-//     outfit[1].tags.forEach((tag) => 
-//           {tags+=`<span class='tag-info'>${tag}</span>`
-//     });
-
-//     todayssuggestions.innerHTML+=`<div class='card flex-grow'>
-//       <div class="flex  flex-row-nowrap justify-space-between align-items-center card-header"> 
-//        <i class="fa-regular fa-heart icon-solid"></i>
-
-//         <span class="virtual-try">Virtual Try On</span>
-
-//       </div>
-
-//       <div class='card-body'>
-//         <img src='${outfit[0].downloadURL}' alt='${outfit[0].category}'>
-//         <img src='${outfit[0].downloadURL}'  alt='${outfit[0].category}'>
-//       </div>
-//       <div class='card-footer'>
-//         ${tags}
-//       </div>
-
-
-//     </div>`;
-
-//    // saveHistoryToDb(`{"data" : ${outfit}`);
-
-//   }
-
-// }
-
-
-// const dovirtytryon = async (e) =>{
-
-//   const card=e.target.closest('.card');
-//   const imgs= card.getElementsByTagName('img');
-//   console.log(imgs[0].alt);
-//   mySizeChartModal.show();
-//   loader1.style.display='flex';
-
-
-
-//  const modelImag = await getFileAsBase64(image1.src);
-//  const outfitImage = imgs[0].src;
-//  const request = {
-//   "model": modelImag,
-//   "garment_top": outfitImage,
-//   "garment_type": imgs[0].alt==='dress' ? 'dress' : imgs[0].alt==='top' ? 'upper_body' : 'lower_body',
-//   "desc": imgs[0].alt==='dress' ? 'dress' : imgs[0].alt==='top' ? 'shirt' : 'jeans'
-// };
-
-
-
-// const result= await fetchData(config.virtualTryOnAPI,"POST",request);
-
-// image1.src=response.image.url;
-
-// }
 export const init = async () => {
 
 
@@ -127,9 +11,12 @@ export const init = async () => {
   //   document.getElementById("sidebar").classList.toggle('active');
 
   // })
+  let cnt = 0;
+  let interval = null;
+
   closeSideBar.addEventListener('click', function(){
     document.getElementById("sidebar").classList.toggle('active');
-
+   startLoader(false);
   })
 
   loadFavouritesData().then((favoriteArray) => {
@@ -196,6 +83,7 @@ const fetchDataFromWeatherAPI = async(latitude, longitude) => {
     const data = await response.json();
 
     if (data != null) {
+      console.log(data , "test");
       showWeatherSuggestion(data);
     } else {
       console.log('Weather API did not return any data');
@@ -214,7 +102,7 @@ const showWeatherSuggestion = (data) => {
 
   const temp = document.getElementById('temp');
   temp.innerHTML = `${data.data[0].temp}°C`;
-
+  weatherImage.src = `https://www.weatherbit.io/static/img/icons/${data.data[0].weather.icon}.png`;
   const conditions = document.getElementById('conditions');
   conditions.innerHTML = data.data[0].weather.description;
 
@@ -224,7 +112,33 @@ const showWeatherSuggestion = (data) => {
   suggestionBox.className = 'suggestion';
   const image = document.createElement('img');
   const label = document.createElement('h3');
+  const temperature = data.data[0].temp;
 
+  // Show different accessories based on the temperature
+  if (temperature < 10) {
+    // Show winter accessories (e.g. hats, scarves, gloves)
+  
+
+
+    image.src = 'resources/images/jacket.jpeg';
+    label.innerText = `Take Light Jacket or Sweater with you, In case it gets cooler.`;
+    suggestionBox.appendChild(label);
+    suggestionBox.appendChild(image);
+
+  } else if (temperature < 20) {
+    // Show spring/fall accessories (e.g. light jackets, sunglasses)
+    image.src = 'resources/images/sunglasses.jpg';
+    label.innerText = `Sunny vibes ahead! Grab those shades and enjoy 😎.`;
+    suggestionBox.appendChild(label);
+    suggestionBox.appendChild(image);
+  } else {
+    image.src = "resources/images/umbrella.jpeg";
+    label.innerText = `Looks like it's gonna pour! Don't forget your umbrella ☔️`;
+    suggestionBox.appendChild(label);
+    suggestionBox.appendChild(image);
+    // Show summer accessories (e.g. shorts, t-shirts, sandals)
+  
+  }
   if (result.toLowerCase().includes('rain')) {
     image.src = "resources/images/umbrella.jpeg";
     label.innerText = `Looks like it's gonna pour! Don't forget your umbrella ☔️`;
@@ -235,12 +149,7 @@ const showWeatherSuggestion = (data) => {
     label.innerText = `Sunny vibes ahead! Grab those shades and enjoy 😎.`;
     suggestionBox.appendChild(label);
     suggestionBox.appendChild(image);
-  } else if (result.toLowerCase().includes('cloud')) {
-    image.src = 'resources/images/jacket.jpeg';
-    label.innerText = `Take Light Jacket or Sweater with you, In case it gets cooler.`;
-    suggestionBox.appendChild(label);
-    suggestionBox.appendChild(image);
-  } else {
+  }  else {
     label.innerText = `Weather's looking fine, enjoy your day!`;
     suggestionBox.appendChild(label);
   }
@@ -280,7 +189,7 @@ const getLocation = () => {
 
 
 
-  loader2.style.display = 'flex';
+  loader.style.display = 'flex';
   showMatchingOutfit();
   createWeatherRecommendation();
 
@@ -290,8 +199,7 @@ const getLocation = () => {
   var bottomRecommendedOutfit = document.getElementById('bottom_recommended_outfit');
 
   
-
-
+let matchingDataArray = [];
 
   async function showMatchingOutfit() {
     
@@ -303,17 +211,18 @@ const getLocation = () => {
       matchingoutfit.innerHTML = '';
 
       if (searchResult.length > 0) {
-        loader2.style.display = 'none';
+        loader.style.display = 'none';
         const outfit = searchResult[Math.floor(Math.random() * searchResult.length)];
         topRecommendedOutfit.innerHTML = `<img src='${outfit[0].imageUrl}' alt=''>`;
         bottomRecommendedOutfit.innerHTML = `<img src='${outfit[1].imageUrl}' alt=''>`;
-        // console.log(outfit[0].image64);
-        generateClothes(outfit[0].image64, outfit[1].image64);
+        console.log(searchResult);
+        matchingDataArray.push(searchResult);
+        // generateClothes(outfit[0].image64, outfit[1].image64);
 
         storeOutfitInDatabase(outfit, matchingoutfit);
         //  loader.style.display = "none";
       } else {
-        loader2.style.display = 'none';
+        loader.style.display = 'none';
         topRecommendedOutfit.innerHTML = `<p>No outfits are there</p>`;
     
         console.log('No matching outfit found');
@@ -322,11 +231,10 @@ const getLocation = () => {
       console.error('Error generating outfit:', error);
     }
   }
-  // showMatchingOutfit();
   
   let outfit_id;
   const storeOutfitInDatabase = (outfit, matchingoutfit) => {
-
+console.log(outfit);
     const top = {
       garment_type: outfit[0].garment_type,
       imageUrl: outfit[0].imageUrl,
@@ -359,6 +267,7 @@ const getLocation = () => {
   }
 
   const addOutfitToFavorites = (matchingoutfit, outfit) => {
+
     let islike = false;
     const heartButton = document.createElement('button');
     heartButton.innerHTML = `<div class="con-like">
@@ -418,8 +327,33 @@ const getLocation = () => {
   }
 
   var generate_outfit = document.getElementById('genrateOutfit');
-  generate_outfit.addEventListener('click', showMatchingOutfit);
- 
+  // generate_outfit.addEventListener('click', showMatchingOutfit);
+
+let  topGarment;
+let lowerGarment;
+
+  generate_outfit.addEventListener('click', function(){
+
+
+
+    const matchingoutfit = document.getElementById('likeBtn');
+
+
+    matchingoutfit.innerHTML = '';
+
+    console.log(matchingDataArray[0].length);
+    const randomIndex = Math.floor(Math.random() * matchingDataArray[0].length);
+    topRecommendedOutfit.innerHTML = `<img src='${matchingDataArray[0][randomIndex][0].imageUrl}' alt=''>`;
+    bottomRecommendedOutfit.innerHTML = `<img src='${matchingDataArray[0][randomIndex][1].imageUrl}' alt=''>`;
+
+    topGarment = matchingDataArray[0][randomIndex][0].image64;
+    lowerGarment = matchingDataArray[0][randomIndex][1].image64;
+
+    storeOutfitInDatabase(matchingDataArray[0][randomIndex], matchingoutfit);
+
+   // generateClothes(matchingDataArray[0][randomIndex][0].imageUrl, matchingDataArray[0][randomIndex][1].imageUrl);
+
+  });
   async function fetchData(humanUrl, garmentUrl, garmentType, descr) {
 
     try {
@@ -450,20 +384,25 @@ const getLocation = () => {
       console.error(error);
     }
   }
-  let listenerAdded = false;
-  loader.style.display = 'none';
 
 
-  function generateClothes(topGarment, lowerGarment) {
-  if (!listenerAdded) {
+  // let listenerAdded = false;
+  loader2.style.display = 'none';
+  headerWrite.innerHTML = `Hang tight! Your virtual try-on will be ready in just a minute. `
+  // function generateClothes(topGarment, lowerGarment) {
+
+  // if (!listenerAdded) {
 
     virtualTryOn.addEventListener('click', async function (e) {
 
     e.preventDefault();
     document.getElementById("sidebar").classList.toggle('active');
 
-    loader.style.display = 'flex';
+    loader2.style.display = 'flex';
+    startLoader(true);
+  
 
+  
 
     // var topGarment = clothes_manager.find(obj => obj.garment_type === 'top');
     // var lowerGarment = clothes_manager.find(obj => obj.garment_type === 'bottom');
@@ -471,28 +410,34 @@ const getLocation = () => {
 
     console.log(topGarment);
     console.log(lowerGarment);
+    // top_favorite_outfit.innerHTML = `<img src='${topGarment}' alt=''>`;
+    // bottom_favorite_outfit.innerHTML = `<img src='${lowerGarment}' alt=''>`
+    const response = await fetchData(base64data1, topGarment, "upper_body", "shirt");
 
-    // const response = await fetchData(base64data1, topGarment, "upper_body", "shirt");
+    setTimeout(async () => {
+      console.log("Upload timed out after 5 seconds");
+      // uploadBottom(response.image.url);
+      image1.src = response.image.url;
 
-    // setTimeout(async () => {
-    //   console.log("Upload timed out after 5 seconds");
-    //   // uploadBottom(response.image.url);
-    //   image1.src = response.image.url;
+      const jsonData = await fetchData(response.image.url, lowerGarment, "lower_body", "jeans");
+      // uploadBottom(jsonData.image.url);
+      image1.src = jsonData.image.url;
+      loader2.style.display = 'none';
+    startLoader(false);
+    document.querySelector(".progress").style.width =  `100%`;
+    document.querySelector(".text").innerHTML = `<p>100%</p>`;
+    headerWrite.innerHTML = `Wow, you look absolutely stunning in this outfit! `;
 
-    //   const jsonData = await fetchData(response.image.url, lowerGarment, "lower_body", "jeans");
-    //   // uploadBottom(jsonData.image.url);
-    //   image1.src = jsonData.image.url;
-    //   loader.style.display = 'none';
 
-    // }, 5000); // 5 seconds
+    }, 5000); // 5 seconds
 
 
 
   });
-  listenerAdded = true;
+  // listenerAdded = true;
 
-}
-}
+// }
+// }
 
 
 const image1 = document.getElementById('image1');
@@ -512,36 +457,32 @@ ctx1.drawImage(image1, 0, 0);
 
 const base64data1 = canvas1.toDataURL('image/jpeg');
 
+function startLoader(st){
+  if(st){  
+     
+    if (!interval) {
+    interval = setInterval(function() {
+      cnt++;
+      document.querySelector(".progress").style.width = cnt + "%";
+      document.querySelector(".text").innerHTML = `<p>${cnt}%</p>`;
+      if (cnt === 100) {
+        clearInterval(interval);
+        interval = null;
+      }
+    }, 2000);
+  }
+}
+else{
+    clearInterval(interval);
+    interval = null
+    cnt = 0;
+    document.querySelector(".progress").style.width = cnt + "%";
+    document.querySelector(".text").innerHTML = `<p>${cnt}%</p>`;
 
-// function uploadBottom(srcData){
-//   image1.src = srcData;
+    console.log('stop');
+  }
 
-// }
-
-// Get the modal
-// var ebModal = document.getElementById('mySizeChartModal');
-// ebModal.style.display = "none";
-// vton.style.display= 'none';
-
-// Get the button that opens the modal
-// var ebBtn = document.getElementById("virtualTryOn");
-
-// // Get the <span> element that closes the modal
-// var ebSpan = document.getElementById("closeModal");
-
-// // When the user clicks the button, open the modal 
-// ebBtn.onclick = function() {
-//     ebModal.style.display = "block";
-//     vton.style.display= 'block';
-
-// }
-
-// // When the user clicks on <span> (x), close the modal
-// ebSpan.onclick = function() {
-//     ebModal.style.display = "none";
-//     vton.style.display= 'none';
-
-// }
+}
 
 
 }

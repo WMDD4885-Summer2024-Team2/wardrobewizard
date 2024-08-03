@@ -211,6 +211,7 @@
 } */
 
 .title-container {
+    display: none;
     padding: 1rem;
     margin-top: 1rem;
     width: 100%;

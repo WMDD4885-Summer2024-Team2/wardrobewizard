@@ -11,6 +11,10 @@
     src: url('../resources/fonts/charter_bold.woff2') format('woff2');
 }
 
+#mainArea{
+  /* background: url('/resources/images/backgroundImages/LoginBg.jpg');
+  background-size: cover; */
+}
 h2,h3,h4,h5,h6{
   font-family: 'charter';
   color: var(--colorBeige);
@@ -38,8 +42,8 @@ h6{
   font-size: 16px;
   }
 
-p, span, a , li , button{
-  font-size: 18px;
+p, span, a , li , button, select{
+  font-size: 24px;
   font-family: 'Noto Sans';
 }
 .visually-hidden {
@@ -61,7 +65,7 @@ a{
     --colorBlack:black;
     --colorDullBlack:#2C2C2C;
     --colorNavyBlue:#031B4A;
-    --colorMustard:#B16F0C;
+    --colorMustard:#CB874E;
     --colorBeige:#FBF8F0;
     --colorAntiqueWhite: antiquewhite;
     --colorLightBlue:#596D93;
@@ -935,7 +939,7 @@ input[type="file"] {
   .wardrowiz-button:hover {
 
     color: var(--colorNavyBlue);
-    box-shadow: inset 0 -100px 0 0 var(--colorBeige);
+    box-shadow: inset 0 -100px 0 0 var(--colorMustard);
   }
   
   .wardrowiz-button:active {

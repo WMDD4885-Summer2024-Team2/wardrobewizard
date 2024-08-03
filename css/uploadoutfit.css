@@ -1,7 +1,10 @@
-#uploadingImages
-{
+.mainPageOutfit{
   background: url('/resources/images/backgroundImages/LoginBg.jpg');
   background-size: cover;
+}
+#uploadingImages
+{
+
   /* background-size: cover; */
   padding-top: 10rem;
     main {
@@ -176,6 +179,11 @@
     right: 0;
   
   }
+
+  #formDetails{
+    padding: 0rem 0rem 10rem 0rem; 
+
+  }
   @media only screen and (min-width:800px){
     #formDetails{
       padding: 4rem 0rem;
@@ -280,6 +288,15 @@
   
   input[type="color"] {
  width: 230px;
+  }
+  #occasionInput{
+    background: transparent;
+    width: 100%;
+    font-size: 1.3rem;
+color: var(--colorBeige);
+border: none;
+border-radius: 0px;
+border-bottom: 1px solid var(--colorBeige);
   }
   .form-container .form-group input[type="text"] {
     width: 100%;

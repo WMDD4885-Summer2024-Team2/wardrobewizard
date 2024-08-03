@@ -13,8 +13,8 @@ onAuthStateChanged(firebase.getAuth(), async (user) => {
     firebase.setUser(user);
     // firebase.loadData();
 
-    console.log(firebase.getUser().email);
-console.log(firebase.getUser());
+//     console.log(firebase.getUser().email);
+// console.log(firebase.getUser());
 wardrowizAlert(`Welcome back ${firebase.getUser().displayName}`);
 
     loadOutfitData();
